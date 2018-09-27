@@ -14,7 +14,7 @@ class AboutUsController: BaseController,UITableViewDelegate,UITableViewDataSourc
     lazy var aboutUsTableView = UITableView(frame: self.view.frame, style: .grouped)
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "关于我们"
+        self.navigationItem.title = "联系我们"
         self.view.backgroundColor = YCColorWhite
         self.leftView.isHidden = false
         self.aboutUsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none

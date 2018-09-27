@@ -16,11 +16,14 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
     private lazy var titleSouce :[String] = [String]()
     var sectionOneArray:Array = [PersionModel]()
     var sectionSedArray:Array = [PersionModel]()
+    var sectionThirdArray:Array = [PersionModel]()
+    var sectionForArray:Array = [PersionModel]()
+
     var allArray:Array = [[PersionModel]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "个人中心"
+        self.navigationItem.title = "个人设置"
         self.view.backgroundColor = YCColorWhite
         self.leftView.isHidden = false
         //添加数据源
@@ -33,14 +36,6 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
         //注册cell重用
         self.userCenterTableView .register(CenterTableCell.self, forCellReuseIdentifier: UserCenterCellIdentifier)
         self.view.addSubview(userCenterTableView)
-        //退出按钮
-        self.view.addSubview(self.loginOutBtn)
-        self.loginOutBtn.snp.makeConstraints { (make) in
-            make.bottom.equalTo(-SafeBottomMargin)
-            make.right.equalTo(0)
-            make.left.equalTo(0)
-            make.height.equalTo(50)
-        }
     }
     
     //MARK:========tableViewDelegate协议代理
@@ -53,16 +48,33 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
-            return 100
+            return 80
         default:
-            return 15
+            return 5
         }
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 1
+        if(section==self.allArray.count-1){
+            return 60
+        }else{
+            return 1
+        }
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return nil
+        if(section==self.allArray.count-1){
+            let footView = UIView()
+            //退出按钮
+            footView.addSubview(self.loginOutBtn)
+            self.loginOutBtn.snp.makeConstraints { (make) in
+                make.top.equalTo(8)
+                make.right.equalTo(0)
+                make.left.equalTo(0)
+                make.height.equalTo(52)
+            }
+            return footView
+        }else{
+            return nil
+        }
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
@@ -87,7 +99,7 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(indexPath.section==1&&indexPath.row==3){
+        if(indexPath.section==3&&indexPath.row==2){
             //关于我们
             let aboutUsVC = AboutUsController()
             aboutUsVC.hidesBottomBarWhenPushed = true
@@ -99,8 +111,12 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
         self.allArray.removeAll()
         sectionOneArray.removeAll()
         sectionSedArray.removeAll()
-        let titleSouce1 = ["收货地址"]
-        let titleSouce2 = ["支付设置","意见与建议","联系客服","关于我们"]
+        sectionThirdArray.removeAll()
+        sectionForArray.removeAll()
+        let titleSouce1 = ["昵称"]
+        let titleSouce2 = ["绑定手机","绑定微信","绑定邮箱"]
+        let titleSouce3 = ["实名认证"]
+        let titleSouce4 = ["密码管理","清除缓存","关于我们"]
         for i in 0..<titleSouce1.count {
             let model = PersionModel()
             model.title = titleSouce1[i]
@@ -111,8 +127,20 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
             model.title = titleSouce2[i]
             sectionSedArray.append(model)
         }
+        for i in 0..<titleSouce3.count {
+            let model = PersionModel()
+            model.title = titleSouce3[i]
+            sectionThirdArray.append(model)
+        }
+        for i in 0..<titleSouce4.count {
+            let model = PersionModel()
+            model.title = titleSouce4[i]
+            sectionForArray.append(model)
+        }
         self.allArray.append(sectionOneArray)
         self.allArray.append(sectionSedArray)
+        self.allArray.append(sectionThirdArray)
+        self.allArray.append(sectionForArray)
     }
     
     lazy var loginOutBtn:UIButton = {

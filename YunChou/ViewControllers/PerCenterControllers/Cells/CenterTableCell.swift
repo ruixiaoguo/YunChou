@@ -38,7 +38,7 @@ class CenterTableCell: UITableViewCell {
             make.left.equalTo(15)
             make.right.equalTo(0)
             make.height.equalTo(1)
-            make.bottom.equalTo(contentView).offset(-1)
+            make.bottom.equalTo(contentView).offset(-0)
         })
         //小箭头
         let arrowImage = UIImageView()

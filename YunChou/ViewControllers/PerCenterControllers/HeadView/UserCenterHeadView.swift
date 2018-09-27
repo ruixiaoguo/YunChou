@@ -22,39 +22,27 @@ class UserCenterHeadView: UIView {
     }
     
     func initUi() {
-        //头像
-        headImage.contentMode = .scaleAspectFill
-        headImage.clipsToBounds = true
-        headImage.image = UIImage(named: "def")
-        self.addSubview(headImage)
-        headImage.layer.cornerRadius = 65/2
-        headImage.snp.makeConstraints { (make) in
-            make.top.equalTo(15)
-            make.left.equalTo(15)
-            make.width.equalTo(65)
-            make.height.equalTo(65)
-        }
+        
         //名称
         nameLable.font = UIFont.systemFont(ofSize: 16)
         nameLable.textColor = YCColorBlack
-        nameLable.text = "晓时代1997"
+        nameLable.text = "头像"
         self.addSubview(nameLable)
         nameLable.snp.makeConstraints({ (make) in
-            make.top.equalTo(8)
-            make.left.equalTo(headImage.snp.right).offset(15)
-            make.right.equalTo(-100)
-            make.height.equalTo(55)
+            make.centerY.equalTo(self)
+            make.left.equalTo(15)
+            make.right.equalTo(-150)
         })
-        //用户名称
-        userLable.font = UIFont.systemFont(ofSize: 14)
-        userLable.textColor = YCColorDarkLight
-        userLable.text = "用户名：Rsq1233412344"
-        self.addSubview(userLable)
-        userLable.snp.makeConstraints({ (make) in
-            make.top.equalTo(nameLable.snp.bottom).offset(-8)
-            make.left.equalTo(headImage.snp.right).offset(15)
-            make.right.equalTo(-100)
-        })
+//        //用户名称
+//        userLable.font = UIFont.systemFont(ofSize: 14)
+//        userLable.textColor = YCColorDarkLight
+//        userLable.text = "用户名：Rsq1233412344"
+//        self.addSubview(userLable)
+//        userLable.snp.makeConstraints({ (make) in
+//            make.top.equalTo(nameLable.snp.bottom).offset(-8)
+//            make.left.equalTo(headImage.snp.right).offset(15)
+//            make.right.equalTo(-100)
+//        })
         //小箭头
         let arrowImage = UIImageView()
         arrowImage.contentMode = .scaleAspectFill
@@ -66,6 +54,18 @@ class UserCenterHeadView: UIView {
             make.right.equalTo(-15)
             make.width.equalTo(25)
             make.height.equalTo(25)
+        }
+        //头像
+        headImage.contentMode = .scaleAspectFill
+        headImage.clipsToBounds = true
+        headImage.image = UIImage(named: "def")
+        self.addSubview(headImage)
+        headImage.layer.cornerRadius = 55/2
+        headImage.snp.makeConstraints { (make) in
+            make.centerY.equalTo(self)
+            make.right.equalTo(arrowImage.snp.left).offset(-10)
+            make.width.equalTo(55)
+            make.height.equalTo(55)
         }
         //分割线
         lineView.backgroundColor = YCColorLight
