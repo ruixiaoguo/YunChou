@@ -95,6 +95,11 @@ class PersionViewController: BaseController,UITableViewDelegate,UITableViewDataS
             let adressVC = MyAdressController()
             adressVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(adressVC, animated: true)
+        }else if(indexPath.section==1&&indexPath.row==3){
+            //邀请有礼
+            let invitFriendVC = InvitFriendController()
+            invitFriendVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(invitFriendVC, animated: true)
         }
     }
     
