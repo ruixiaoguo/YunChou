@@ -12,6 +12,7 @@ pod 'HandyJSON'
 pod 'SwiftProgressHUD'
 pod 'Moya'
 pod 'MMKV'
+pod 'IQKeyboardManagerSwift'
 
 # use_framework !
 end

@@ -92,9 +92,11 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "${PODS_ROOT}/IQKeyboardManagerSwift/IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle"
   install_resource "${PODS_ROOT}/SwiftFCXRefresh/SwiftFCXRefresh/arrow@2x.png"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "${PODS_ROOT}/IQKeyboardManagerSwift/IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle"
   install_resource "${PODS_ROOT}/SwiftFCXRefresh/SwiftFCXRefresh/arrow@2x.png"
 fi
 

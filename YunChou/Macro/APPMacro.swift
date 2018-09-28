@@ -13,6 +13,7 @@ let mainWindow: UIWindow = ((UIApplication.shared.delegate?.window)!)!
 
 let Main_Screen_Width = UIScreen.main.bounds.width
 let Main_Screen_Height = UIScreen.main.bounds.height
+
 /*代替之前的49*/
 let kTabBarHeight: CGFloat = (UIApplication.shared.statusBarFrame.size.height > 20.0 ? 83.0:49.0)
 /** 判断是否iphoneX系列 */
@@ -21,6 +22,9 @@ let iPhoneXS = (mainWindow.safeAreaInsets.bottom > 0.0) ? true:false
 let NaviBarHeight:CGFloat = (iPhoneXS ? 88 : 64)
 let StatusBarHeight:CGFloat = (iPhoneXS ? 44 : 20)
 let SafeBottomMargin:CGFloat = (iPhoneXS ? 34 : 0)
+
+/*全屏幕高度*/
+let Screen_Height = Main_Screen_Height+NaviBarHeight+SafeBottomMargin
 
 /*! 屏幕比适配宽高 */
 func kWidth(R:CGFloat)->CGFloat{
@@ -48,7 +52,32 @@ let YCColorBlack = gof_ColorWithHex(0x000000);   // 主色调，黑色
 let YCColorLight = gof_ColorWithHex(0xF2F4F6);   //全局灰色
 let YCColorDarkLight = gof_ColorWithHex(0xADADAD);   //全局深灰色
 let YCColorBlue = gof_ColorWithHex(0x309FFF);   //全局浅蓝色
+let YCColorLoginLine = gof_ColorWithHex(0xDCE1ED);   //登录分割线
 
+//字体
+var YC_FONT_PFSC_Semibold: (CGFloat) -> UIFont = {size in
+    return UIFont(name: "PingFangSC-Semibold", size: size) ?? UIFont.systemFont(ofSize: size)
+}
+var YC_FONT_PFSC_Medium: (CGFloat) -> UIFont = {size in
+    return UIFont(name: "PingFangSC-Medium", size: size) ?? UIFont.systemFont(ofSize: size)
+}
+var YC_FONT_PFSC_Regular: (CGFloat) -> UIFont = {size in
+    return UIFont(name: "PingFangSC-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
+}
+var YC_FONT_PFSC_Light: (CGFloat) -> UIFont = {size in
+    return UIFont(name: "PingFangSC-Light", size: size) ?? UIFont.systemFont(ofSize: size)
+}
+//富文本设置行间距
+var YC_FONT_RowSpacing :(CGFloat , UIFont , String) -> NSAttributedString = { size, font, str in
+    //通过富文本来设置行间距
+    let paraph = NSMutableParagraphStyle()
+    //将行间距设置为28
+    paraph.lineSpacing = size
+    //样式属性集合
+    let attributes = [NSAttributedString.Key.font:font,
+                      NSAttributedString.Key.paragraphStyle: paraph]
+    return NSAttributedString(string: str, attributes: attributes)
+}
 
 // MARK: ---- 打印日志
 /**

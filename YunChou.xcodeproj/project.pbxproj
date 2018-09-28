@@ -57,6 +57,8 @@
 		21D5ABB0215CA7DF00D5EC1F /* AddAdressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABAF215CA7DF00D5EC1F /* AddAdressView.swift */; };
 		21D5ABB2215CC0F100D5EC1F /* SelectAdressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABB1215CC0F100D5EC1F /* SelectAdressController.swift */; };
 		21D5ABB5215CC58300D5EC1F /* InvitFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABB4215CC58300D5EC1F /* InvitFriendController.swift */; };
+		21D5ABC0215DF5B700D5EC1F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABBF215DF5B700D5EC1F /* LoginViewController.swift */; };
+		21D5ABC6215E0B5300D5EC1F /* SMSCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABC5215E0B5300D5EC1F /* SMSCodeView.swift */; };
 		50A5A5F96C952EB1EA80F9B4 /* libPods-YunChou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6530BFEB29B634C3F1D3A1DD /* libPods-YunChou.a */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +116,8 @@
 		21D5ABAF215CA7DF00D5EC1F /* AddAdressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAdressView.swift; sourceTree = "<group>"; };
 		21D5ABB1215CC0F100D5EC1F /* SelectAdressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAdressController.swift; sourceTree = "<group>"; };
 		21D5ABB4215CC58300D5EC1F /* InvitFriendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitFriendController.swift; sourceTree = "<group>"; };
+		21D5ABBF215DF5B700D5EC1F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		21D5ABC5215E0B5300D5EC1F /* SMSCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeView.swift; sourceTree = "<group>"; };
 		6530BFEB29B634C3F1D3A1DD /* libPods-YunChou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YunChou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C04D3CEFB567E3574CCB034 /* Pods-YunChou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YunChou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YunChou/Pods-YunChou.debug.xcconfig"; sourceTree = "<group>"; };
 		E2CA44BE8E613BF3A0E2EE4C /* Pods-YunChou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YunChou.release.xcconfig"; path = "Pods/Target Support Files/Pods-YunChou/Pods-YunChou.release.xcconfig"; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 				2122C90D2153493200571301 /* MainViewControllers */,
 				2122C94D2154E26500571301 /* NewsViewController */,
 				2122C910215349CA00571301 /* PerCenterControllers */,
+				21D5ABBE215DF5A400D5EC1F /* LoginViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -368,6 +373,23 @@
 			path = YaoqingFriendsController;
 			sourceTree = "<group>";
 		};
+		21D5ABBE215DF5A400D5EC1F /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				21D5ABC4215E0B4500D5EC1F /* SMSCodeView */,
+				21D5ABBF215DF5B700D5EC1F /* LoginViewController.swift */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		21D5ABC4215E0B4500D5EC1F /* SMSCodeView */ = {
+			isa = PBXGroup;
+			children = (
+				21D5ABC5215E0B5300D5EC1F /* SMSCodeView.swift */,
+			);
+			path = SMSCodeView;
+			sourceTree = "<group>";
+		};
 		8043307F8C63F2F0FF83AE9E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,10 +476,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-YunChou/Pods-YunChou-resources.sh",
+				"${PODS_ROOT}/IQKeyboardManagerSwift/IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/SwiftFCXRefresh/SwiftFCXRefresh/arrow@2x.png",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/arrow@2x.png",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +526,7 @@
 				21D5AB88215A20DE00D5EC1F /* PersionHeadView.swift in Sources */,
 				2122C8F6215346A200571301 /* UIView+Extension.swift in Sources */,
 				2122C90F2153495400571301 /* MainViewController.swift in Sources */,
+				21D5ABC0215DF5B700D5EC1F /* LoginViewController.swift in Sources */,
 				2122C903215346B700571301 /* WRCycleCell.swift in Sources */,
 				2122C9522154E59D00571301 /* HomeTableCell.swift in Sources */,
 				21D5AB85215A0EF200D5EC1F /* PersionModel.swift in Sources */,
@@ -509,6 +534,7 @@
 				21D5ABB0215CA7DF00D5EC1F /* AddAdressView.swift in Sources */,
 				21D5ABB2215CC0F100D5EC1F /* SelectAdressController.swift in Sources */,
 				2122C900215346B700571301 /* WRProxy.swift in Sources */,
+				21D5ABC6215E0B5300D5EC1F /* SMSCodeView.swift in Sources */,
 				2122C8F7215346A200571301 /* UIImage+Extension.swift in Sources */,
 				2122C91E21537EFB00571301 /* SingleWebController.swift in Sources */,
 				21D5ABAE215CA34B00D5EC1F /* AddMyAdressController.swift in Sources */,

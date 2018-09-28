@@ -11,6 +11,8 @@ import UIKit
 class BaseController: UIViewController {
     
     var leftView:UIButton = UIButton()
+    let messageButton = UIButton(type:.custom)
+    let searchButton = UIButton(type:.custom)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +33,7 @@ class BaseController: UIViewController {
                                      action: nil)
         spacer.width = -15;
         self.navigationItem.leftBarButtonItems = [spacer,leftBarBtn]
-        //添加搜索按钮
-        self.view.addSubview(searchButton)
-        //添加消息按钮
-        self.view.addSubview(messageButton)
+        self.creatNavButton()
     }
     
     //返回按钮点击响应
@@ -42,20 +41,20 @@ class BaseController: UIViewController {
         self.navigationController!.popViewController(animated: true)
     }
     
-    //MARK: =========创建消息按钮
-    lazy var messageButton:UIButton = {
-        let messageButton = UIButton(type:.custom)
+    func creatNavButton() {
+        //MARK: =========创建消息按钮
         messageButton.frame = CGRect(x: Main_Screen_Width-60, y: StatusBarHeight, width: 50, height: 50)
         messageButton.setImage(UIImage(named: "home_message"), for: .normal)
-        return messageButton
-    }()
-    //MARK: =========创建搜索按钮
-    lazy var searchButton:UIButton = {
-        let searchButton = UIButton(type:.custom)
+        messageButton.isHidden = true
+        //MARK: =========创建搜索按钮
         searchButton.frame = CGRect(x: Main_Screen_Width-90, y: StatusBarHeight+8, width: 35, height: 35)
         searchButton.setImage(UIImage(named: "home_QRBlack"), for: .normal)
-        return searchButton
-    }()
+        searchButton.isHidden = true
+        //添加搜索按钮
+        self.view.addSubview(searchButton)
+        //添加消息按钮
+        self.view.addSubview(messageButton)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
