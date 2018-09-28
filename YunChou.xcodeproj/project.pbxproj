@@ -59,6 +59,8 @@
 		21D5ABB5215CC58300D5EC1F /* InvitFriendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABB4215CC58300D5EC1F /* InvitFriendController.swift */; };
 		21D5ABC0215DF5B700D5EC1F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABBF215DF5B700D5EC1F /* LoginViewController.swift */; };
 		21D5ABC6215E0B5300D5EC1F /* SMSCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABC5215E0B5300D5EC1F /* SMSCodeView.swift */; };
+		21D5ABCA215E2B8500D5EC1F /* ForgetPassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABC9215E2B8500D5EC1F /* ForgetPassController.swift */; };
+		21D5ABCC215E2CC100D5EC1F /* YCLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABCB215E2CC100D5EC1F /* YCLoginManager.swift */; };
 		50A5A5F96C952EB1EA80F9B4 /* libPods-YunChou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6530BFEB29B634C3F1D3A1DD /* libPods-YunChou.a */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +120,8 @@
 		21D5ABB4215CC58300D5EC1F /* InvitFriendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitFriendController.swift; sourceTree = "<group>"; };
 		21D5ABBF215DF5B700D5EC1F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		21D5ABC5215E0B5300D5EC1F /* SMSCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeView.swift; sourceTree = "<group>"; };
+		21D5ABC9215E2B8500D5EC1F /* ForgetPassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPassController.swift; sourceTree = "<group>"; };
+		21D5ABCB215E2CC100D5EC1F /* YCLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCLoginManager.swift; sourceTree = "<group>"; };
 		6530BFEB29B634C3F1D3A1DD /* libPods-YunChou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YunChou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C04D3CEFB567E3574CCB034 /* Pods-YunChou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YunChou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YunChou/Pods-YunChou.debug.xcconfig"; sourceTree = "<group>"; };
 		E2CA44BE8E613BF3A0E2EE4C /* Pods-YunChou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YunChou.release.xcconfig"; path = "Pods/Target Support Files/Pods-YunChou/Pods-YunChou.release.xcconfig"; sourceTree = "<group>"; };
@@ -376,8 +380,10 @@
 		21D5ABBE215DF5A400D5EC1F /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
+				21D5ABCB215E2CC100D5EC1F /* YCLoginManager.swift */,
 				21D5ABC4215E0B4500D5EC1F /* SMSCodeView */,
 				21D5ABBF215DF5B700D5EC1F /* LoginViewController.swift */,
+				21D5ABC9215E2B8500D5EC1F /* ForgetPassController.swift */,
 			);
 			path = LoginViewController;
 			sourceTree = "<group>";
@@ -517,6 +523,7 @@
 				2122C901215346B700571301 /* WRPageControl.swift in Sources */,
 				2122C912215349E900571301 /* PersionViewController.swift in Sources */,
 				21D5AB96215B366A00D5EC1F /* UserCenterHeadView.swift in Sources */,
+				21D5ABCC215E2CC100D5EC1F /* YCLoginManager.swift in Sources */,
 				2122C8F3215346A200571301 /* UIImageView+Extension.swift in Sources */,
 				2122C9542154E65600571301 /* IdentifierMacro.swift in Sources */,
 				2122C8E92153467D00571301 /* APPMacro.swift in Sources */,
@@ -525,6 +532,7 @@
 				21D5AB9B215B5B3800D5EC1F /* AboutUsTableCell.swift in Sources */,
 				21D5AB88215A20DE00D5EC1F /* PersionHeadView.swift in Sources */,
 				2122C8F6215346A200571301 /* UIView+Extension.swift in Sources */,
+				21D5ABCA215E2B8500D5EC1F /* ForgetPassController.swift in Sources */,
 				2122C90F2153495400571301 /* MainViewController.swift in Sources */,
 				21D5ABC0215DF5B700D5EC1F /* LoginViewController.swift in Sources */,
 				2122C903215346B700571301 /* WRCycleCell.swift in Sources */,

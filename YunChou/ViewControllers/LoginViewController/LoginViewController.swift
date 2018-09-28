@@ -18,6 +18,18 @@ class LoginViewController: BaseController {
     let smsView = SMSCodeView()
     let loginView = MyAdressFootView()
     
+    // MARK:=========视图将要显示时调用该方法
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true;
+    }
+    
+    // MARK:=========当视图将要消失时调用该方法
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false;
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = YCColorWhite
@@ -204,7 +216,7 @@ class LoginViewController: BaseController {
             passLoginBtn.setTitle(loginArray[i], for: .normal)
             passLoginBtn.setTitleColor(YCColorDarkLight, for: .normal)
             passLoginBtn.titleLabel?.font = YC_FONT_PFSC_Semibold(17)
-            passLoginBtn.tag = i+100
+            passLoginBtn.tag = i+1000
             self.view.addSubview(passLoginBtn)
             passLoginBtn.snp.makeConstraints { (make) in
                 make.top.equalTo(loginView.snp.bottom).offset(5)
@@ -249,14 +261,17 @@ class LoginViewController: BaseController {
     
     
     @objc func passLoginClick(_ button:UIButton){
-        
-        button.setTitle(isSmsLogin ? "短信登录" : "密码登录", for: .normal)
-        smsLoginView.isHidden = isSmsLogin ? true : false
-        acountLoginView.isHidden = isSmsLogin ? false : true
-        let titleImage:UIImageView = self.view.viewWithTag(101) as! UIImageView
-        titleImage.image = UIImage(named: isSmsLogin ? "login_pass" : "login_sms")
-        isSmsLogin = !isSmsLogin
-
+        if (button.tag==1000) {
+            button.setTitle(isSmsLogin ? "短信登录" : "密码登录", for: .normal)
+            smsLoginView.isHidden = isSmsLogin ? true : false
+            acountLoginView.isHidden = isSmsLogin ? false : true
+            let titleImage:UIImageView = self.view.viewWithTag(101) as! UIImageView
+            titleImage.image = UIImage(named: isSmsLogin ? "login_pass" : "login_sms")
+            isSmsLogin = !isSmsLogin
+        }else{
+            let forgetPassVC = ForgetPassController()
+            self.navigationController?.pushViewController(forgetPassVC, animated: true)
+        }
     }
     
     @objc func checkButtonClick(_ button:UIButton){

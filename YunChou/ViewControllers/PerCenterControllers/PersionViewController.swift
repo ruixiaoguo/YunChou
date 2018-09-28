@@ -86,10 +86,9 @@ class PersionViewController: BaseController,UITableViewDelegate,UITableViewDataS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        if(indexPath.section==0&&indexPath.row==0){
-            //绑定信息
-            let loginVC = LoginViewController()
-            loginVC.hidesBottomBarWhenPushed = true
-            self.present(loginVC, animated: true, completion: nil)
+        //绑定信息
+        YCLoginManager.PushToLoginController(ower: self)
+        
         }else if(indexPath.section==1&&indexPath.row==4){
             //关于我们
             let aboutUsVC = AboutUsController()
