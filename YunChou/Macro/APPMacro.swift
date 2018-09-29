@@ -48,12 +48,12 @@ var gof_ColorWithHex: (NSInteger) -> UIColor = {hex in
 
 // MARK: ---- 三大色调
 let YCColorWhite = gof_ColorWithHex(0xFFFFFF);     // 主色调，白色
-let YCColorBlack = gof_ColorWithHex(0x000000);   // 主色调，黑色
+let YCColorBlack = gof_ColorWithHex(0x2D2D2D);   // 主色调，纯黑色
+let YCColorLightBlack = gof_ColorWithHex(0x7A7A7A);   //  浅黑色
 let YCColorLight = gof_ColorWithHex(0xF2F4F6);   //全局灰色
-let YCColorDarkLight = gof_ColorWithHex(0xADADAD);   //全局深灰色
+let YCColorDarkLight = gof_ColorWithHex(0xA6A6A6);   //全局深灰色
 let YCColorBlue = gof_ColorWithHex(0x309FFF);   //全局浅蓝色
 let YCColorLoginLine = gof_ColorWithHex(0xDCE1ED);   //登录分割线
-
 //字体
 var YC_FONT_PFSC_Semibold: (CGFloat) -> UIFont = {size in
     return UIFont(name: "PingFangSC-Semibold", size: size) ?? UIFont.systemFont(ofSize: size)

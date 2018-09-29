@@ -4,3 +4,6 @@
 
 #import <CommonCrypto/CommonDigest.h>
 #import <MMKV/MMKV.h>
+#import "NSString+WPAttributedMarkup.h"
+#import "WPAttributedStyleAction.h"
+#import "WPHotspotLabel.h"

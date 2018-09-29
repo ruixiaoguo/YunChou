@@ -11,9 +11,11 @@ import UIKit
 class LoginViewController: BaseController {
     
     var isSmsLogin = true
-    
+    var isShowPass = false
+    let bigTitleLable = UILabel()
     let smsLoginView = UIView() //短信验证码登录
     let acountLoginView = UIView() //密码登录
+    let checkButton = UIButton(type: .custom)
 
     let smsView = SMSCodeView()
     let loginView = MyAdressFootView()
@@ -52,8 +54,11 @@ class LoginViewController: BaseController {
             make.right.equalTo(-0)
             make.height.equalTo(Screen_Height/2-kWidth(R: 100))
         }
-        self.view.addSubview(titleLable)
-        titleLable.snp.makeConstraints { (make) in
+        bigTitleLable.text = "短信验证码登录"
+        bigTitleLable.font = YC_FONT_PFSC_Semibold(17)
+        bigTitleLable.textColor = YCColorBlack
+        self.view.addSubview(bigTitleLable)
+        bigTitleLable.snp.makeConstraints { (make) in
             make.top.equalTo(bgImage.snp.bottom).offset(15)
             make.left.equalTo(20)
             make.right.equalTo(-0)
@@ -66,16 +71,16 @@ class LoginViewController: BaseController {
             self.view.addSubview(headImage)
             headImage.tag = i+100
             headImage.snp.makeConstraints { (make) in
-                make.top.equalTo(titleLable.snp.bottom).offset(20+i*65)
-                make.left.equalTo(25)
-                make.width.equalTo(28)
-                make.height.equalTo(35)
+                make.top.equalTo(bigTitleLable.snp.bottom).offset(25+i*65)
+                make.left.equalTo(30)
+                make.width.equalTo(20)
+                make.height.equalTo(25)
             }
             let lineView = UIView()
             self.view.addSubview(lineView)
             lineView.backgroundColor = YCColorLoginLine
             lineView.snp.makeConstraints { (make) in
-                make.top.equalTo(titleLable.snp.bottom).offset(70+i*65)
+                make.top.equalTo(bigTitleLable.snp.bottom).offset(70+i*62)
                 make.left.equalTo(75)
                 make.right.equalTo(0)
                 make.height.equalTo(1)
@@ -88,7 +93,7 @@ class LoginViewController: BaseController {
         self.view.addSubview(smsLoginView)
         smsLoginView.isHidden = false
         smsLoginView.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLable.snp.bottom).offset(20)
+            make.top.equalTo(bigTitleLable.snp.bottom).offset(20)
             make.left.equalTo(75)
             make.right.equalTo(0)
             make.height.equalTo(120)
@@ -99,7 +104,7 @@ class LoginViewController: BaseController {
             let textField = UITextField()
             smsLoginView.addSubview(textField)
             textField.placeholder = titleArray[i]
-            textField.font = YC_FONT_PFSC_Semibold(17)
+            textField.font = YC_FONT_PFSC_Medium(14)
             textField.textColor = YCColorBlack
             textField.clearButtonMode = .whileEditing
             textField.tag = i+10
@@ -143,7 +148,7 @@ class LoginViewController: BaseController {
         self.view.addSubview(acountLoginView)
         acountLoginView.isHidden = true
         acountLoginView.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLable.snp.bottom).offset(20)
+            make.top.equalTo(bigTitleLable.snp.bottom).offset(20)
             make.left.equalTo(75)
             make.right.equalTo(0)
             make.height.equalTo(120)
@@ -154,7 +159,7 @@ class LoginViewController: BaseController {
             let textField = UITextField()
             acountLoginView.addSubview(textField)
             textField.placeholder = titleArray[i]
-            textField.font = YC_FONT_PFSC_Semibold(17)
+            textField.font = YC_FONT_PFSC_Medium(14)
             textField.textColor = YCColorBlack
             textField.clearButtonMode = .whileEditing
             textField.tag = i+20
@@ -168,11 +173,10 @@ class LoginViewController: BaseController {
                 textField.isSecureTextEntry = true
             }
         }
-        let checkButton = UIButton(type: .custom)
-        checkButton.setImage(UIImage(named: "login_menu_check"), for: .normal)
+        checkButton.setImage(UIImage(named: "login_menu_uncheck"), for: .normal)
         acountLoginView.addSubview(checkButton)
         checkButton.snp.makeConstraints { (make) in
-            make.bottom.equalTo(-23)
+            make.bottom.equalTo(-25)
             make.right.equalTo(-25)
             make.width.equalTo(30)
             make.height.equalTo(20)
@@ -181,22 +185,32 @@ class LoginViewController: BaseController {
     }
     
     func creatLoginView() {
-        let titleLable = UILabel()
-        titleLable.text = "点击登录，即表示同意《注册协议》"
-        titleLable.font = YC_FONT_PFSC_Semibold(14)
-        titleLable.textColor = YCColorDarkLight
-        titleLable.textAlignment = NSTextAlignment.center
-        self.view.addSubview(titleLable)
-        titleLable.snp.makeConstraints { (make) in
-            make.top.equalTo(smsView.snp.bottom).offset(25)
-            make.left.equalTo(0)
-            make.right.equalTo(-0)
+        /*! 注册阅读协议 */
+        let xieyiLable = WPHotspotLabel()
+        xieyiLable.numberOfLines = 1
+        xieyiLable.font = YC_FONT_PFSC_Semibold(14)
+        xieyiLable.textColor = YCColorDarkLight
+        xieyiLable.textAlignment = NSTextAlignment.center
+        self.view.addSubview(xieyiLable)
+        xieyiLable.snp.makeConstraints { (make) in
+        make.top.equalTo(smsView.snp.bottom).offset(15)
+        make.left.equalTo(0)
+        make.right.equalTo(-0)
+        make.height.equalTo(40)
         }
+        let xieyStyle:Dictionary = ["body":YC_FONT_PFSC_Medium(11),
+                                    "pro":WPAttributedStyleAction.styledAction(action: {
+                                //注册协议跳转
+                                let registAgreVC = RegitAgreController()
+                                self.navigationController?.pushViewController(registAgreVC, animated: true)
+                                    }),
+                                    "link":YCColorBlue] as [String : Any]
+        xieyiLable.attributedText = "点击登录，即表示同意<pro>《注册协议》</pro>".attributedString(withStyleBook: xieyStyle)
         //登录按钮
         self.view.addSubview(loginView)
         loginView.addAdressBtn.setTitle("注册/登录", for: .normal)
         loginView.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLable.snp.bottom).offset(35)
+            make.top.equalTo(xieyiLable.snp.bottom).offset(25)
             make.right.equalTo(-0)
             make.left.equalTo(0)
             make.height.equalTo(60)
@@ -215,7 +229,7 @@ class LoginViewController: BaseController {
             let passLoginBtn = UIButton(type: .custom)
             passLoginBtn.setTitle(loginArray[i], for: .normal)
             passLoginBtn.setTitleColor(YCColorDarkLight, for: .normal)
-            passLoginBtn.titleLabel?.font = YC_FONT_PFSC_Semibold(17)
+            passLoginBtn.titleLabel?.font = YC_FONT_PFSC_Medium(14)
             passLoginBtn.tag = i+1000
             self.view.addSubview(passLoginBtn)
             passLoginBtn.snp.makeConstraints { (make) in
@@ -250,16 +264,7 @@ class LoginViewController: BaseController {
         self.view.addSubview(leftView)
     }
     
-    //MARK:======懒加载
-    lazy var titleLable:UILabel = {
-        let titleLable = UILabel()
-        titleLable.text = "短信验证码登录"
-        titleLable.font = YC_FONT_PFSC_Semibold(20)
-        titleLable.textColor = YCColorBlack
-        return titleLable
-    }()
-    
-    
+    //MARK:======== 切换登录方式
     @objc func passLoginClick(_ button:UIButton){
         if (button.tag==1000) {
             button.setTitle(isSmsLogin ? "短信登录" : "密码登录", for: .normal)
@@ -267,6 +272,7 @@ class LoginViewController: BaseController {
             acountLoginView.isHidden = isSmsLogin ? false : true
             let titleImage:UIImageView = self.view.viewWithTag(101) as! UIImageView
             titleImage.image = UIImage(named: isSmsLogin ? "login_pass" : "login_sms")
+            bigTitleLable.text = isSmsLogin ? "密码登录" : "短信验证码登录"
             isSmsLogin = !isSmsLogin
         }else{
             let forgetPassVC = ForgetPassController()
@@ -274,8 +280,12 @@ class LoginViewController: BaseController {
         }
     }
     
+    //MARK:======== 是否显现密码
     @objc func checkButtonClick(_ button:UIButton){
-        
+        let acountPassField:UITextField = self.view.viewWithTag(21) as! UITextField
+        acountPassField.isSecureTextEntry = isShowPass ? true : false
+        checkButton.setImage(UIImage(named: isShowPass ? "login_menu_uncheck" : "login_menu_check"), for: .normal)
+        isShowPass = !isShowPass
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

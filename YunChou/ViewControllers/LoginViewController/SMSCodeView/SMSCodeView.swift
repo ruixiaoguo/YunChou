@@ -20,8 +20,8 @@ class SMSCodeView: UIView {
     
     func initUi() {
         smsButton.setTitle("获取验证码", for: .normal)
-        smsButton.setTitleColor(YCColorDarkLight, for: .normal)
-        smsButton.titleLabel?.font = YC_FONT_PFSC_Semibold(17)
+        smsButton.setTitleColor(YCColorLightBlack, for: .normal)
+        smsButton.titleLabel?.font = YC_FONT_PFSC_Medium(14)
         self.addSubview(smsButton)
         smsButton.snp.makeConstraints { (make) in
             make.top.equalTo(0)

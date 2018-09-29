@@ -15,8 +15,8 @@ class BaseHtmlController: BaseController,WKNavigationDelegate,WKUIDelegate {
     // 进度条
     lazy var progressView:UIProgressView = {
         let progress = UIProgressView()
-        progress.progressTintColor = UIColor.red
-        progress.trackTintColor = UIColor.lightGray
+        progress.progressTintColor = YCColorBlue
+        progress.trackTintColor = YCColorDarkLight
         return progress
     }()
     
