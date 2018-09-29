@@ -11,7 +11,7 @@ pod 'SwiftFCXRefresh'
 pod 'HandyJSON'
 pod 'SwiftProgressHUD'
 pod 'Moya'
-#pod 'MMKV'
+pod 'MMKV'
 pod 'IQKeyboardManagerSwift'
 pod 'FSPagerView', '~> 0.7.2'
 

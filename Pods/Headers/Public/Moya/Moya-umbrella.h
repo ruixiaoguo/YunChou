@@ -1,1 +1,16 @@
-/Users/yy/Desktop/YunChou_Git/YunChou/Pods/Target Support Files/Moya/Moya-umbrella.h
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#else
+#ifndef FOUNDATION_EXPORT
+#if defined(__cplusplus)
+#define FOUNDATION_EXPORT extern "C"
+#else
+#define FOUNDATION_EXPORT extern
+#endif
+#endif
+#endif
+
+
+FOUNDATION_EXPORT double MoyaVersionNumber;
+FOUNDATION_EXPORT const unsigned char MoyaVersionString[];
+

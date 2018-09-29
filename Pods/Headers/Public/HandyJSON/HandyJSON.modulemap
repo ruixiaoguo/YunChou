@@ -1,1 +1,6 @@
-/Users/yy/Desktop/YunChou_Git/YunChou/Pods/Target Support Files/HandyJSON/HandyJSON.modulemap
+module HandyJSON {
+  umbrella header "HandyJSON-umbrella.h"
+
+  export *
+  module * { export * }
+}

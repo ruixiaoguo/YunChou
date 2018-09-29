@@ -698,7 +698,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-YunChou/Pods-YunChou-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-YunChou/Pods-YunChou-resources.sh",
 				"${PODS_ROOT}/IQKeyboardManagerSwift/IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/SwiftFCXRefresh/SwiftFCXRefresh/arrow@2x.png",
 			);
@@ -709,7 +709,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YunChou/Pods-YunChou-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YunChou/Pods-YunChou-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A17CE790FC6F022FFE25C813 /* [CP] Check Pods Manifest.lock */ = {

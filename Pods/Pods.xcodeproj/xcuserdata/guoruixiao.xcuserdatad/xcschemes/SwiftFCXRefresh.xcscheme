@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "74A051944BC66DA6C85527D913AC14BA"
+               BlueprintIdentifier = "2088118F3AFDC32C342A3BF9EED89C5B"
                BlueprintName = "SwiftFCXRefresh"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "libSwiftFCXRefresh.a">

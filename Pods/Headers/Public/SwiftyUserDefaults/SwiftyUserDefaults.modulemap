@@ -1,1 +1,6 @@
-/Users/yy/Desktop/YunChou_Git/YunChou/Pods/Target Support Files/SwiftyUserDefaults/SwiftyUserDefaults.modulemap
+module SwiftyUserDefaults {
+  umbrella header "SwiftyUserDefaults-umbrella.h"
+
+  export *
+  module * { export * }
+}
