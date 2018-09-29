@@ -52,7 +52,7 @@ class YCMessageViewController: BaseController {
         tableView.snp.makeConstraints { (make) in
             make.top.equalTo(self.view).offset(NaviBarHeight)
             make.left.right.equalTo(view).offset(0)
-            make.height.equalTo(Main_Screen_Height - NaviBarHeight - SafeBottomMargin)
+            make.height.equalTo(Main_Screen_Height - NaviBarHeight)
         }
 
         // Do any additional setup after loading the view.

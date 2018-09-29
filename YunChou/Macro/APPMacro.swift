@@ -22,6 +22,8 @@ let iPhoneXS = (mainWindow.safeAreaInsets.bottom > 0.0) ? true:false
 let NaviBarHeight:CGFloat = (iPhoneXS ? 88 : 64)
 let StatusBarHeight:CGFloat = (iPhoneXS ? 44 : 20)
 let SafeBottomMargin:CGFloat = (iPhoneXS ? 34 : 0)
+let YC_TabbarHeight:CGFloat = (iPhoneXS ? 83 : 49)
+
 
 /*全屏幕高度*/
 let Screen_Height = Main_Screen_Height+NaviBarHeight+SafeBottomMargin

@@ -11,7 +11,7 @@ import UIKit
 class YCHomeViewController: BaseController {
 
     private lazy var topNavBarView : YCHomeNavBarView = {
-        let topNavBarView = YCHomeNavBarView.init(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: NaviBarHeight))
+        let topNavBarView = YCHomeNavBarView.init(frame: CGRect(x: 0, y: 0, width: Main_Screen_Width, height: NaviBarHeight))
         topNavBarView.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: 0)
         return topNavBarView
     }()
@@ -39,8 +39,12 @@ class YCHomeViewController: BaseController {
     
     
     private func managerReact() -> CGRect{
+//        let BarH = UIApplication.shared.statusBarFrame.size.height + 44
+//
+//        let H: CGFloat = iPhoneXS ? (view.bounds.height - BarH - 34) : view.bounds.height - BarH
+//        return CGRect(x: 0, y: 0, width: view.bounds.width, height: H)
         
-        return CGRect(x: 0, y: 0, width: Main_Screen_Width, height: Main_Screen_Height - SafeBottomMargin - NaviBarHeight)
+        return CGRect(x: 0, y: 0, width: Main_Screen_Width, height: Main_Screen_Height - YC_TabbarHeight)
     }
     
     
@@ -88,7 +92,6 @@ class YCHomeViewController: BaseController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-
     }
     
     func someBlokHandel(){
@@ -134,12 +137,12 @@ extension YCHomeViewController:LTAdvancedScrollViewDelegate{
     }
     
 }
-extension YCHomeViewController {
-    private func testLabel() -> YCHomeHeaderView {
-        let headerView = YCHomeHeaderView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 170))
-        headerView.backgroundColor = UIColor.white
-        return headerView
-        
-    }
-}
+//extension YCHomeViewController {
+//    private func testLabel() -> YCHomeHeaderView {
+//        let headerView = YCHomeHeaderView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 170))
+//        headerView.backgroundColor = UIColor.white
+//        return headerView
+//
+//    }
+//}
 
