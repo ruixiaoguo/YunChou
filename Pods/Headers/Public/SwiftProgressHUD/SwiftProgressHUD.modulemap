@@ -1,6 +1,1 @@
-module SwiftProgressHUD {
-  umbrella header "SwiftProgressHUD-umbrella.h"
-
-  export *
-  module * { export * }
-}
+/Users/yy/Desktop/YunChou_Git/YunChou/Pods/Target Support Files/SwiftProgressHUD/SwiftProgressHUD.modulemap

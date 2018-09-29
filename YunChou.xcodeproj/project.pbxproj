@@ -7,6 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B175D6F215F4BB600019D1E /* YCHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D6E215F4BB600019D1E /* YCHomeViewController.swift */; };
+		1B175D73215F4C5E00019D1E /* YCHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D72215F4C5E00019D1E /* YCHomeTableViewCell.swift */; };
+		1B175D75215F4C7D00019D1E /* YCHomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D74215F4C7D00019D1E /* YCHomeHeaderView.swift */; };
+		1B175D77215F4CA300019D1E /* YCHomeNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D76215F4CA300019D1E /* YCHomeNavBarView.swift */; };
+		1B175D84215F4D4600019D1E /* LTSimpleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D79215F4D4600019D1E /* LTSimpleManager.swift */; };
+		1B175D85215F4D4600019D1E /* LTCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D7A215F4D4600019D1E /* LTCollectionFlowLayout.swift */; };
+		1B175D86215F4D4600019D1E /* LTDispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D7B215F4D4600019D1E /* LTDispatchQueue.swift */; };
+		1B175D87215F4D4600019D1E /* LTAdvancedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D7C215F4D4600019D1E /* LTAdvancedManager.swift */; };
+		1B175D88215F4D4600019D1E /* LTLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D7D215F4D4600019D1E /* LTLayout.swift */; };
+		1B175D89215F4D4600019D1E /* LTTableViewProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D7E215F4D4600019D1E /* LTTableViewProtocal.swift */; };
+		1B175D8A215F4D4600019D1E /* LTPageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D7F215F4D4600019D1E /* LTPageTitleView.swift */; };
+		1B175D8B215F4D4600019D1E /* LTPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D80215F4D4600019D1E /* LTPageView.swift */; };
+		1B175D8C215F4D4600019D1E /* LTVCExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D81215F4D4600019D1E /* LTVCExtension.swift */; };
+		1B175D8D215F4D4600019D1E /* LTScrollExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D82215F4D4600019D1E /* LTScrollExtension.swift */; };
+		1B175D8E215F4D4600019D1E /* LTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D83215F4D4600019D1E /* LTTableView.swift */; };
+		1B175D90215F4DBE00019D1E /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D8F215F4DBE00019D1E /* UIButtonExtension.swift */; };
+		1B175DA5215F4DEF00019D1E /* YCSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D93215F4DEF00019D1E /* YCSearchViewController.swift */; };
+		1B175DA6215F4DEF00019D1E /* YCTagsViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D95215F4DEF00019D1E /* YCTagsViewTableViewCell.swift */; };
+		1B175DA7215F4DEF00019D1E /* YCTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D96215F4DEF00019D1E /* YCTagsView.swift */; };
+		1B175DA8215F4DEF00019D1E /* YCSearchSegmentBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D97215F4DEF00019D1E /* YCSearchSegmentBtnView.swift */; };
+		1B175DA9215F4DEF00019D1E /* YCSearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D98215F4DEF00019D1E /* YCSearchResultView.swift */; };
+		1B175DAA215F4DEF00019D1E /* YCSearchBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D99215F4DEF00019D1E /* YCSearchBoxView.swift */; };
+		1B175DAB215F4DEF00019D1E /* YCProjectMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D9C215F4DEF00019D1E /* YCProjectMessageViewController.swift */; };
+		1B175DAC215F4DEF00019D1E /* YCMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D9D215F4DEF00019D1E /* YCMessageViewController.swift */; };
+		1B175DAD215F4DEF00019D1E /* YCAccountMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D9E215F4DEF00019D1E /* YCAccountMessageViewController.swift */; };
+		1B175DAE215F4DEF00019D1E /* YCSystemMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D9F215F4DEF00019D1E /* YCSystemMessageViewController.swift */; };
+		1B175DAF215F4DEF00019D1E /* YCProjectMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175DA1215F4DEF00019D1E /* YCProjectMessageTableViewCell.swift */; };
+		1B175DB0215F4DEF00019D1E /* YCSystemMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175DA2215F4DEF00019D1E /* YCSystemMessageTableViewCell.swift */; };
+		1B175DB1215F4DEF00019D1E /* YCAccountMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175DA3215F4DEF00019D1E /* YCAccountMessageTableViewCell.swift */; };
+		1B175DB2215F4DEF00019D1E /* YCMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175DA4215F4DEF00019D1E /* YCMessageTableViewCell.swift */; };
+		1B175DB5215F4E0300019D1E /* OneTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175DB3215F4E0200019D1E /* OneTestViewController.swift */; };
+		1B175DB6215F4E0300019D1E /* twoTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175DB4215F4E0300019D1E /* twoTestViewController.swift */; };
 		2122C8B521533F7300571301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122C8B421533F7300571301 /* AppDelegate.swift */; };
 		2122C8BC21533F7400571301 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2122C8BB21533F7400571301 /* Assets.xcassets */; };
 		2122C8BF21533F7400571301 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2122C8BD21533F7400571301 /* LaunchScreen.storyboard */; };
@@ -70,6 +102,38 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B175D6E215F4BB600019D1E /* YCHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCHomeViewController.swift; sourceTree = "<group>"; };
+		1B175D72215F4C5E00019D1E /* YCHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCHomeTableViewCell.swift; sourceTree = "<group>"; };
+		1B175D74215F4C7D00019D1E /* YCHomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCHomeHeaderView.swift; sourceTree = "<group>"; };
+		1B175D76215F4CA300019D1E /* YCHomeNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCHomeNavBarView.swift; sourceTree = "<group>"; };
+		1B175D79215F4D4600019D1E /* LTSimpleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTSimpleManager.swift; sourceTree = "<group>"; };
+		1B175D7A215F4D4600019D1E /* LTCollectionFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCollectionFlowLayout.swift; sourceTree = "<group>"; };
+		1B175D7B215F4D4600019D1E /* LTDispatchQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTDispatchQueue.swift; sourceTree = "<group>"; };
+		1B175D7C215F4D4600019D1E /* LTAdvancedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTAdvancedManager.swift; sourceTree = "<group>"; };
+		1B175D7D215F4D4600019D1E /* LTLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTLayout.swift; sourceTree = "<group>"; };
+		1B175D7E215F4D4600019D1E /* LTTableViewProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewProtocal.swift; sourceTree = "<group>"; };
+		1B175D7F215F4D4600019D1E /* LTPageTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTPageTitleView.swift; sourceTree = "<group>"; };
+		1B175D80215F4D4600019D1E /* LTPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTPageView.swift; sourceTree = "<group>"; };
+		1B175D81215F4D4600019D1E /* LTVCExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTVCExtension.swift; sourceTree = "<group>"; };
+		1B175D82215F4D4600019D1E /* LTScrollExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTScrollExtension.swift; sourceTree = "<group>"; };
+		1B175D83215F4D4600019D1E /* LTTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableView.swift; sourceTree = "<group>"; };
+		1B175D8F215F4DBE00019D1E /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		1B175D93215F4DEF00019D1E /* YCSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCSearchViewController.swift; sourceTree = "<group>"; };
+		1B175D95215F4DEF00019D1E /* YCTagsViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCTagsViewTableViewCell.swift; sourceTree = "<group>"; };
+		1B175D96215F4DEF00019D1E /* YCTagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCTagsView.swift; sourceTree = "<group>"; };
+		1B175D97215F4DEF00019D1E /* YCSearchSegmentBtnView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCSearchSegmentBtnView.swift; sourceTree = "<group>"; };
+		1B175D98215F4DEF00019D1E /* YCSearchResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCSearchResultView.swift; sourceTree = "<group>"; };
+		1B175D99215F4DEF00019D1E /* YCSearchBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCSearchBoxView.swift; sourceTree = "<group>"; };
+		1B175D9C215F4DEF00019D1E /* YCProjectMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCProjectMessageViewController.swift; sourceTree = "<group>"; };
+		1B175D9D215F4DEF00019D1E /* YCMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCMessageViewController.swift; sourceTree = "<group>"; };
+		1B175D9E215F4DEF00019D1E /* YCAccountMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCAccountMessageViewController.swift; sourceTree = "<group>"; };
+		1B175D9F215F4DEF00019D1E /* YCSystemMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCSystemMessageViewController.swift; sourceTree = "<group>"; };
+		1B175DA1215F4DEF00019D1E /* YCProjectMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCProjectMessageTableViewCell.swift; sourceTree = "<group>"; };
+		1B175DA2215F4DEF00019D1E /* YCSystemMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCSystemMessageTableViewCell.swift; sourceTree = "<group>"; };
+		1B175DA3215F4DEF00019D1E /* YCAccountMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCAccountMessageTableViewCell.swift; sourceTree = "<group>"; };
+		1B175DA4215F4DEF00019D1E /* YCMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCMessageTableViewCell.swift; sourceTree = "<group>"; };
+		1B175DB3215F4E0200019D1E /* OneTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneTestViewController.swift; sourceTree = "<group>"; };
+		1B175DB4215F4E0300019D1E /* twoTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = twoTestViewController.swift; sourceTree = "<group>"; };
 		2122C8B121533F7200571301 /* YunChou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YunChou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2122C8B421533F7300571301 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2122C8BB21533F7400571301 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +226,115 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1B175D6D215F4B4E00019D1E /* HomeViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1B175D71215F4C2600019D1E /* Controllers */,
+				1B175D70215F4C1A00019D1E /* Views */,
+				1B175D6E215F4BB600019D1E /* YCHomeViewController.swift */,
+			);
+			path = HomeViewControllers;
+			sourceTree = "<group>";
+		};
+		1B175D70215F4C1A00019D1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1B175D72215F4C5E00019D1E /* YCHomeTableViewCell.swift */,
+				1B175D74215F4C7D00019D1E /* YCHomeHeaderView.swift */,
+				1B175D76215F4CA300019D1E /* YCHomeNavBarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1B175D71215F4C2600019D1E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1B175DB3215F4E0200019D1E /* OneTestViewController.swift */,
+				1B175DB4215F4E0300019D1E /* twoTestViewController.swift */,
+				1B175D9A215F4DEF00019D1E /* Message */,
+				1B175D91215F4DEF00019D1E /* Search */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1B175D78215F4D4600019D1E /* LTScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				1B175D79215F4D4600019D1E /* LTSimpleManager.swift */,
+				1B175D7A215F4D4600019D1E /* LTCollectionFlowLayout.swift */,
+				1B175D7B215F4D4600019D1E /* LTDispatchQueue.swift */,
+				1B175D7C215F4D4600019D1E /* LTAdvancedManager.swift */,
+				1B175D7D215F4D4600019D1E /* LTLayout.swift */,
+				1B175D7E215F4D4600019D1E /* LTTableViewProtocal.swift */,
+				1B175D7F215F4D4600019D1E /* LTPageTitleView.swift */,
+				1B175D80215F4D4600019D1E /* LTPageView.swift */,
+				1B175D81215F4D4600019D1E /* LTVCExtension.swift */,
+				1B175D82215F4D4600019D1E /* LTScrollExtension.swift */,
+				1B175D83215F4D4600019D1E /* LTTableView.swift */,
+			);
+			path = LTScrollView;
+			sourceTree = "<group>";
+		};
+		1B175D91215F4DEF00019D1E /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1B175D92215F4DEF00019D1E /* Controllers */,
+				1B175D94215F4DEF00019D1E /* Views */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		1B175D92215F4DEF00019D1E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1B175D93215F4DEF00019D1E /* YCSearchViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1B175D94215F4DEF00019D1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1B175D95215F4DEF00019D1E /* YCTagsViewTableViewCell.swift */,
+				1B175D96215F4DEF00019D1E /* YCTagsView.swift */,
+				1B175D97215F4DEF00019D1E /* YCSearchSegmentBtnView.swift */,
+				1B175D98215F4DEF00019D1E /* YCSearchResultView.swift */,
+				1B175D99215F4DEF00019D1E /* YCSearchBoxView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1B175D9A215F4DEF00019D1E /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				1B175D9B215F4DEF00019D1E /* Controllers */,
+				1B175DA0215F4DEF00019D1E /* Views */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		1B175D9B215F4DEF00019D1E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1B175D9C215F4DEF00019D1E /* YCProjectMessageViewController.swift */,
+				1B175D9D215F4DEF00019D1E /* YCMessageViewController.swift */,
+				1B175D9E215F4DEF00019D1E /* YCAccountMessageViewController.swift */,
+				1B175D9F215F4DEF00019D1E /* YCSystemMessageViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		1B175DA0215F4DEF00019D1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1B175DA1215F4DEF00019D1E /* YCProjectMessageTableViewCell.swift */,
+				1B175DA2215F4DEF00019D1E /* YCSystemMessageTableViewCell.swift */,
+				1B175DA3215F4DEF00019D1E /* YCAccountMessageTableViewCell.swift */,
+				1B175DA4215F4DEF00019D1E /* YCMessageTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		2122C8A821533F7200571301 = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +392,7 @@
 		2122C8CA215343AD00571301 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				1B175D78215F4D4600019D1E /* LTScrollView */,
 				21D5ABCD215F049500D5EC1F /* WPAttributedStyleAction */,
 				2122C8FB215346B700571301 /* WRCycleScrollView */,
 				2122C8EA215346A200571301 /* Category */,
@@ -229,6 +403,7 @@
 		2122C8D9215343AD00571301 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1B175D6D215F4B4E00019D1E /* HomeViewControllers */,
 				2122C9042153490E00571301 /* BaseController */,
 				2122C90D2153493200571301 /* MainViewControllers */,
 				2122C94D2154E26500571301 /* NewsViewController */,
@@ -241,6 +416,7 @@
 		2122C8EA215346A200571301 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				1B175D8F215F4DBE00019D1E /* UIButtonExtension.swift */,
 				2122C8EB215346A200571301 /* UIImageView+Extension.swift */,
 				2122C8EC215346A200571301 /* UIColor+Extension.swift */,
 				2122C8ED215346A200571301 /* Date+Extension.swift */,
@@ -522,7 +698,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-YunChou/Pods-YunChou-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-YunChou/Pods-YunChou-resources.sh",
 				"${PODS_ROOT}/IQKeyboardManagerSwift/IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/SwiftFCXRefresh/SwiftFCXRefresh/arrow@2x.png",
 			);
@@ -533,7 +709,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YunChou/Pods-YunChou-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YunChou/Pods-YunChou-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A17CE790FC6F022FFE25C813 /* [CP] Check Pods Manifest.lock */ = {
@@ -565,35 +741,55 @@
 				2122C912215349E900571301 /* PersionViewController.swift in Sources */,
 				21D5ABDC215F049500D5EC1F /* WPAttributedStyleAction.m in Sources */,
 				21D5AB96215B366A00D5EC1F /* UserCenterHeadView.swift in Sources */,
+				1B175DAB215F4DEF00019D1E /* YCProjectMessageViewController.swift in Sources */,
 				21D5ABCC215E2CC100D5EC1F /* YCLoginManager.swift in Sources */,
 				2122C8F3215346A200571301 /* UIImageView+Extension.swift in Sources */,
 				2122C9542154E65600571301 /* IdentifierMacro.swift in Sources */,
+				1B175D77215F4CA300019D1E /* YCHomeNavBarView.swift in Sources */,
+				1B175D8A215F4D4600019D1E /* LTPageTitleView.swift in Sources */,
 				2122C8E92153467D00571301 /* APPMacro.swift in Sources */,
 				21D5AB94215B34C600D5EC1F /* CenterTableCell.swift in Sources */,
 				2122C90C2153490E00571301 /* TabBarController.swift in Sources */,
 				21D5AB9B215B5B3800D5EC1F /* AboutUsTableCell.swift in Sources */,
 				21D5AB88215A20DE00D5EC1F /* PersionHeadView.swift in Sources */,
+				1B175DB6215F4E0300019D1E /* twoTestViewController.swift in Sources */,
 				21D5ABE2215F0AAC00D5EC1F /* RegitAgreController.swift in Sources */,
 				2122C8F6215346A200571301 /* UIView+Extension.swift in Sources */,
+				1B175D73215F4C5E00019D1E /* YCHomeTableViewCell.swift in Sources */,
+				1B175D75215F4C7D00019D1E /* YCHomeHeaderView.swift in Sources */,
 				21D5ABCA215E2B8500D5EC1F /* ForgetPassController.swift in Sources */,
+				1B175DAF215F4DEF00019D1E /* YCProjectMessageTableViewCell.swift in Sources */,
 				2122C90F2153495400571301 /* MainViewController.swift in Sources */,
 				21D5ABC0215DF5B700D5EC1F /* LoginViewController.swift in Sources */,
 				2122C903215346B700571301 /* WRCycleCell.swift in Sources */,
 				2122C9522154E59D00571301 /* HomeTableCell.swift in Sources */,
+				1B175DAC215F4DEF00019D1E /* YCMessageViewController.swift in Sources */,
 				21D5ABD9215F049500D5EC1F /* WPHotspotLabel.m in Sources */,
+				1B175DAA215F4DEF00019D1E /* YCSearchBoxView.swift in Sources */,
 				21D5AB85215A0EF200D5EC1F /* PersionModel.swift in Sources */,
 				21D5ABA1215B83CB00D5EC1F /* MyAdressController.swift in Sources */,
 				21D5ABB0215CA7DF00D5EC1F /* AddAdressView.swift in Sources */,
 				21D5ABB2215CC0F100D5EC1F /* SelectAdressController.swift in Sources */,
 				2122C900215346B700571301 /* WRProxy.swift in Sources */,
 				21D5ABC6215E0B5300D5EC1F /* SMSCodeView.swift in Sources */,
+				1B175DB5215F4E0300019D1E /* OneTestViewController.swift in Sources */,
+				1B175D8C215F4D4600019D1E /* LTVCExtension.swift in Sources */,
+				1B175DA8215F4DEF00019D1E /* YCSearchSegmentBtnView.swift in Sources */,
 				2122C8F7215346A200571301 /* UIImage+Extension.swift in Sources */,
 				21D5ABAE215CA34B00D5EC1F /* AddMyAdressController.swift in Sources */,
+				1B175DB0215F4DEF00019D1E /* YCSystemMessageTableViewCell.swift in Sources */,
+				1B175DA5215F4DEF00019D1E /* YCSearchViewController.swift in Sources */,
 				21D5ABAC215C86BC00D5EC1F /* MyAdressModel.swift in Sources */,
 				2122C91C215373A700571301 /* StringMd5.swift in Sources */,
 				21D5ABA7215C6A9F00D5EC1F /* MyAdressCell.swift in Sources */,
+				1B175DB2215F4DEF00019D1E /* YCMessageTableViewCell.swift in Sources */,
+				1B175DB1215F4DEF00019D1E /* YCAccountMessageTableViewCell.swift in Sources */,
+				1B175D84215F4D4600019D1E /* LTSimpleManager.swift in Sources */,
+				1B175D87215F4D4600019D1E /* LTAdvancedManager.swift in Sources */,
+				1B175D6F215F4BB600019D1E /* YCHomeViewController.swift in Sources */,
 				2122C90A2153490E00571301 /* BaseHtmlController.swift in Sources */,
 				2122C94C2154C5BF00571301 /* TCMoyaNetWork.swift in Sources */,
+				1B175D90215F4DBE00019D1E /* UIButtonExtension.swift in Sources */,
 				2122C9092153490E00571301 /* BaseController.swift in Sources */,
 				2122C94F2154E29800571301 /* NewsViewController.swift in Sources */,
 				2122C902215346B700571301 /* WRCycleScrollView.swift in Sources */,
@@ -603,20 +799,32 @@
 				2122C8FA215346A200571301 /* UIBarButtonItem+Extesion.swift in Sources */,
 				21D5ABA4215B88AF00D5EC1F /* MyAdressFootView.swift in Sources */,
 				21D5AB99215B55A200D5EC1F /* AboutUsController.swift in Sources */,
+				1B175DA9215F4DEF00019D1E /* YCSearchResultView.swift in Sources */,
+				1B175D88215F4D4600019D1E /* LTLayout.swift in Sources */,
 				2122C8F5215346A200571301 /* Date+Extension.swift in Sources */,
 				2122C8B521533F7300571301 /* AppDelegate.swift in Sources */,
 				21D5AB92215B2C5C00D5EC1F /* UserCenterController.swift in Sources */,
+				1B175D8D215F4D4600019D1E /* LTScrollExtension.swift in Sources */,
+				1B175D86215F4D4600019D1E /* LTDispatchQueue.swift in Sources */,
 				21D5AB83215A0EE000D5EC1F /* PersionTableCell.swift in Sources */,
+				1B175DA6215F4DEF00019D1E /* YCTagsViewTableViewCell.swift in Sources */,
+				1B175D8E215F4D4600019D1E /* LTTableView.swift in Sources */,
 				2122C90B2153490E00571301 /* BaseNavigationController.swift in Sources */,
+				1B175DA7215F4DEF00019D1E /* YCTagsView.swift in Sources */,
 				21D5AB8C215A3B9C00D5EC1F /* persionOrderView.swift in Sources */,
 				21D5ABDA215F049500D5EC1F /* WPTappableLabel.m in Sources */,
 				21D5AB9F215B7EF500D5EC1F /* UtilityFunction.swift in Sources */,
 				21D5ABB5215CC58300D5EC1F /* InvitFriendController.swift in Sources */,
 				2122C8F9215346A200571301 /* String+Extension.swift in Sources */,
 				2122C8DB215343AD00571301 /* YCNetworkRequest.swift in Sources */,
+				1B175D89215F4D4600019D1E /* LTTableViewProtocal.swift in Sources */,
+				1B175D8B215F4D4600019D1E /* LTPageView.swift in Sources */,
 				21D5AB8A215A25D300D5EC1F /* persionAccountView.swift in Sources */,
 				21D5ABD8215F049500D5EC1F /* NSString+WPAttributedMarkup.m in Sources */,
+				1B175DAD215F4DEF00019D1E /* YCAccountMessageViewController.swift in Sources */,
 				21D5ABA9215C6D6100D5EC1F /* UIButton+Extension.swift in Sources */,
+				1B175D85215F4D4600019D1E /* LTCollectionFlowLayout.swift in Sources */,
+				1B175DAE215F4DEF00019D1E /* YCSystemMessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
