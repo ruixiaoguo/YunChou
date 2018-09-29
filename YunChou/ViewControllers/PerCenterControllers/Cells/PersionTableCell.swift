@@ -31,17 +31,17 @@ class PersionTableCell: UITableViewCell {
         headImage.clipsToBounds = true
         contentView.addSubview(headImage)
         headImage.snp.makeConstraints { (make) in
-            make.top.equalTo(15)
+            make.centerY.equalTo(contentView)
             make.left.equalTo(15)
-            make.width.equalTo(25)
-            make.height.equalTo(25)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
         }
         //名称
-        titleLabel.font = UIFont.systemFont(ofSize: 13)
+        titleLabel.font = YC_FONT_PFSC_Medium(15)
         titleLabel.textColor = YCColorBlack
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints({ (make) in
-            make.top.equalTo(2)
+            make.top.equalTo(0)
             make.left.equalTo(headImage.snp.right).offset(15)
             make.width.equalTo(100)
             make.height.equalTo(55)
@@ -62,10 +62,10 @@ class PersionTableCell: UITableViewCell {
         contentView.addSubview(arrowImage)
         arrowImage.image = UIImage(named: "persionArrow")
         arrowImage.snp.makeConstraints { (make) in
-            make.top.equalTo(15)
+            make.top.equalTo(18)
             make.right.equalTo(-15)
-            make.width.equalTo(25)
-            make.height.equalTo(25)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
         }
     }
 

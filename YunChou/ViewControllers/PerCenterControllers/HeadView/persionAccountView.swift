@@ -25,34 +25,38 @@ class persionAccountView: UIView {
     }
     
     func initUi() {
-        self.setColors(superView: self)
+        let bgViewImage = UIImageView()
+        bgViewImage.image = UIImage(named: "Rectangle")
+        bgViewImage.layer.cornerRadius = 5
+        self.addSubview(bgViewImage)
+        bgViewImage.snp.makeConstraints({ (make) in
+            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        })
         self.layer.cornerRadius = 5
-        self.setShadow()
         //账户标题
         titleLable.text = "账户余额"
-        titleLable.font = UIFont.systemFont(ofSize: 15)
-        titleLable.textColor = YCColorWhite
-        titleLable.alpha = 0.8
-        self.addSubview(titleLable)
+        titleLable.font = YC_FONT_PFSC_Medium(14)
+        titleLable.textColor = gof_ColorWithHex(0xB9DAFF)
+        bgViewImage.addSubview(titleLable)
         titleLable.snp.makeConstraints({ (make) in
             make.top.equalTo(10)
             make.left.equalTo(15)
             make.height.equalTo(40)
         })
         //查看按钮
-        self.addSubview(seeButton)
+        bgViewImage.addSubview(seeButton)
         seeButton .setImage(UIImage(named:"see"), for: .normal)
         seeButton.snp.makeConstraints({ (make) in
             make.top.equalTo(22)
             make.left.equalTo(titleLable.snp.right).offset(8)
-            make.width.equalTo(30)
+            make.width.equalTo(15)
             make.height.equalTo(15)
         })
         //账户金额
         moneyLable.text = "22341.67"
-        moneyLable.font = UIFont.systemFont(ofSize: 28)
-        moneyLable.textColor = YCColorWhite
-        self.addSubview(moneyLable)
+        moneyLable.font = YC_FONT_PFSC_Semibold(28)
+        moneyLable.textColor = gof_ColorWithHex(0xFFFFFF)
+        bgViewImage.addSubview(moneyLable)
         moneyLable.snp.makeConstraints({ (make) in
             make.top.equalTo(titleLable.snp.bottom).offset(-5)
             make.left.equalTo(15)
@@ -60,10 +64,9 @@ class persionAccountView: UIView {
         })
         //积分标题
         JfTitleLable.text = "我的积分："
-        JfTitleLable.font = UIFont.systemFont(ofSize: 15)
-        JfTitleLable.textColor = YCColorWhite
-        JfTitleLable.alpha = 0.8
-        self.addSubview(JfTitleLable)
+        JfTitleLable.font = YC_FONT_PFSC_Medium(14)
+        JfTitleLable.textColor = gof_ColorWithHex(0xB9DAFF)
+        bgViewImage.addSubview(JfTitleLable)
         JfTitleLable.snp.makeConstraints({ (make) in
             make.top.equalTo(moneyLable.snp.bottom).offset(-5)
             make.left.equalTo(15)
@@ -71,10 +74,9 @@ class persionAccountView: UIView {
         })
         //积分标题
         JfLable.text = "100"
-        JfLable.font = UIFont.systemFont(ofSize: 15)
-        JfLable.textColor = YCColorWhite
-        JfLable.alpha = 0.8
-        self.addSubview(JfLable)
+        JfLable.font = YC_FONT_PFSC_Medium(14)
+        JfLable.textColor = gof_ColorWithHex(0xB9DAFF)
+        bgViewImage.addSubview(JfLable)
         JfLable.snp.makeConstraints({ (make) in
             make.top.equalTo(moneyLable.snp.bottom).offset(-5)
             make.left.equalTo(JfTitleLable.snp.right).offset(0)
@@ -82,10 +84,9 @@ class persionAccountView: UIView {
         })
         //代金券标题
         CouponTitleLable.text = "代金券："
-        CouponTitleLable.font = UIFont.systemFont(ofSize: 15)
-        CouponTitleLable.textColor = YCColorWhite
-        CouponTitleLable.alpha = 0.8
-        self.addSubview(CouponTitleLable)
+        CouponTitleLable.font = YC_FONT_PFSC_Medium(14)
+        CouponTitleLable.textColor = gof_ColorWithHex(0xB9DAFF)
+        bgViewImage.addSubview(CouponTitleLable)
         CouponTitleLable.snp.makeConstraints({ (make) in
             make.top.equalTo(moneyLable.snp.bottom).offset(-5)
             make.left.equalTo(JfLable.snp.right).offset(22)
@@ -93,17 +94,16 @@ class persionAccountView: UIView {
         })
         //代金券
         CouponLable.text = "10"
-        CouponLable.font = UIFont.systemFont(ofSize: 16)
-        CouponLable.textColor = YCColorWhite
-        CouponLable.alpha = 0.8
-        self.addSubview(CouponLable)
+        CouponLable.font = YC_FONT_PFSC_Medium(14)
+        CouponLable.textColor = gof_ColorWithHex(0xB9DAFF)
+        bgViewImage.addSubview(CouponLable)
         CouponLable.snp.makeConstraints({ (make) in
             make.top.equalTo(moneyLable.snp.bottom).offset(-5)
             make.left.equalTo(CouponTitleLable.snp.right).offset(0)
             make.height.equalTo(40)
         })
         //绑定积分
-        self.addSubview(bangdiButton)
+        bgViewImage.addSubview(bangdiButton)
         bangdiButton .setImage(UIImage(named:"bang"), for: .normal)
         bangdiButton.snp.makeConstraints({ (make) in
             make.centerY.equalTo(self)
@@ -111,19 +111,6 @@ class persionAccountView: UIView {
             make.width.equalTo(120)
             make.height.equalTo(40)
         })
-    }
-    
-    //MARK:======设置阴影
-    func setShadow() {
-        self.layer.borderWidth = 0.3
-        self.layer.borderColor = UIColor.groupTableViewBackground.cgColor
-        //中阴影
-        self.layer.shadowColor = YCColorBlack.cgColor
-        self.layer.shadowOpacity = 0.5
-        //不透明度
-        self.layer.shadowRadius = 5.0
-        //设置阴影所照射的范围
-        self.layer.shadowOffset = CGSize.init(width: 0, height: 3)
     }
     
     required init?(coder aDecoder: NSCoder) {

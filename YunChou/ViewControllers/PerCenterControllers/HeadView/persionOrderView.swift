@@ -38,12 +38,12 @@ class persionOrderView: UIView {
                 make.top.equalTo(5)
                 make.centerX.equalTo(orderButton)
                 make.width.equalTo(35)
-                make.height.equalTo(37)
+                make.height.equalTo(35)
             })
             let orderLable = UILabel()
             orderLable.tag = i+1000
-            orderLable.font = UIFont.systemFont(ofSize: 14)
-            orderLable.textColor = gof_ColorWithHex(0x545454)
+            orderLable.font = YC_FONT_PFSC_Medium(13)
+            orderLable.textColor = gof_ColorWithHex(0x666666)
             orderLable.textAlignment = NSTextAlignment.center
             orderLable.text = "\(titlesArray[i])"
             orderButton.addSubview(orderLable)

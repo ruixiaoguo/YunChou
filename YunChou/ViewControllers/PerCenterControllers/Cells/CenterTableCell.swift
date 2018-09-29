@@ -22,8 +22,8 @@ class CenterTableCell: UITableViewCell {
     
     fileprivate func InitUI(){
         //名称
-        titleLabel.font = UIFont.systemFont(ofSize: 13)
-        titleLabel.textColor = YCColorBlack
+        titleLabel.font = YC_FONT_PFSC_Semibold(14)
+        titleLabel.textColor = gof_ColorWithHex(0x666666)
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints({ (make) in
             make.top.equalTo(2)
@@ -47,10 +47,10 @@ class CenterTableCell: UITableViewCell {
         contentView.addSubview(arrowImage)
         arrowImage.image = UIImage(named: "persionArrow")
         arrowImage.snp.makeConstraints { (make) in
-            make.top.equalTo(15)
+            make.top.equalTo(18)
             make.right.equalTo(-15)
-            make.width.equalTo(25)
-            make.height.equalTo(25)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
         }
     }
     

@@ -32,20 +32,20 @@ class PersionHeadView: UIView {
         headImage.clipsToBounds = true
         headImage.image = UIImage(named: "def")
         self.addSubview(headImage)
-        headImage.layer.cornerRadius = 25
+        headImage.layer.cornerRadius = 21
         headImage.snp.makeConstraints { (make) in
             make.top.equalTo(15)
             make.left.equalTo(15)
-            make.width.equalTo(50)
-            make.height.equalTo(50)
+            make.width.equalTo(42)
+            make.height.equalTo(42)
         }
         //名称
-        nameLable.font = UIFont.systemFont(ofSize: 16)
+        nameLable.font = YC_FONT_PFSC_Semibold(17)
         nameLable.textColor = YCColorBlack
         nameLable.text = "晓时代1997"
         self.addSubview(nameLable)
         nameLable.snp.makeConstraints({ (make) in
-            make.top.equalTo(15)
+            make.top.equalTo(10)
             make.left.equalTo(headImage.snp.right).offset(15)
             make.right.equalTo(-100)
             make.height.equalTo(55)
@@ -66,22 +66,22 @@ class PersionHeadView: UIView {
         messageButton.snp.makeConstraints({ (make) in
             make.top.equalTo(30)
             make.right.equalTo(-15)
-            make.width.equalTo(32)
-            make.height.equalTo(28)
+            make.width.equalTo(23)
+            make.height.equalTo(23)
         })
         //设置按钮
         self.addSubview(setButton)
         setButton .setImage(UIImage(named:"setting"), for: .normal)
         setButton.snp.makeConstraints({ (make) in
             make.top.equalTo(28)
-            make.right.equalTo(messageButton.snp.left).offset(-15)
-            make.width.equalTo(30)
-            make.height.equalTo(30)
+            make.right.equalTo(messageButton.snp.left).offset(-25)
+            make.width.equalTo(23)
+            make.height.equalTo(23)
         })
         //账户信息
         self.addSubview(accountView)
         accountView.snp.makeConstraints({ (make) in
-            make.top.equalTo(headImage.snp.bottom).offset(12)
+            make.top.equalTo(headImage.snp.bottom).offset(15)
             make.left.equalTo(15)
             make.right.equalTo(-15)
             make.height.equalTo(130)
@@ -89,7 +89,7 @@ class PersionHeadView: UIView {
         //账户信息
         self.addSubview(orderView)
         orderView.snp.makeConstraints({ (make) in
-            make.top.equalTo(accountView.snp.bottom).offset(12)
+            make.top.equalTo(accountView.snp.bottom).offset(15)
             make.left.equalTo(15)
             make.right.equalTo(-15)
             make.height.equalTo(80)

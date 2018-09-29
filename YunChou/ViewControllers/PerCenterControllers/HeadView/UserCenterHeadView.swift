@@ -52,8 +52,8 @@ class UserCenterHeadView: UIView {
         arrowImage.snp.makeConstraints { (make) in
             make.centerY.equalTo(self)
             make.right.equalTo(-15)
-            make.width.equalTo(25)
-            make.height.equalTo(25)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
         }
         //头像
         headImage.contentMode = .scaleAspectFill

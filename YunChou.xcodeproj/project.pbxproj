@@ -288,6 +288,7 @@
 		2122C910215349CA00571301 /* PerCenterControllers */ = {
 			isa = PBXGroup;
 			children = (
+				21D5ABE4215F469D00D5EC1F /* UserSettingController */,
 				21D5ABB3215CC57600D5EC1F /* YaoqingFriendsController */,
 				21D5AB97215B558300D5EC1F /* AboutUsController */,
 				21D5AB86215A207100D5EC1F /* HeadView */,
@@ -427,6 +428,13 @@
 				21D5ABD7215F049500D5EC1F /* WPAttributedStyleAction.m */,
 			);
 			path = WPAttributedStyleAction;
+			sourceTree = "<group>";
+		};
+		21D5ABE4215F469D00D5EC1F /* UserSettingController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UserSettingController;
 			sourceTree = "<group>";
 		};
 		8043307F8C63F2F0FF83AE9E /* Pods */ = {
