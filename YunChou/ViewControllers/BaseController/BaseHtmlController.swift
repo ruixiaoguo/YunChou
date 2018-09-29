@@ -32,7 +32,7 @@ class BaseHtmlController: BaseController,WKNavigationDelegate,WKUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        webView = WKWebView( frame: CGRect(x:0,y:Int(NaviBarHeight),width:Int(Main_Screen_Width),height:(Int(Main_Screen_Height-SafeBottomMargin-NaviBarHeight))))
+        webView = WKWebView( frame: CGRect(x:0,y:Int(NaviBarHeight),width:Int(Main_Screen_Width),height:(Int(Main_Screen_Height-NaviBarHeight))))
         /// 设置代理
         webView.navigationDelegate = self
         webView.uiDelegate = self;
