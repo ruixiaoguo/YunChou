@@ -54,6 +54,20 @@ let YCColorLight = gof_ColorWithHex(0xF2F4F6);   //全局灰色
 let YCColorDarkLight = gof_ColorWithHex(0xA6A6A6);   //全局深灰色
 let YCColorBlue = gof_ColorWithHex(0x309FFF);   //全局浅蓝色
 let YCColorLoginLine = gof_ColorWithHex(0xDCE1ED);   //登录分割线
+
+
+public let YC_FontColor_LightGray =  gof_RGBAColor(152 , 152 , 163 , 1);
+public let YC_FontColor_DarkGray =  gof_RGBAColor(122 , 122 , 122 , 1);
+public let YC_FontColor_45Dark =  gof_RGBAColor(45 , 45 , 45 , 1);
+public let YC_FontColor_102Gray = gof_RGBAColor(102,102,102,1);
+public let YCBackground_LightColor = gof_RGBAColor(245 , 246 , 248 , 1);
+
+public let YC_Color_DarkBlue = gof_RGBAColor(72 , 153 , 240 , 1);
+public let YC_Color_LightBlue = gof_RGBAColor(229 , 241 , 254 , 1);
+public let YC_Color_LightPink = gof_RGBAColor(255 , 234 , 235 , 1);
+public let YC_Color_DarkPink = gof_RGBAColor(251 , 82 , 88 , 1);
+
+
 //字体
 var YC_FONT_PFSC_Semibold: (CGFloat) -> UIFont = {size in
     return UIFont(name: "PingFangSC-Semibold", size: size) ?? UIFont.systemFont(ofSize: size)
@@ -78,6 +92,35 @@ var YC_FONT_RowSpacing :(CGFloat , UIFont , String) -> NSAttributedString = { si
                       NSAttributedString.Key.paragraphStyle: paraph]
     return NSAttributedString(string: str, attributes: attributes)
 }
+
+//
+var getTextHeigh :(String , UIFont , CGFloat) -> CGFloat = {str, font, width in
+    let normalText: String = str
+    let size = CGSize(width: width, height: 10000)
+    let attributes = [NSAttributedString.Key.font : font]
+    let option = NSStringDrawingOptions.usesLineFragmentOrigin
+    let stringSize:CGRect = normalText.boundingRect(with: size, options: option, attributes: attributes, context: nil)
+    return stringSize.height
+}
+
+var getTextWidth :(String , UIFont , CGFloat) -> CGFloat = {str, font, height in
+    let normalText: String = str
+    let size = CGSize(width: 10000, height: height)
+    let attributes = [NSAttributedString.Key.font : font]
+    let option = NSStringDrawingOptions.usesLineFragmentOrigin
+    let stringSize:CGRect = normalText.boundingRect(with: size, options: option, attributes: attributes, context: nil)
+    return stringSize.width
+}
+
+var getTextSize :(String , UIFont , CGFloat) -> CGRect = {str, font, height in
+    let normalText: String = str
+    let size = CGSize(width: 10000, height: height)
+    let attributes = [NSAttributedString.Key.font : font]
+    let option = NSStringDrawingOptions.usesLineFragmentOrigin
+    let stringSize:CGRect = normalText.boundingRect(with: size, options: option, attributes: attributes, context: nil)
+    return stringSize
+}
+
 
 // MARK: ---- 打印日志
 /**

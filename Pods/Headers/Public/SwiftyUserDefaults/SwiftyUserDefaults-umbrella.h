@@ -1,16 +1,1 @@
-#ifdef __OBJC__
-#import <UIKit/UIKit.h>
-#else
-#ifndef FOUNDATION_EXPORT
-#if defined(__cplusplus)
-#define FOUNDATION_EXPORT extern "C"
-#else
-#define FOUNDATION_EXPORT extern
-#endif
-#endif
-#endif
-
-
-FOUNDATION_EXPORT double SwiftyUserDefaultsVersionNumber;
-FOUNDATION_EXPORT const unsigned char SwiftyUserDefaultsVersionString[];
-
+/Users/yy/Desktop/YunChou_Git/YunChou/Pods/Target Support Files/SwiftyUserDefaults/SwiftyUserDefaults-umbrella.h

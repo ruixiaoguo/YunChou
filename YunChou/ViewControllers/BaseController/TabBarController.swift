@@ -15,7 +15,7 @@ class TabBarController: UITabBarController {
     let NameArray = ["投资","新闻","我的"];
     let PicArr = ["main_blue","me_blue","me_blue"]
     let PicSelectArr = ["main","me","me"]
-    let VCArray = [MainViewController(),NewsViewController(),PersionViewController()]
+    let VCArray = [YCHomeViewController(),NewsViewController(),PersionViewController()]
     //初始化数组
     var NavVCArr:[NSObject] = [NSObject]()
     var nav:BaseNavigationController = BaseNavigationController()
