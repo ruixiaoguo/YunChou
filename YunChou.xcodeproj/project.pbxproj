@@ -103,6 +103,8 @@
 		21D5ABEA21606FEB00D5EC1F /* BindPhoneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABE921606FEB00D5EC1F /* BindPhoneController.swift */; };
 		21D5ABEC2160711800D5EC1F /* BindWeiXinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABEB2160711800D5EC1F /* BindWeiXinController.swift */; };
 		21D5ABEF216074D300D5EC1F /* FileCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABEE216074D300D5EC1F /* FileCacheManager.swift */; };
+		21D5ABF22160A44400D5EC1F /* BindInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABF12160A44400D5EC1F /* BindInfoController.swift */; };
+		21D5ABF42160AC0200D5EC1F /* BindTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABF32160AC0200D5EC1F /* BindTableCell.swift */; };
 		50A5A5F96C952EB1EA80F9B4 /* libPods-YunChou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6530BFEB29B634C3F1D3A1DD /* libPods-YunChou.a */; };
 /* End PBXBuildFile section */
 
@@ -211,6 +213,8 @@
 		21D5ABE921606FEB00D5EC1F /* BindPhoneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindPhoneController.swift; sourceTree = "<group>"; };
 		21D5ABEB2160711800D5EC1F /* BindWeiXinController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindWeiXinController.swift; sourceTree = "<group>"; };
 		21D5ABEE216074D300D5EC1F /* FileCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheManager.swift; sourceTree = "<group>"; };
+		21D5ABF12160A44400D5EC1F /* BindInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindInfoController.swift; sourceTree = "<group>"; };
+		21D5ABF32160AC0200D5EC1F /* BindTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindTableCell.swift; sourceTree = "<group>"; };
 		6530BFEB29B634C3F1D3A1DD /* libPods-YunChou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YunChou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C04D3CEFB567E3574CCB034 /* Pods-YunChou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YunChou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YunChou/Pods-YunChou.debug.xcconfig"; sourceTree = "<group>"; };
 		E2CA44BE8E613BF3A0E2EE4C /* Pods-YunChou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YunChou.release.xcconfig"; path = "Pods/Target Support Files/Pods-YunChou/Pods-YunChou.release.xcconfig"; sourceTree = "<group>"; };
@@ -477,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				21D5ABE4215F469D00D5EC1F /* UserSettingController */,
+				21D5ABF02160A42C00D5EC1F /* BindInfoController */,
 				21D5ABB3215CC57600D5EC1F /* YaoqingFriendsController */,
 				21D5AB97215B558300D5EC1F /* AboutUsController */,
 				21D5AB86215A207100D5EC1F /* HeadView */,
@@ -510,6 +515,7 @@
 				21D5AB81215A0EE000D5EC1F /* PersionTableCell.swift */,
 				21D5AB93215B34C600D5EC1F /* CenterTableCell.swift */,
 				21D5AB9A215B5B3800D5EC1F /* AboutUsTableCell.swift */,
+				21D5ABF32160AC0200D5EC1F /* BindTableCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -634,6 +640,14 @@
 				21D5ABEE216074D300D5EC1F /* FileCacheManager.swift */,
 			);
 			path = FileCacheManager;
+			sourceTree = "<group>";
+		};
+		21D5ABF02160A42C00D5EC1F /* BindInfoController */ = {
+			isa = PBXGroup;
+			children = (
+				21D5ABF12160A44400D5EC1F /* BindInfoController.swift */,
+			);
+			path = BindInfoController;
 			sourceTree = "<group>";
 		};
 		8043307F8C63F2F0FF83AE9E /* Pods */ = {
@@ -809,6 +823,7 @@
 				2122C91C215373A700571301 /* StringMd5.swift in Sources */,
 				21D5ABE82160686600D5EC1F /* UITextField+Extension.swift in Sources */,
 				21D5ABA7215C6A9F00D5EC1F /* MyAdressCell.swift in Sources */,
+				21D5ABF42160AC0200D5EC1F /* BindTableCell.swift in Sources */,
 				1B175DB2215F4DEF00019D1E /* YCMessageTableViewCell.swift in Sources */,
 				1B175DB1215F4DEF00019D1E /* YCAccountMessageTableViewCell.swift in Sources */,
 				21D5ABEC2160711800D5EC1F /* BindWeiXinController.swift in Sources */,
@@ -840,6 +855,7 @@
 				2122C90B2153490E00571301 /* BaseNavigationController.swift in Sources */,
 				1B175DA7215F4DEF00019D1E /* YCTagsView.swift in Sources */,
 				21D5AB8C215A3B9C00D5EC1F /* persionOrderView.swift in Sources */,
+				21D5ABF22160A44400D5EC1F /* BindInfoController.swift in Sources */,
 				21D5ABDA215F049500D5EC1F /* WPTappableLabel.m in Sources */,
 				21D5AB9F215B7EF500D5EC1F /* UtilityFunction.swift in Sources */,
 				21D5ABB5215CC58300D5EC1F /* InvitFriendController.swift in Sources */,

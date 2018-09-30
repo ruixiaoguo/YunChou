@@ -21,4 +21,6 @@ let AboutUsEmailCellIdentifier = "aboutUsEmailCellIdentifier"
 let AboutUsAdressCellIdentifier = "aboutUsAdressCellIdentifier"
 //选择收货地址
 let MyAdressCellIdentifier = "myAdressCellIdentifier"
+//绑定信息
+let BindTableCellIdentifier = "bindTableCellIdentifier"
 

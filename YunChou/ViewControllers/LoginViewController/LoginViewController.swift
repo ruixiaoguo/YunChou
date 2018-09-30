@@ -222,7 +222,7 @@ class LoginViewController: BaseController {
         loginView.sureOverBtn.snp.updateConstraints { (make) in
             make.height.equalTo(50)
         }
-        loginView.sureOvercallBlock = {() in
+        loginView.sureOvercallBlock = {[unowned self]() in
             
         }
         let loginArray:Array = ["密码登录","忘记密码?"]

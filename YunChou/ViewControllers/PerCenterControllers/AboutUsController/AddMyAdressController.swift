@@ -62,7 +62,7 @@ class AddMyAdressController: BaseController {
             make.left.equalTo(0)
             make.height.equalTo(60)
         }
-        footView.sureOvercallBlock = {() in
+        footView.sureOvercallBlock = {[unowned self]() in
             
         }
     }

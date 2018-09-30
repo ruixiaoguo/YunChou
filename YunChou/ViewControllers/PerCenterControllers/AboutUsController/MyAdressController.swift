@@ -92,7 +92,7 @@ class MyAdressController: BaseController,UITableViewDelegate,UITableViewDataSour
             make.left.equalTo(0)
             make.height.equalTo(60)
         }
-        footView.sureOvercallBlock = {() in
+        footView.sureOvercallBlock = {[unowned self]() in
             let addAdressVC = AddMyAdressController()
             self.navigationController?.pushViewController(addAdressVC, animated: true)
         }

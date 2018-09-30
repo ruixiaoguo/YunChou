@@ -103,7 +103,7 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
         let modifyNickVC = ModifyNickController()
         // 绑定手机
         let bindPhoneVC = BindPhoneController()
-        //绑定微信
+        // 绑定微信
         let bindWeixin = BindWeiXinController()
         // 绑定邮箱
         let bindEmailVC = BindEmailController()

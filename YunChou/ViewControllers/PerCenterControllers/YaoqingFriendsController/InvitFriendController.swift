@@ -44,7 +44,7 @@ class InvitFriendController: BaseController {
             make.right.equalTo(-80)
             make.left.equalTo(80)
         }
-        footView.sureOvercallBlock = {() in
+        footView.sureOvercallBlock = {[unowned self]() in
             
         }
     }

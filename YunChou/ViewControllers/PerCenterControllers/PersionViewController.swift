@@ -63,6 +63,15 @@ class PersionViewController: BaseController,UITableViewDelegate,UITableViewDataS
         case 0:
             let hearView = PersionHeadView()
             hearView.owner = self
+            hearView.settingCallBlock = {[unowned self]()in
+                YCLoginManager.PushToLoginController(ower: self)
+            }
+            hearView.messageCallBlock = {[unowned self]()in
+                let messageVC = YCMessageViewController()
+                messageVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(messageVC, animated: true)
+            }
+            
             return hearView
         default:
             return nil
@@ -86,9 +95,10 @@ class PersionViewController: BaseController,UITableViewDelegate,UITableViewDataS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        if(indexPath.section==0&&indexPath.row==0){
-        //绑定信息
-        YCLoginManager.PushToLoginController(ower: self)
-        
+            //绑定信息
+            let bindInfoVC = BindInfoController()
+            bindInfoVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(bindInfoVC, animated: true)
         }else if(indexPath.section==1&&indexPath.row==4){
             //关于我们
             let aboutUsVC = AboutUsController()

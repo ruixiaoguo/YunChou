@@ -73,7 +73,7 @@ class BindWeiXinController: BaseController {
             make.height.equalTo(45)
         }
         footView.sureOverBtn.layer.cornerRadius = 45/2
-        footView.sureOvercallBlock = {() in
+        footView.sureOvercallBlock = {[unowned self]() in
             
         }
     }
