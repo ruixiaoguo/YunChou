@@ -18,7 +18,7 @@ class LoginViewController: BaseController {
     let checkButton = UIButton(type: .custom)
 
     let smsView = SMSCodeView()
-    let loginView = MyAdressFootView()
+    let loginView = MyFootButtonView()
     
     // MARK:=========视图将要显示时调用该方法
     override func viewWillAppear(_ animated: Bool) {
@@ -106,7 +106,8 @@ class LoginViewController: BaseController {
             textField.placeholder = titleArray[i]
             textField.font = YC_FONT_PFSC_Medium(14)
             textField.textColor = YCColorBlack
-            textField.clearButtonMode = .whileEditing
+            textField.clearButtonMode = .never
+            textField.setModifyClearButton()// 添加自定义清除按钮
             textField.tag = i+10
             textField.snp.makeConstraints { (make) in
                 make.top.equalTo(i*65)
@@ -161,7 +162,8 @@ class LoginViewController: BaseController {
             textField.placeholder = titleArray[i]
             textField.font = YC_FONT_PFSC_Medium(14)
             textField.textColor = YCColorBlack
-            textField.clearButtonMode = .whileEditing
+            textField.clearButtonMode = .never
+            textField.setModifyClearButton()// 添加自定义清除按钮
             textField.tag = i+20
             textField.snp.makeConstraints { (make) in
                 make.top.equalTo(i*65)
@@ -208,19 +210,19 @@ class LoginViewController: BaseController {
         xieyiLable.attributedText = "点击登录，即表示同意<pro>《注册协议》</pro>".attributedString(withStyleBook: xieyStyle)
         //登录按钮
         self.view.addSubview(loginView)
-        loginView.addAdressBtn.setTitle("注册/登录", for: .normal)
+        loginView.sureOverBtn.setTitle("注册/登录", for: .normal)
         loginView.snp.makeConstraints { (make) in
             make.top.equalTo(xieyiLable.snp.bottom).offset(25)
             make.right.equalTo(-0)
             make.left.equalTo(0)
             make.height.equalTo(60)
         }
-        loginView.addAdressBtn.titleLabel?.font = YC_FONT_PFSC_Semibold(17)
-        loginView.addAdressBtn.layer.cornerRadius = 25
-        loginView.addAdressBtn.snp.updateConstraints { (make) in
+        loginView.sureOverBtn.titleLabel?.font = YC_FONT_PFSC_Semibold(17)
+        loginView.sureOverBtn.layer.cornerRadius = 25
+        loginView.sureOverBtn.snp.updateConstraints { (make) in
             make.height.equalTo(50)
         }
-        loginView.addAdresscallBlock = {() in
+        loginView.sureOvercallBlock = {() in
             
         }
         let loginArray:Array = ["密码登录","忘记密码?"]

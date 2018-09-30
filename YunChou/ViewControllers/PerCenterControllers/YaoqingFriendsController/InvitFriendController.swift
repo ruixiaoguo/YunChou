@@ -31,20 +31,20 @@ class InvitFriendController: BaseController {
     
     //添加立即邀请按钮
     func initInvitButton() {
-        let footView = MyAdressFootView()
+        let footView = MyFootButtonView()
         self.view.addSubview(footView)
-        footView.addAdressBtn.setTitle("立即邀请", for: .normal)
+        footView.sureOverBtn.setTitle("立即邀请", for: .normal)
         footView.snp.makeConstraints { (make) in
             make.top.equalTo(Main_Screen_Height/2+50)
             make.right.equalTo(-0)
             make.left.equalTo(0)
             make.height.equalTo(60)
         }
-        footView.addAdressBtn.snp.updateConstraints { (make) in
+        footView.sureOverBtn.snp.updateConstraints { (make) in
             make.right.equalTo(-80)
             make.left.equalTo(80)
         }
-        footView.addAdresscallBlock = {() in
+        footView.sureOvercallBlock = {() in
             
         }
     }

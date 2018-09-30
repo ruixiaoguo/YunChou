@@ -53,8 +53,8 @@ class AddMyAdressController: BaseController {
     
     //添加保存按钮
     func initFootView() {
-        let footView = MyAdressFootView()
-        footView.addAdressBtn.setTitle("保存并使用", for: .normal)
+        let footView = MyFootButtonView()
+        footView.sureOverBtn.setTitle("保存并使用", for: .normal)
         self.view.addSubview(footView)
         footView.snp.makeConstraints { (make) in
             make.bottom.equalTo(-SafeBottomMargin)
@@ -62,7 +62,7 @@ class AddMyAdressController: BaseController {
             make.left.equalTo(0)
             make.height.equalTo(60)
         }
-        footView.addAdresscallBlock = {() in
+        footView.sureOvercallBlock = {() in
             
         }
     }
