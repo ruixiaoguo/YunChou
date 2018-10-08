@@ -11,6 +11,8 @@ import UIKit
 class BaseController: UIViewController {
     
     var leftView:UIButton = UIButton()
+    var rightView:UIButton = UIButton()
+
     let messageButton = UIButton(type:.custom)
     let searchButton = UIButton(type:.custom)
     
@@ -33,12 +35,16 @@ class BaseController: UIViewController {
                                      action: nil)
         spacer.width = -15;
         self.navigationItem.leftBarButtonItems = [spacer,leftBarBtn]
-        self.creatNavButton()
+//        self.creatNavButton()
     }
     
     //返回按钮点击响应
     @objc func backToPrevious(){
         self.navigationController!.popViewController(animated: true)
+    }
+    //右侧按钮方法
+    @objc func rightBtnHandel(){
+        
     }
     
     func creatNavButton() {
@@ -55,6 +61,19 @@ class BaseController: UIViewController {
         //添加消息按钮
         self.view.addSubview(messageButton)
     }
+    
+    func createRightButton(){
+        //自定义返回按钮
+        rightView = UIButton(type: .custom);
+        rightView.frame = CGRect(x:0, y:0, width:60, height:40)
+        rightView.addTarget(self, action: #selector(rightBtnHandel), for: .touchUpInside)
+        rightView.setTitle("风险提示", for: .normal)
+        rightView.setTitleColor(YC_Color_DarkBlue, for: .normal)
+        rightView.titleLabel?.font = YC_FONT_PFSC_Regular(14)
+        let rightBarBtn = UIBarButtonItem(customView: rightView)
+        self.navigationItem.rightBarButtonItem = rightBarBtn
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -79,6 +79,9 @@ extension TwoTestViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 4 {
+            return 10
+        }
         return 0.01
     }
     

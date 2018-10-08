@@ -1,25 +1,30 @@
 
+
 //
-//  OneTestViewController.swift
-//  swiftRNTest
+//  YCInvestPlanViewController.swift
+//  YunChou
 //
-//  Created by yy on 2018/9/26.
-//  Copyright © 2018年 yy. All rights reserved.
+//  Created by yy on 2018/10/8.
+//  Copyright © 2018年 grx. All rights reserved.
 //
 
 import UIKit
 
-class OneTestViewController: BaseController {
+
+
+class YCInvestPlanViewController: BaseController {
+
+    var recommendList : [InverPlanListModel]?
 
     
-    private let HomeCell = "HomeCell"
-
+    private let InvestPlanCell = "InvestPlanCell"
+    
     lazy var tableView : UITableView = {
         let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = YCBackground_LightColor
-        tableView.register(YCHomeTableViewCell.self, forCellReuseIdentifier: HomeCell)
+        tableView.register(YCInvestPlanTableViewCell.self, forCellReuseIdentifier: InvestPlanCell)
         
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
@@ -40,44 +45,58 @@ class OneTestViewController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-view.backgroundColor = UIColor.yellow
+        self.navigationItem.title = "投资方案"
+        self.leftView.isHidden = false
+        
+        self.createRightButton()
+        
+        recommendList = [InverPlanListModel(),InverPlanListModel(),InverPlanListModel(),InverPlanListModel(),InverPlanListModel()]
+        
         view.addSubview(tableView)
-        glt_scrollView = tableView
+//        glt_scrollView = tableView
         
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(0)
+            make.top.equalTo(view).offset(NaviBarHeight)
             make.left.right.equalTo(view).offset(0)
             make.bottom.equalTo(view).offset(0)
         }
-
-        // Do any additional setup after loading the view.
     }
+    
+    override func rightBtnHandel() {
+        //风险
+    }
+
 }
 
-extension OneTestViewController:UITableViewDelegate,UITableViewDataSource{
+extension YCInvestPlanViewController:UITableViewDelegate,UITableViewDataSource{
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0.01
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    
-        if section == 4 {
-            return 10
-        }
+ 
         return 0.01
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:YCHomeTableViewCell = tableView.dequeueReusableCell(withIdentifier: HomeCell, for: indexPath) as! YCHomeTableViewCell
+        let cell:YCInvestPlanTableViewCell = tableView.dequeueReusableCell(withIdentifier: InvestPlanCell, for: indexPath) as! YCInvestPlanTableViewCell
+        
+        cell.inverstPlanModel = recommendList![indexPath.row]
+        
+        cell.orderBtnBlock = {
+            
+        }
+        
+        cell.moreBtnBlock = {
+            self.recommendList![indexPath.row].isShowMore = !self.recommendList![indexPath.row].isShowMore
+            tableView.reloadRows(at: [indexPath], with: .none)
+        }
+        
         return cell
     }
     
@@ -85,10 +104,8 @@ extension OneTestViewController:UITableViewDelegate,UITableViewDataSource{
         
         tableView.deselectRow(at: indexPath, animated: false)
         
-        let vc = YCProjectDetailViewController()
-        vc.hidesBottomBarWhenPushed = true
+        let vc = YCInvestOrderViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 

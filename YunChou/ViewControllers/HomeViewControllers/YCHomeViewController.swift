@@ -97,6 +97,9 @@ class YCHomeViewController: BaseController {
     func someBlokHandel(){
         topNavBarView.searchBlock = {
             print("souzuo")
+            
+            
+            
             let vc = YCSearchViewController()
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
@@ -108,6 +111,13 @@ class YCHomeViewController: BaseController {
             vc.hidesBottomBarWhenPushed = true
          self.navigationController?.setNavigationBarHidden(false, animated: true)
 
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        headerView.bonnerPageBlok = {
+            let vc = YCInvestPlanViewController()
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -123,6 +133,7 @@ extension YCHomeViewController:LTAdvancedScrollViewDelegate{
         //MARK: 选中事件
         advancedManager.advancedDidSelectIndexHandle = {
             print("选中了 -> \($0)")
+            
         }
         
     }

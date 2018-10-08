@@ -1,25 +1,23 @@
-
 //
-//  OneTestViewController.swift
-//  swiftRNTest
+//  YCInvestOrderViewController.swift
+//  YunChou
 //
-//  Created by yy on 2018/9/26.
-//  Copyright © 2018年 yy. All rights reserved.
+//  Created by yy on 2018/10/8.
+//  Copyright © 2018年 grx. All rights reserved.
 //
 
 import UIKit
 
-class OneTestViewController: BaseController {
+class YCInvestOrderViewController: BaseController {
 
+    private let InvestPlanOrderCell = "InvestPlanOrderCell"
     
-    private let HomeCell = "HomeCell"
-
     lazy var tableView : UITableView = {
         let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = YCBackground_LightColor
-        tableView.register(YCHomeTableViewCell.self, forCellReuseIdentifier: HomeCell)
+        tableView.register(YCInvestOrderTableViewCell.self, forCellReuseIdentifier: InvestPlanOrderCell)
         
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
@@ -38,46 +36,42 @@ class OneTestViewController: BaseController {
     }()
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-view.backgroundColor = UIColor.yellow
+        self.navigationItem.title = "预约"
+        self.leftView.isHidden = false
+        
         view.addSubview(tableView)
-        glt_scrollView = tableView
+        //        glt_scrollView = tableView
         
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(0)
+            make.top.equalTo(view).offset(NaviBarHeight)
             make.left.right.equalTo(view).offset(0)
             make.bottom.equalTo(view).offset(0)
         }
-
         // Do any additional setup after loading the view.
     }
 }
 
-extension OneTestViewController:UITableViewDelegate,UITableViewDataSource{
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
-    }
+extension YCInvestOrderViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 0.01
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    
-        if section == 4 {
-            return 10
-        }
+        
         return 0.01
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:YCHomeTableViewCell = tableView.dequeueReusableCell(withIdentifier: HomeCell, for: indexPath) as! YCHomeTableViewCell
+        let cell:YCInvestOrderTableViewCell = tableView.dequeueReusableCell(withIdentifier: InvestPlanOrderCell, for: indexPath) as! YCInvestOrderTableViewCell
+        
         return cell
     }
     
@@ -85,10 +79,9 @@ extension OneTestViewController:UITableViewDelegate,UITableViewDataSource{
         
         tableView.deselectRow(at: indexPath, animated: false)
         
-        let vc = YCProjectDetailViewController()
-        vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        //            let vc = YCProjectDetailViewController()
+        //            vc.hidesBottomBarWhenPushed = true
+        //            self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 

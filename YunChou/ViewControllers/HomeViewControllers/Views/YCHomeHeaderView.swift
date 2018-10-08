@@ -11,6 +11,9 @@ import FSPagerView
 
 class YCHomeHeaderView: UIView {
 
+    typealias bonnerPageClickBlok = () ->Void
+    var bonnerPageBlok:bonnerPageClickBlok?
+    
     private var datas:NSArray?
     
     private lazy var pagerView : FSPagerView = {
@@ -83,6 +86,7 @@ extension YCHomeHeaderView:FSPagerViewDelegate,FSPagerViewDataSource{
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         
+        self.bonnerPageBlok?()
         
         print(index)
     }

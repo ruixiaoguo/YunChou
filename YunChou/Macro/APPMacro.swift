@@ -72,6 +72,9 @@ public let YC_Color_LightPink = gof_RGBAColor(255 , 234 , 235 , 1);
 public let YC_Color_DarkPink = gof_RGBAColor(251 , 82 , 88 , 1);
 public let YC_Color_DarkGreen = gof_RGBAColor(55 , 145 , 40 , 1);
 public let YC_Color_LightGreen = gof_RGBAColor(200 , 237 , 194 , 1);
+public let YC_Color_Yellow = gof_RGBAColor(255 , 239 , 56 , 1);
+public let YC_Color_Red = gof_RGBAColor(255 , 38 , 51 , 1);
+public let YC_Color_DDarkBlue = gof_RGBAColor(39 , 111 , 188 , 1);
 
 
 //字体

@@ -40,7 +40,7 @@ class YCSearchSegmentBtnView: UIView {
     private lazy var stateBtn : YCButton = {
         let stateBtn = YCButton.init(type: UIButton.ButtonType.custom)
         stateBtn.setTitle("项目状态", for: .normal)
-        stateBtn.setImage(UIImage.init(named: "箭头"), for: .normal)
+        stateBtn.setImage(UIImage.init(named: "yc_sengUP"), for: .normal)
         stateBtn.setTitleColor(YC_FontColor_LightGray, for: .normal)
         stateBtn.titleLabel?.font = YC_FONT_PFSC_Regular(14)
         stateBtn.addTarget(self, action: #selector(stateBtnClickHandel), for: .touchUpInside)
