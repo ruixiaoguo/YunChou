@@ -99,12 +99,17 @@ class PersionViewController: BaseController,UITableViewDelegate,UITableViewDataS
             let bindInfoVC = BindInfoController()
             bindInfoVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(bindInfoVC, animated: true)
-        }else if(indexPath.section==1&&indexPath.row==4){
-            //关于我们
-            let aboutUsVC = AboutUsController()
-            aboutUsVC.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(aboutUsVC, animated: true)
-        }else if(indexPath.section==1&&indexPath.row==2){
+       }else if(indexPath.section==1&&indexPath.row==0){
+            //风险评测
+            let riskVC = RiskAssessController()
+            riskVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(riskVC, animated: true)
+       }else if(indexPath.section==1&&indexPath.row==1){
+            //消费权益
+            let cumterVC = CumerInterController()
+            cumterVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(cumterVC, animated: true)
+       }else if(indexPath.section==1&&indexPath.row==2){
             //选择收货地址
             let adressVC = MyAdressController()
             adressVC.hidesBottomBarWhenPushed = true
@@ -114,6 +119,11 @@ class PersionViewController: BaseController,UITableViewDelegate,UITableViewDataS
             let invitFriendVC = InvitFriendController()
             invitFriendVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(invitFriendVC, animated: true)
+       }else if(indexPath.section==1&&indexPath.row==4){
+            //关于我们
+            let aboutUsVC = AboutUsController()
+            aboutUsVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(aboutUsVC, animated: true)
         }
     }
     

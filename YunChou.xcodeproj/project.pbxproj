@@ -60,13 +60,13 @@
 		2122C90A2153490E00571301 /* BaseHtmlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122C9062153490E00571301 /* BaseHtmlController.swift */; };
 		2122C90B2153490E00571301 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122C9072153490E00571301 /* BaseNavigationController.swift */; };
 		2122C90C2153490E00571301 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122C9082153490E00571301 /* TabBarController.swift */; };
-		2122C90F2153495400571301 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122C90E2153495400571301 /* MainViewController.swift */; };
 		2122C912215349E900571301 /* PersionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122C911215349E900571301 /* PersionViewController.swift */; };
 		2122C91C215373A700571301 /* StringMd5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122C91B215373A700571301 /* StringMd5.swift */; };
 		2122C94C2154C5BF00571301 /* TCMoyaNetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122C94B2154C5BF00571301 /* TCMoyaNetWork.swift */; };
 		2122C94F2154E29800571301 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122C94E2154E29800571301 /* NewsViewController.swift */; };
-		2122C9522154E59D00571301 /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122C9512154E59D00571301 /* HomeTableCell.swift */; };
 		2122C9542154E65600571301 /* IdentifierMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122C9532154E65600571301 /* IdentifierMacro.swift */; };
+		21CCBADB216AEA9700078426 /* RiskAssessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBADA216AEA9700078426 /* RiskAssessController.swift */; };
+		21CCBADD216AEC4600078426 /* CumerInterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBADC216AEC4600078426 /* CumerInterController.swift */; };
 		21D5AB83215A0EE000D5EC1F /* PersionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5AB81215A0EE000D5EC1F /* PersionTableCell.swift */; };
 		21D5AB85215A0EF200D5EC1F /* PersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5AB84215A0EF200D5EC1F /* PersionModel.swift */; };
 		21D5AB88215A20DE00D5EC1F /* PersionHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5AB87215A20DE00D5EC1F /* PersionHeadView.swift */; };
@@ -164,14 +164,14 @@
 		2122C9062153490E00571301 /* BaseHtmlController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHtmlController.swift; sourceTree = "<group>"; };
 		2122C9072153490E00571301 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		2122C9082153490E00571301 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		2122C90E2153495400571301 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2122C911215349E900571301 /* PersionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersionViewController.swift; sourceTree = "<group>"; };
 		2122C9152153719500571301 /* YunChou-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YunChou-Bridging-Header.h"; sourceTree = "<group>"; };
 		2122C91B215373A700571301 /* StringMd5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringMd5.swift; sourceTree = "<group>"; };
 		2122C94B2154C5BF00571301 /* TCMoyaNetWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCMoyaNetWork.swift; sourceTree = "<group>"; };
 		2122C94E2154E29800571301 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
-		2122C9512154E59D00571301 /* HomeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
 		2122C9532154E65600571301 /* IdentifierMacro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierMacro.swift; sourceTree = "<group>"; };
+		21CCBADA216AEA9700078426 /* RiskAssessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskAssessController.swift; sourceTree = "<group>"; };
+		21CCBADC216AEC4600078426 /* CumerInterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CumerInterController.swift; sourceTree = "<group>"; };
 		21D5AB81215A0EE000D5EC1F /* PersionTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersionTableCell.swift; sourceTree = "<group>"; };
 		21D5AB84215A0EF200D5EC1F /* PersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersionModel.swift; sourceTree = "<group>"; };
 		21D5AB87215A20DE00D5EC1F /* PersionHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersionHeadView.swift; sourceTree = "<group>"; };
@@ -420,7 +420,6 @@
 			children = (
 				1B175D6D215F4B4E00019D1E /* HomeViewControllers */,
 				2122C9042153490E00571301 /* BaseController */,
-				2122C90D2153493200571301 /* MainViewControllers */,
 				2122C94D2154E26500571301 /* NewsViewController */,
 				2122C910215349CA00571301 /* PerCenterControllers */,
 				21D5ABBE215DF5A400D5EC1F /* LoginViewController */,
@@ -468,22 +467,15 @@
 			path = BaseController;
 			sourceTree = "<group>";
 		};
-		2122C90D2153493200571301 /* MainViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				2122C9502154E57000571301 /* Cells */,
-				2122C90E2153495400571301 /* MainViewController.swift */,
-			);
-			path = MainViewControllers;
-			sourceTree = "<group>";
-		};
 		2122C910215349CA00571301 /* PerCenterControllers */ = {
 			isa = PBXGroup;
 			children = (
-				21D5ABE4215F469D00D5EC1F /* UserSettingController */,
 				21D5ABF02160A42C00D5EC1F /* BindInfoController */,
+				21CCBAD9216AE9F200078426 /* RiskAssessController */,
+				21CCBAD8216AE9F200078426 /* CumerInterController */,
 				21D5ABB3215CC57600D5EC1F /* YaoqingFriendsController */,
 				21D5AB97215B558300D5EC1F /* AboutUsController */,
+				21D5ABE4215F469D00D5EC1F /* UserSettingController */,
 				21D5AB86215A207100D5EC1F /* HeadView */,
 				21D5AB80215A0EE000D5EC1F /* Cells */,
 				21D5AB82215A0EE000D5EC1F /* Models */,
@@ -501,12 +493,20 @@
 			path = NewsViewController;
 			sourceTree = "<group>";
 		};
-		2122C9502154E57000571301 /* Cells */ = {
+		21CCBAD8216AE9F200078426 /* CumerInterController */ = {
 			isa = PBXGroup;
 			children = (
-				2122C9512154E59D00571301 /* HomeTableCell.swift */,
+				21CCBADC216AEC4600078426 /* CumerInterController.swift */,
 			);
-			path = Cells;
+			path = CumerInterController;
+			sourceTree = "<group>";
+		};
+		21CCBAD9216AE9F200078426 /* RiskAssessController */ = {
+			isa = PBXGroup;
+			children = (
+				21CCBADA216AEA9700078426 /* RiskAssessController.swift */,
+			);
+			path = RiskAssessController;
 			sourceTree = "<group>";
 		};
 		21D5AB80215A0EE000D5EC1F /* Cells */ = {
@@ -792,17 +792,16 @@
 				21D5AB88215A20DE00D5EC1F /* PersionHeadView.swift in Sources */,
 				1B175DB6215F4E0300019D1E /* twoTestViewController.swift in Sources */,
 				21D5ABE2215F0AAC00D5EC1F /* RegitAgreController.swift in Sources */,
+				21CCBADD216AEC4600078426 /* CumerInterController.swift in Sources */,
 				2122C8F6215346A200571301 /* UIView+Extension.swift in Sources */,
 				1B175D73215F4C5E00019D1E /* YCHomeTableViewCell.swift in Sources */,
 				1B175D75215F4C7D00019D1E /* YCHomeHeaderView.swift in Sources */,
 				21D5ABCA215E2B8500D5EC1F /* ForgetPassController.swift in Sources */,
 				1B175DAF215F4DEF00019D1E /* YCProjectMessageTableViewCell.swift in Sources */,
-				2122C90F2153495400571301 /* MainViewController.swift in Sources */,
 				21D5ABC0215DF5B700D5EC1F /* LoginViewController.swift in Sources */,
 				21D5ABEA21606FEB00D5EC1F /* BindPhoneController.swift in Sources */,
 				2122C903215346B700571301 /* WRCycleCell.swift in Sources */,
 				21D5ABEF216074D300D5EC1F /* FileCacheManager.swift in Sources */,
-				2122C9522154E59D00571301 /* HomeTableCell.swift in Sources */,
 				1B175DAC215F4DEF00019D1E /* YCMessageViewController.swift in Sources */,
 				21D5ABD9215F049500D5EC1F /* WPHotspotLabel.m in Sources */,
 				1B175DAA215F4DEF00019D1E /* YCSearchBoxView.swift in Sources */,
@@ -842,6 +841,7 @@
 				2122C8FA215346A200571301 /* UIBarButtonItem+Extesion.swift in Sources */,
 				21D5ABA4215B88AF00D5EC1F /* MyFootButtonView.swift in Sources */,
 				21D5AB99215B55A200D5EC1F /* AboutUsController.swift in Sources */,
+				21CCBADB216AEA9700078426 /* RiskAssessController.swift in Sources */,
 				1B175DA9215F4DEF00019D1E /* YCSearchResultView.swift in Sources */,
 				1B175D88215F4D4600019D1E /* LTLayout.swift in Sources */,
 				2122C8F5215346A200571301 /* Date+Extension.swift in Sources */,
