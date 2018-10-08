@@ -33,7 +33,7 @@
         headerView.frame.size.height = kHeaderHeight
         self.headerView = headerView
         tableView.tableHeaderView = headerView
-        DispatchQueue.main.after(0.001) {
+        DispatchQueue.main.after(0.002) {
             if self.layout.isHovered == false {
                 self.titleView.frame.origin.y = self.kHeaderHeight - self.layout.sliderHeight
                 headerView.addSubview(self.titleView)
@@ -80,7 +80,7 @@
     }
     
     //设置悬停位置Y值
-    @objc public var hoverY: CGFloat = 0
+    @objc public var hoverY: CGFloat = StatusBarHeight
     
     /* LTSimple的scrollView上下滑动监听 */
     @objc public weak var delegate: LTSimpleScrollViewDelegate?
@@ -239,13 +239,14 @@
         delegate?.glt_scrollViewDidScroll?(scrollView)
         guard scrollView == tableView, let contentTableView = contentTableView else { return }
         let offsetY = scrollView.contentOffset.y
-        if contentTableView.contentOffset.y > 0 || offsetY > kHeaderHeight - hoverY {
+        if contentTableView.contentOffset.y > 0 || offsetY >= kHeaderHeight - hoverY {
             tableView.contentOffset = CGPoint(x: 0.0, y: kHeaderHeight - hoverY)
         }
         if scrollView.contentOffset.y < kHeaderHeight - hoverY {
             for viewController in viewControllers {
                 guard viewController.glt_scrollView != scrollView else { continue }
                 viewController.glt_scrollView?.contentOffset = .zero
+
             }
         }
     }

@@ -17,7 +17,6 @@ class YCProjectMessageViewController: BaseController {
         let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
         tableView.delegate = self
         tableView.dataSource = self
-        
         tableView.register(YCProjectMessageTableViewCell.self, forCellReuseIdentifier: projectMessageCll)
         
         if #available(iOS 11.0, *) {
@@ -73,5 +72,8 @@ extension YCProjectMessageViewController:UITableViewDelegate,UITableViewDataSour
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
     
 }

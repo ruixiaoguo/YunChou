@@ -18,9 +18,9 @@ class YCHomeHeaderView: UIView {
         pagerView.isUserInteractionEnabled = true
         pagerView.dataSource = self
         pagerView.delegate = self
-        pagerView.automaticSlidingInterval =  3
+        pagerView.automaticSlidingInterval =  10000
         pagerView.isInfinite = true
-        pagerView.interitemSpacing = 5
+        pagerView.interitemSpacing = 0
         //        pagerView.transformer = FSPagerViewTransformer(type: .crossFading)
         pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
         

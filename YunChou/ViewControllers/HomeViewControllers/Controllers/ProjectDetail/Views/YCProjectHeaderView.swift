@@ -1,5 +1,5 @@
 //
-//  YCHomeTableViewCell.swift
+//  YCProjectHeaderView.swift
 //  YunChou
 //
 //  Created by yy on 2018/9/29.
@@ -7,15 +7,20 @@
 //
 
 import UIKit
-import SnapKit
 
-class YCHomeTableViewCell: UITableViewCell {
+class YCProjectHeaderView: UIView {
 
     private lazy var backvc : UIView = {
         let backvc = UIView()
         backvc.backgroundColor = UIColor.white
         backvc.layer.cornerRadius = 6
         return backvc
+    }()
+    
+    private lazy var contentImage : UIImageView = {
+        let contentImage = UIImageView()
+        contentImage.backgroundColor = UIColor.red
+        return contentImage
     }()
     
     private lazy var herderImage : UIImageView = {
@@ -36,19 +41,13 @@ class YCHomeTableViewCell: UITableViewCell {
         let yuyueBtn = UIButton.init(type: UIButton.ButtonType.custom)
         yuyueBtn.backgroundColor = YC_Color_LightBlue
         yuyueBtn.setTitleColor(YC_Color_DarkBlue, for: .normal)
-        yuyueBtn.titleLabel?.font = YC_FONT_PFSC_Medium(13)
+        yuyueBtn.titleLabel?.font = YC_FONT_PFSC_Medium(12)
         return yuyueBtn
-    }()
-    
-    private lazy var contentImage : UIImageView = {
-        let contentImage = UIImageView()
-        contentImage.backgroundColor = UIColor.red
-        return contentImage
     }()
     
     private lazy var titleLable : UILabel = {
         let titleLable = UILabel ()
-        titleLable.font = YC_FONT_PFSC_Semibold(18)
+        titleLable.font = YC_FONT_PFSC_Semibold(17)
         return titleLable
     }()
     
@@ -56,7 +55,7 @@ class YCHomeTableViewCell: UITableViewCell {
     private lazy var btnOne : YCButton = {
         let btnOnt = YCButton.init(type: UIButton.ButtonType.custom)
         btnOnt.setTitleColor(YC_Color_DarkBlue, for: .normal)
-        btnOnt.titleLabel?.font = YC_FONT_PFSC_Medium(14)
+        btnOnt.titleLabel?.font = YC_FONT_PFSC_Medium(13)
         btnOnt.isUserInteractionEnabled = false
         //        btnOnt.addTarget(self, action: #selector(progresBtnClickHandel), for: .touchUpInside)
         btnOnt.layoutContent(style: YCButtonLayoutStyle.ImageLeftContentStart, imgSize: CGSize(width: 16, height: 16), space: 8)
@@ -66,7 +65,7 @@ class YCHomeTableViewCell: UITableViewCell {
     private lazy var btnTwo : YCButton = {
         let btnTwo = YCButton.init(type: UIButton.ButtonType.custom)
         btnTwo.setTitleColor(YC_Color_DarkBlue, for: .normal)
-        btnTwo.titleLabel?.font = YC_FONT_PFSC_Medium(14)
+        btnTwo.titleLabel?.font = YC_FONT_PFSC_Medium(13)
         btnTwo.isUserInteractionEnabled = false
         //        btnOnt.addTarget(self, action: #selector(progresBtnClickHandel), for: .touchUpInside)
         btnTwo.layoutContent(style: YCButtonLayoutStyle.ImageLeftContentStart, imgSize: CGSize(width: 16, height: 16), space: 8)
@@ -88,40 +87,75 @@ class YCHomeTableViewCell: UITableViewCell {
     
     private lazy var stateLable : UILabel = {
         let stateLable = UILabel()
-        stateLable.font = YC_FONT_PFSC_Regular(11)
+        stateLable.font = YC_FONT_PFSC_Regular(10)
         return stateLable
     }()
     
     private lazy var progressLable : UILabel = {
         let progressLable = UILabel()
-        progressLable.font = YC_FONT_PFSC_Regular(11)
+        progressLable.font = YC_FONT_PFSC_Regular(10)
         return progressLable
     }()
     
     
+    private lazy var targetMoney : UILabel = {
+       let targetMoney = UILabel()
+        targetMoney.numberOfLines = 2
+        targetMoney.backgroundColor = UIColor.white
+        targetMoney.textAlignment = NSTextAlignment.center
+        return targetMoney
+    }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+    private lazy var alreadyMoney : UILabel = {
+        let alreadyMoney = UILabel()
+        alreadyMoney.numberOfLines = 2
+        alreadyMoney.backgroundColor = UIColor.white
+        alreadyMoney.textAlignment = NSTextAlignment.center
+        return alreadyMoney
+    }()
+    
+    private lazy var startMoney : UILabel = {
+        let startMoney = UILabel()
+        startMoney.numberOfLines = 2
+        startMoney.backgroundColor = UIColor.white
+        startMoney.textAlignment = NSTextAlignment.center
+        return startMoney
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.backgroundColor = YCBackground_LightColor
         createSubViews()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+   
+    
     func createSubViews(){
         
-        self.contentView.addSubview(self.backvc)
+        self.addSubview(self.backvc)
         self.backvc.snp.makeConstraints { (make) in
-            
-            make.top.equalTo(self.contentView).offset(0)
-            make.left.equalTo(self.contentView).offset(12)
-            make.right.equalTo(self.contentView).offset(-12)
-            make.bottom.equalTo(0)//这句一定要放在最后一个view不然无法自动计算高度
+
+            make.top.equalTo(self).offset(0)
+            make.left.equalTo(self).offset(0)
+            make.right.equalTo(self).offset(0)
+            make.bottom.equalTo(-111)//这句一定要放在最后一个view不然无法自动计算高度
+        }
+        
+        self.backvc.addSubview(self.contentImage)
+        contentImage.snp.makeConstraints { (make) in
+            make.left.right.top.equalTo(self.backvc).offset(0)
+            make.height.equalTo(220)
         }
         
         self.backvc.addSubview(self.herderImage)
         self.herderImage.snp.makeConstraints { (make) in
-            make.left.equalTo(self.backvc).offset(12)
+            make.left.equalTo(backvc).offset(12)
             make.width.height.equalTo(40)
-            make.top.equalTo(9)
+            make.top.equalTo(contentImage.snp.bottom).offset(9)
         }
         herderImage.layer.masksToBounds = true
         herderImage.layer.cornerRadius = 40/2
@@ -130,7 +164,7 @@ class YCHomeTableViewCell: UITableViewCell {
         self.backvc.addSubview(self.nameLable)
         nameLable.snp.makeConstraints { (make) in
             make.left.equalTo(self.herderImage.snp.right).offset(9)
-            make.top.equalTo(self.backvc).offset(9)
+            make.top.equalTo(contentImage.snp.bottom).offset(9)
             make.width.equalTo(180)
             make.height.equalTo(self.herderImage.snp.height)
         }
@@ -138,31 +172,25 @@ class YCHomeTableViewCell: UITableViewCell {
         self.backvc.addSubview(self.yuyueBtn)
         self.yuyueBtn.snp.makeConstraints { (make) in
             make.right.equalTo(self.backvc).offset(-12)
-            make.top.equalTo(self.backvc).offset(12)
+            make.top.equalTo(contentImage.snp.bottom).offset(12)
             make.width.equalTo(70)
             make.height.equalTo(30)
         }
         yuyueBtn.layer.masksToBounds = true
         yuyueBtn.layer.cornerRadius = 6
         
-        self.backvc.addSubview(self.contentImage)
-        self.contentImage.snp.makeConstraints { (make) in
-            make.left.right.equalTo(self.backvc).offset(0)
-            make.top.equalTo(self.herderImage.snp.bottom).offset(10)
-            make.height.equalTo(180)
-        }
-        
         self.backvc.addSubview(self.titleLable)
         self.titleLable.snp.makeConstraints { (make) in
-            make.top.equalTo(self.contentImage.snp.bottom).offset(13)
+            make.top.equalTo(self.herderImage.snp.bottom).offset(5)
             make.left.equalTo(self.backvc).offset(15)
             make.right.equalTo(self.backvc).offset(-15)
+            make.height.equalTo(30)
             
         }
         
         self.backvc.addSubview(self.btnOne)
         btnOne.snp.makeConstraints { (make) in
-            make.top.equalTo(self.titleLable.snp.bottom).offset(7)
+            make.top.equalTo(self.titleLable.snp.bottom).offset(3)
             make.left.equalTo(self.backvc).offset(15)
             make.height.equalTo(25)
             make.width.equalTo(100)
@@ -170,7 +198,7 @@ class YCHomeTableViewCell: UITableViewCell {
         
         self.backvc.addSubview(self.btnTwo)
         btnTwo.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLable.snp.bottom).offset(7)
+            make.top.equalTo(titleLable.snp.bottom).offset(3)
             make.left.equalTo(btnOne.snp.right).offset(5)
             make.height.equalTo(25)
             make.width.equalTo(130)
@@ -178,14 +206,15 @@ class YCHomeTableViewCell: UITableViewCell {
         
         self.backvc.addSubview(self.contentLable)
         contentLable.snp.makeConstraints { (make) in
-            make.top.equalTo(btnOne.snp.bottom).offset(9)
+            make.top.equalTo(btnOne.snp.bottom).offset(3)
             make.left.equalTo(backvc).offset(15)
             make.right.equalTo(backvc).offset(-15)
+            make.height.equalTo(50)
         }
         
         self.backvc.addSubview(self.progressView)
         self.progressView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.contentLable.snp.bottom).offset(15)
+            make.top.equalTo(self.contentLable.snp.bottom).offset(5)
             make.left.equalTo(self.backvc).offset(15)
             make.right.equalTo(self.backvc).offset(-15)
             make.height.equalTo(6)
@@ -207,20 +236,61 @@ class YCHomeTableViewCell: UITableViewCell {
         self.progressLable.snp.makeConstraints { (make) in
             make.top.equalTo(self.progressView.snp.bottom).offset(12)
             make.right.equalTo(self.backvc).offset(-15)
-            make.height.equalTo(20)
-            //            make.width.equalTo(100)
-            make.bottom.equalTo(-16)//这句一定要放在最后一个view不然无法自动计算高度
-            
+            make.height.equalTo(20)            
         }
         progressLable.layer.cornerRadius = 10
         progressLable.layer.masksToBounds = true
         
         
+        self.addSubview(targetMoney)
+        targetMoney.snp.makeConstraints { (make) in
+            make.top.equalTo(backvc.snp.bottom).offset(12)
+            make.left.equalTo(12)
+            make.bottom.equalTo(-12)
+            make.width.equalTo((Main_Screen_Width-24)/3)
+        }
+        
+        self.addSubview(alreadyMoney)
+        alreadyMoney.snp.makeConstraints { (make) in
+            make.top.equalTo(backvc.snp.bottom).offset(12)
+            make.left.equalTo(targetMoney.snp.right).offset(0)
+            make.bottom.equalTo(-12)
+            make.width.equalTo((Main_Screen_Width-24)/3)
+        }
+        
+        self.addSubview(startMoney)
+        startMoney.snp.makeConstraints { (make) in
+            make.top.equalTo(backvc.snp.bottom).offset(12)
+            make.left.equalTo(alreadyMoney.snp.right).offset(0)
+            make.bottom.equalTo(-12)
+            make.width.equalTo((Main_Screen_Width-24)/3)
+        }
+        
+        let lin1 : UILabel = UILabel()
+        lin1.backgroundColor = gof_RGBAColor(220,220,220,1)
+        self.addSubview(lin1)
+        lin1.snp.makeConstraints { (make) in
+            make.top.equalTo(backvc.snp.bottom).offset(34)
+            make.width.equalTo(1)
+            make.left.equalTo(targetMoney.snp.right).offset(0)
+            make.bottom.equalTo(-34)
+        }
+        
+        let lin2 : UILabel = UILabel()
+        lin2.backgroundColor = gof_RGBAColor(220,220,220,1)
+        self.addSubview(lin2)
+        lin2.snp.makeConstraints { (make) in
+            make.top.equalTo(backvc.snp.bottom).offset(34)
+            make.width.equalTo(1)
+            make.left.equalTo(alreadyMoney.snp.right).offset(0)
+            make.bottom.equalTo(-34)
+        }
+        
         herderImage.image = UIImage(named: "btn1")
         nameLable.text = "风兮兮"
         titleLable.text = "复华丽江国际度假世界"
         let str = "复华文旅以全球创新生活思维打造360度复合度假体验球创新生活思维打造360度复合度假体验"
-        contentLable.attributedText = YC_FONT_RowSpacing(5 , YC_FONT_PFSC_Regular(14) , str)
+        contentLable.attributedText = YC_FONT_RowSpacing(5 , YC_FONT_PFSC_Regular(13) , str)
         yuyueBtn.setTitle("预约中", for: UIControl.State.normal)
         contentImage.image = UIImage(named: "projectimage")
         
@@ -239,30 +309,41 @@ class YCHomeTableViewCell: UITableViewCell {
         stateLable.text = "    剩余时间：\(strrr) 小时    "
         stateLable.backgroundColor = YC_Color_LightBlue
         stateLable.textColor = YC_Color_DarkBlue
-//        stateLable.textAlignment = NSTextAlignment.center
-
-        progressLable.text = "    进度：39%   "
+        
+        progressLable.text = "    进度：39%    "
         progressLable.backgroundColor = YC_Color_LightPink
         progressLable.textColor = YC_Color_DarkPink
-//        progressLable.textAlignment = NSTextAlignment.center
 
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
+        targetMoney.font = YC_FONT_PFSC_Medium(19)
+        targetMoney.textColor = YC_Color_DarkPink
+        let stt1 : String = "600万\n目标金额"
+        let attributedStr : NSMutableAttributedString = NSMutableAttributedString.init(string: stt1)
+        let r1 = stt1.range(of: "目标金额")
+        let rang = "".nsRange(from: r1!)
+        attributedStr.addAttributes([NSAttributedString.Key.font : YC_FONT_PFSC_Regular(13),NSAttributedString.Key.foregroundColor:YC_FontColor_LightGray], range: rang)
+        targetMoney.attributedText = attributedStr
+        
+        
+        alreadyMoney.font = YC_FONT_PFSC_Medium(19)
+        alreadyMoney.textColor = YC_Color_DarkGreen
+        let str2 : String = "600万\n已认购"
+        let attributedStr2 : NSMutableAttributedString = NSMutableAttributedString.init(string: str2)
+        let r2 = str2.range(of: "已认购")
+        let rang2 = "".nsRange(from: r2!)
+       attributedStr2.addAttributes([NSAttributedString.Key.font : YC_FONT_PFSC_Regular(13),NSAttributedString.Key.foregroundColor:YC_FontColor_LightGray], range: rang2)
+        alreadyMoney.attributedText = attributedStr2
+        
+        
+        startMoney.font = YC_FONT_PFSC_Medium(19)
+        startMoney.textColor = YC_Color_DarkBlue
+        let str3 : String = "600万\n起投金额"
+        let attributedStr3 : NSMutableAttributedString = NSMutableAttributedString.init(string: str3)
+        let r3 = str3.range(of: "起投金额")
+        let rang3 = "".nsRange(from: r3!)
+        attributedStr3.addAttributes([NSAttributedString.Key.font : YC_FONT_PFSC_Regular(13),NSAttributedString.Key.foregroundColor:YC_FontColor_LightGray], range: rang3)
+        startMoney.attributedText = attributedStr3
+        
     }
 
 }
