@@ -18,7 +18,6 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
     var sectionSedArray:Array = [PersionModel]()
     var sectionThirdArray:Array = [PersionModel]()
     var sectionForArray:Array = [PersionModel]()
-
     var allArray:Array = [[PersionModel]]()
     
     override func viewDidLoad() {
@@ -99,11 +98,38 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if(indexPath.section==3&&indexPath.row==2){
-            //关于我们
-            let aboutUsVC = AboutUsController()
+        
+        // 修改昵称
+        let modifyNickVC = ModifyNickController()
+        // 绑定手机
+        let bindPhoneVC = BindPhoneController()
+        // 绑定微信
+        let bindWeixin = BindWeiXinController()
+        // 绑定邮箱
+        let bindEmailVC = BindEmailController()
+        // 关于我们
+        let aboutUsVC = AboutUsController()
+        if(indexPath.section==0&&indexPath.row==0){
+            modifyNickVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(modifyNickVC, animated: true)
+        }else if(indexPath.section==1&&indexPath.row==0){
+            bindPhoneVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(bindPhoneVC, animated: true)
+        }else if(indexPath.section==1&&indexPath.row==1){
+            bindWeixin.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(bindWeixin, animated: true)
+        }else if(indexPath.section==1&&indexPath.row==2){
+            bindEmailVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(bindEmailVC, animated: true)
+        }else if(indexPath.section==3&&indexPath.row==2){
             aboutUsVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(aboutUsVC, animated: true)
+        }else if(indexPath.section==3&&indexPath.row==1){
+            //清除缓存
+            FileCacheManager.clearCache()
+            let model:PersionModel = self.allArray[indexPath.section][indexPath.row]
+             model.introduction = FileCacheManager.fileSizeOfCache()
+            self.userCenterTableView.reloadRows(at: [indexPath], with: .fade)
         }
     }
     
@@ -120,21 +146,29 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
         for i in 0..<titleSouce1.count {
             let model = PersionModel()
             model.title = titleSouce1[i]
+            model.introduction = "晓时代1999"
             sectionOneArray.append(model)
         }
         for i in 0..<titleSouce2.count {
             let model = PersionModel()
             model.title = titleSouce2[i]
+            model.introduction = "未绑定"
             sectionSedArray.append(model)
         }
         for i in 0..<titleSouce3.count {
             let model = PersionModel()
             model.title = titleSouce3[i]
+            model.introduction = "未认证"
             sectionThirdArray.append(model)
         }
         for i in 0..<titleSouce4.count {
             let model = PersionModel()
             model.title = titleSouce4[i]
+            if(i==0){
+                model.introduction = "设置密码"
+            }else if(i==1){
+                model.introduction = FileCacheManager.fileSizeOfCache()
+            }
             sectionForArray.append(model)
         }
         self.allArray.append(sectionOneArray)

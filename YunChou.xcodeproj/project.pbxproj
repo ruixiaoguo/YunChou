@@ -84,7 +84,7 @@
 		21D5AB9D215B739900D5EC1F /* BindEmailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5AB9C215B739900D5EC1F /* BindEmailController.swift */; };
 		21D5AB9F215B7EF500D5EC1F /* UtilityFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5AB9E215B7EF500D5EC1F /* UtilityFunction.swift */; };
 		21D5ABA1215B83CB00D5EC1F /* MyAdressController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABA0215B83CB00D5EC1F /* MyAdressController.swift */; };
-		21D5ABA4215B88AF00D5EC1F /* MyAdressFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABA3215B88AF00D5EC1F /* MyAdressFootView.swift */; };
+		21D5ABA4215B88AF00D5EC1F /* MyFootButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABA3215B88AF00D5EC1F /* MyFootButtonView.swift */; };
 		21D5ABA7215C6A9F00D5EC1F /* MyAdressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABA6215C6A9F00D5EC1F /* MyAdressCell.swift */; };
 		21D5ABA9215C6D6100D5EC1F /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABA8215C6D6100D5EC1F /* UIButton+Extension.swift */; };
 		21D5ABAC215C86BC00D5EC1F /* MyAdressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABAB215C86BC00D5EC1F /* MyAdressModel.swift */; };
@@ -102,6 +102,13 @@
 		21D5ABDB215F049500D5EC1F /* NSMutableString+TagReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABD6215F049500D5EC1F /* NSMutableString+TagReplace.m */; };
 		21D5ABDC215F049500D5EC1F /* WPAttributedStyleAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABD7215F049500D5EC1F /* WPAttributedStyleAction.m */; };
 		21D5ABE2215F0AAC00D5EC1F /* RegitAgreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABE1215F0AAC00D5EC1F /* RegitAgreController.swift */; };
+		21D5ABE621605BC000D5EC1F /* ModifyNickController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABE521605BC000D5EC1F /* ModifyNickController.swift */; };
+		21D5ABE82160686600D5EC1F /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABE72160686600D5EC1F /* UITextField+Extension.swift */; };
+		21D5ABEA21606FEB00D5EC1F /* BindPhoneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABE921606FEB00D5EC1F /* BindPhoneController.swift */; };
+		21D5ABEC2160711800D5EC1F /* BindWeiXinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABEB2160711800D5EC1F /* BindWeiXinController.swift */; };
+		21D5ABEF216074D300D5EC1F /* FileCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABEE216074D300D5EC1F /* FileCacheManager.swift */; };
+		21D5ABF22160A44400D5EC1F /* BindInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABF12160A44400D5EC1F /* BindInfoController.swift */; };
+		21D5ABF42160AC0200D5EC1F /* BindTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5ABF32160AC0200D5EC1F /* BindTableCell.swift */; };
 		50A5A5F96C952EB1EA80F9B4 /* libPods-YunChou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6530BFEB29B634C3F1D3A1DD /* libPods-YunChou.a */; };
 /* End PBXBuildFile section */
 
@@ -186,7 +193,7 @@
 		21D5AB9C215B739900D5EC1F /* BindEmailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindEmailController.swift; sourceTree = "<group>"; };
 		21D5AB9E215B7EF500D5EC1F /* UtilityFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunction.swift; sourceTree = "<group>"; };
 		21D5ABA0215B83CB00D5EC1F /* MyAdressController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressController.swift; sourceTree = "<group>"; };
-		21D5ABA3215B88AF00D5EC1F /* MyAdressFootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressFootView.swift; sourceTree = "<group>"; };
+		21D5ABA3215B88AF00D5EC1F /* MyFootButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFootButtonView.swift; sourceTree = "<group>"; };
 		21D5ABA6215C6A9F00D5EC1F /* MyAdressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressCell.swift; sourceTree = "<group>"; };
 		21D5ABA8215C6D6100D5EC1F /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		21D5ABAB215C86BC00D5EC1F /* MyAdressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressModel.swift; sourceTree = "<group>"; };
@@ -209,6 +216,13 @@
 		21D5ABD6215F049500D5EC1F /* NSMutableString+TagReplace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+TagReplace.m"; sourceTree = "<group>"; };
 		21D5ABD7215F049500D5EC1F /* WPAttributedStyleAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPAttributedStyleAction.m; sourceTree = "<group>"; };
 		21D5ABE1215F0AAC00D5EC1F /* RegitAgreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegitAgreController.swift; sourceTree = "<group>"; };
+		21D5ABE521605BC000D5EC1F /* ModifyNickController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyNickController.swift; sourceTree = "<group>"; };
+		21D5ABE72160686600D5EC1F /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		21D5ABE921606FEB00D5EC1F /* BindPhoneController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindPhoneController.swift; sourceTree = "<group>"; };
+		21D5ABEB2160711800D5EC1F /* BindWeiXinController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindWeiXinController.swift; sourceTree = "<group>"; };
+		21D5ABEE216074D300D5EC1F /* FileCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheManager.swift; sourceTree = "<group>"; };
+		21D5ABF12160A44400D5EC1F /* BindInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindInfoController.swift; sourceTree = "<group>"; };
+		21D5ABF32160AC0200D5EC1F /* BindTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindTableCell.swift; sourceTree = "<group>"; };
 		6530BFEB29B634C3F1D3A1DD /* libPods-YunChou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YunChou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C04D3CEFB567E3574CCB034 /* Pods-YunChou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YunChou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YunChou/Pods-YunChou.debug.xcconfig"; sourceTree = "<group>"; };
 		E2CA44BE8E613BF3A0E2EE4C /* Pods-YunChou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YunChou.release.xcconfig"; path = "Pods/Target Support Files/Pods-YunChou/Pods-YunChou.release.xcconfig"; sourceTree = "<group>"; };
@@ -420,6 +434,7 @@
 		2122C8CA215343AD00571301 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				21D5ABED216074C400D5EC1F /* FileCacheManager */,
 				1B175D78215F4D4600019D1E /* LTScrollView */,
 				21D5ABCD215F049500D5EC1F /* WPAttributedStyleAction */,
 				2122C8FB215346B700571301 /* WRCycleScrollView */,
@@ -454,6 +469,7 @@
 				2122C8F1215346A200571301 /* String+Extension.swift */,
 				2122C8F2215346A200571301 /* UIBarButtonItem+Extesion.swift */,
 				21D5ABA8215C6D6100D5EC1F /* UIButton+Extension.swift */,
+				21D5ABE72160686600D5EC1F /* UITextField+Extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -493,6 +509,7 @@
 			isa = PBXGroup;
 			children = (
 				21D5ABE4215F469D00D5EC1F /* UserSettingController */,
+				21D5ABF02160A42C00D5EC1F /* BindInfoController */,
 				21D5ABB3215CC57600D5EC1F /* YaoqingFriendsController */,
 				21D5AB97215B558300D5EC1F /* AboutUsController */,
 				21D5AB86215A207100D5EC1F /* HeadView */,
@@ -526,6 +543,7 @@
 				21D5AB81215A0EE000D5EC1F /* PersionTableCell.swift */,
 				21D5AB93215B34C600D5EC1F /* CenterTableCell.swift */,
 				21D5AB9A215B5B3800D5EC1F /* AboutUsTableCell.swift */,
+				21D5ABF32160AC0200D5EC1F /* BindTableCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -567,7 +585,7 @@
 		21D5ABA2215B889900D5EC1F /* views */ = {
 			isa = PBXGroup;
 			children = (
-				21D5ABA3215B88AF00D5EC1F /* MyAdressFootView.swift */,
+				21D5ABA3215B88AF00D5EC1F /* MyFootButtonView.swift */,
 				21D5ABAF215CA7DF00D5EC1F /* AddAdressView.swift */,
 			);
 			path = views;
@@ -637,8 +655,27 @@
 		21D5ABE4215F469D00D5EC1F /* UserSettingController */ = {
 			isa = PBXGroup;
 			children = (
+				21D5ABE521605BC000D5EC1F /* ModifyNickController.swift */,
+				21D5ABE921606FEB00D5EC1F /* BindPhoneController.swift */,
+				21D5ABEB2160711800D5EC1F /* BindWeiXinController.swift */,
 			);
 			path = UserSettingController;
+			sourceTree = "<group>";
+		};
+		21D5ABED216074C400D5EC1F /* FileCacheManager */ = {
+			isa = PBXGroup;
+			children = (
+				21D5ABEE216074D300D5EC1F /* FileCacheManager.swift */,
+			);
+			path = FileCacheManager;
+			sourceTree = "<group>";
+		};
+		21D5ABF02160A42C00D5EC1F /* BindInfoController */ = {
+			isa = PBXGroup;
+			children = (
+				21D5ABF12160A44400D5EC1F /* BindInfoController.swift */,
+			);
+			path = BindInfoController;
 			sourceTree = "<group>";
 		};
 		8043307F8C63F2F0FF83AE9E /* Pods */ = {
@@ -771,6 +808,7 @@
 				21D5AB96215B366A00D5EC1F /* UserCenterHeadView.swift in Sources */,
 				1B175DAB215F4DEF00019D1E /* YCProjectMessageViewController.swift in Sources */,
 				21D5ABCC215E2CC100D5EC1F /* YCLoginManager.swift in Sources */,
+				21D5ABE621605BC000D5EC1F /* ModifyNickController.swift in Sources */,
 				2122C8F3215346A200571301 /* UIImageView+Extension.swift in Sources */,
 				2122C9542154E65600571301 /* IdentifierMacro.swift in Sources */,
 				1B175D77215F4CA300019D1E /* YCHomeNavBarView.swift in Sources */,
@@ -790,7 +828,9 @@
 				1B175DAF215F4DEF00019D1E /* YCProjectMessageTableViewCell.swift in Sources */,
 				2122C90F2153495400571301 /* MainViewController.swift in Sources */,
 				21D5ABC0215DF5B700D5EC1F /* LoginViewController.swift in Sources */,
+				21D5ABEA21606FEB00D5EC1F /* BindPhoneController.swift in Sources */,
 				2122C903215346B700571301 /* WRCycleCell.swift in Sources */,
+				21D5ABEF216074D300D5EC1F /* FileCacheManager.swift in Sources */,
 				2122C9522154E59D00571301 /* HomeTableCell.swift in Sources */,
 				1B175DAC215F4DEF00019D1E /* YCMessageViewController.swift in Sources */,
 				21D5ABD9215F049500D5EC1F /* WPHotspotLabel.m in Sources */,
@@ -812,9 +852,14 @@
 				1B175DA5215F4DEF00019D1E /* YCSearchViewController.swift in Sources */,
 				21D5ABAC215C86BC00D5EC1F /* MyAdressModel.swift in Sources */,
 				2122C91C215373A700571301 /* StringMd5.swift in Sources */,
+				21D5ABE82160686600D5EC1F /* UITextField+Extension.swift in Sources */,
 				21D5ABA7215C6A9F00D5EC1F /* MyAdressCell.swift in Sources */,
+				21D5ABF42160AC0200D5EC1F /* BindTableCell.swift in Sources */,
 				1B175DB2215F4DEF00019D1E /* YCMessageTableViewCell.swift in Sources */,
 				1B175DB1215F4DEF00019D1E /* YCAccountMessageTableViewCell.swift in Sources */,
+
+				21D5ABEC2160711800D5EC1F /* BindWeiXinController.swift in Sources */,
+				1B175D84215F4D4600019D1E /* LTSimpleManager.swift in Sources */,
 				1B175D87215F4D4600019D1E /* LTAdvancedManager.swift in Sources */,
 				1B175D6F215F4BB600019D1E /* YCHomeViewController.swift in Sources */,
 				2122C90A2153490E00571301 /* BaseHtmlController.swift in Sources */,
@@ -828,7 +873,7 @@
 				21D5AB9D215B739900D5EC1F /* BindEmailController.swift in Sources */,
 				2122C8F4215346A200571301 /* UIColor+Extension.swift in Sources */,
 				2122C8FA215346A200571301 /* UIBarButtonItem+Extesion.swift in Sources */,
-				21D5ABA4215B88AF00D5EC1F /* MyAdressFootView.swift in Sources */,
+				21D5ABA4215B88AF00D5EC1F /* MyFootButtonView.swift in Sources */,
 				21D5AB99215B55A200D5EC1F /* AboutUsController.swift in Sources */,
 				1B175DA9215F4DEF00019D1E /* YCSearchResultView.swift in Sources */,
 				1B175D88215F4D4600019D1E /* LTLayout.swift in Sources */,
@@ -843,6 +888,7 @@
 				2122C90B2153490E00571301 /* BaseNavigationController.swift in Sources */,
 				1B175DA7215F4DEF00019D1E /* YCTagsView.swift in Sources */,
 				21D5AB8C215A3B9C00D5EC1F /* persionOrderView.swift in Sources */,
+				21D5ABF22160A44400D5EC1F /* BindInfoController.swift in Sources */,
 				21D5ABDA215F049500D5EC1F /* WPTappableLabel.m in Sources */,
 				21D5AB9F215B7EF500D5EC1F /* UtilityFunction.swift in Sources */,
 				21D5ABB5215CC58300D5EC1F /* InvitFriendController.swift in Sources */,

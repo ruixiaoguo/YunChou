@@ -52,10 +52,22 @@ class CenterTableCell: UITableViewCell {
             make.width.equalTo(20)
             make.height.equalTo(20)
         }
+        //名称
+        descriLable.font = YC_FONT_PFSC_Medium(14)
+        descriLable.textColor = YCColorDarkLight
+        descriLable.textAlignment = NSTextAlignment.right
+        contentView.addSubview(descriLable)
+        descriLable.snp.makeConstraints({ (make) in
+            make.top.equalTo(2)
+            make.right.equalTo(arrowImage.snp.left).offset(-12)
+            make.width.equalTo(200)
+            make.height.equalTo(55)
+        })
     }
     
     internal func gaintPersionModel(model:PersionModel) {
         titleLabel.text = "\(model.title)"
+        descriLable.text = "\(model.introduction)"
     }
     
     required init?(coder aDecoder: NSCoder) {

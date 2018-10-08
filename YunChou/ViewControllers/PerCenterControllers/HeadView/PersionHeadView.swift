@@ -18,8 +18,9 @@ class PersionHeadView: UIView {
     let accountView = persionAccountView() //账户
     let orderView = persionOrderView()   //订单
     let userCenterButton = UIButton() //进入个人中心按钮
+    var settingCallBlock:(()-> Void)?
+    var messageCallBlock:(()-> Void)?
 
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = YCColorWhite
@@ -63,6 +64,7 @@ class PersionHeadView: UIView {
         //消息按钮
         self.addSubview(messageButton)
         messageButton .setImage(UIImage(named:"message"), for: .normal)
+        messageButton.addTarget(self, action: #selector(messageButtonClick(_ :)), for: .touchUpInside)
         messageButton.snp.makeConstraints({ (make) in
             make.top.equalTo(30)
             make.right.equalTo(-15)
@@ -72,6 +74,7 @@ class PersionHeadView: UIView {
         //设置按钮
         self.addSubview(setButton)
         setButton .setImage(UIImage(named:"setting"), for: .normal)
+        setButton .addTarget(self, action: #selector(setButtonClick(_ :)), for: .touchUpInside)
         setButton.snp.makeConstraints({ (make) in
             make.top.equalTo(28)
             make.right.equalTo(messageButton.snp.left).offset(-25)
@@ -110,6 +113,16 @@ class PersionHeadView: UIView {
         let userCenterVC = UserCenterController()
         userCenterVC.hidesBottomBarWhenPushed = true
         self.owner.navigationController?.pushViewController(userCenterVC, animated: true)
+    }
+    
+    //MARK:========设置
+    @objc func setButtonClick(_ button:UIButton){
+        settingCallBlock!()
+    }
+    
+    //MARK:========消息
+    @objc func messageButtonClick(_ button:UIButton){
+        messageCallBlock!()
     }
     
     required init?(coder aDecoder: NSCoder) {

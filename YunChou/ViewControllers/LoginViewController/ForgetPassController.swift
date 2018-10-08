@@ -75,7 +75,8 @@ class ForgetPassController: BaseController {
             textField.placeholder = titleArray[i]
             textField.font = YC_FONT_PFSC_Medium(14)
             textField.textColor = YCColorBlack
-            textField.clearButtonMode = .whileEditing
+            textField.clearButtonMode = .never
+            textField.setModifyClearButton()// 添加自定义清除按钮
             textField.tag = i+10
             textField.snp.makeConstraints { (make) in
                 make.top.equalTo(i*55)
@@ -144,7 +145,8 @@ class ForgetPassController: BaseController {
         passField.placeholder = "输入新密码"
         passField.font = YC_FONT_PFSC_Medium(14)
         passField.textColor = YCColorBlack
-        passField.clearButtonMode = .whileEditing
+        passField.clearButtonMode = .never
+        passField.setModifyClearButton()// 添加自定义清除按钮
         passField.snp.makeConstraints { (make) in
             make.top.equalTo(1)
             make.left.equalTo(passImage.snp.right).offset(17)

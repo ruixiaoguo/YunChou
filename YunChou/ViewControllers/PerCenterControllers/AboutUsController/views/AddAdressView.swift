@@ -40,7 +40,8 @@ class AddAdressView: UIView,UITextFieldDelegate {
         })
         //联系人
         linkTextField.placeholder = "姓名"
-        linkTextField.clearButtonMode = .whileEditing
+        linkTextField.clearButtonMode = .never
+        linkTextField.setModifyClearButton()// 添加自定义清除按钮
         linkTextField.font = UIFont.systemFont(ofSize: 14)
         linkTextField.textColor = YCColorBlack
         self.addSubview(linkTextField)
@@ -114,7 +115,8 @@ class AddAdressView: UIView,UITextFieldDelegate {
         for i in 0..<3 {
             let textfeild = UITextField()
             textfeild.textColor = YCColorBlack
-            textfeild.clearButtonMode = .whileEditing
+            textfeild.clearButtonMode = .never
+            textfeild.setModifyClearButton()// 添加自定义清除按钮
             textfeild.font = UIFont.systemFont(ofSize: 14)
             textfeild.placeholder = textArray[i]
             self.addSubview(textfeild)

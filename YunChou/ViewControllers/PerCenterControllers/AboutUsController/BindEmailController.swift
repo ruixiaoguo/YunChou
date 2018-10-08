@@ -37,7 +37,8 @@ class BindEmailController: BaseController {
         emailTextFild.placeholder = "请输入有效的邮箱地址"
         emailTextFild.font = UIFont.systemFont(ofSize: 16)
         emailTextFild.textColor = YCColorBlack
-        emailTextFild.clearButtonMode = .whileEditing
+        emailTextFild.clearButtonMode = .never
+        emailTextFild.setModifyClearButton()// 添加自定义清除按钮
         emailTextFild.backgroundColor = YCColorWhite
         self.bgView.addSubview(emailTextFild)
         emailTextFild.snp.makeConstraints({ (make) in

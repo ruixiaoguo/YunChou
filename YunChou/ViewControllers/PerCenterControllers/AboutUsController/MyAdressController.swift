@@ -84,7 +84,7 @@ class MyAdressController: BaseController,UITableViewDelegate,UITableViewDataSour
     
     //添加新增按钮
     func initFootView() {
-        let footView = MyAdressFootView()
+        let footView = MyFootButtonView()
         self.view.addSubview(footView)
         footView.snp.makeConstraints { (make) in
             make.bottom.equalTo(-SafeBottomMargin)
@@ -92,7 +92,7 @@ class MyAdressController: BaseController,UITableViewDelegate,UITableViewDataSour
             make.left.equalTo(0)
             make.height.equalTo(60)
         }
-        footView.addAdresscallBlock = {() in
+        footView.sureOvercallBlock = {[unowned self]() in
             let addAdressVC = AddMyAdressController()
             self.navigationController?.pushViewController(addAdressVC, animated: true)
         }
