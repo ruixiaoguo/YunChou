@@ -34,8 +34,9 @@ class InvitFriendController: BaseController {
         let footView = MyFootButtonView()
         self.view.addSubview(footView)
         footView.sureOverBtn.setTitle("立即邀请", for: .normal)
+        let hight:CGFloat = kWidth(R: Main_Screen_Height/2+50)
         footView.snp.makeConstraints { (make) in
-            make.top.equalTo(Main_Screen_Height/2+50)
+            make.top.equalTo(hight)
             make.right.equalTo(-0)
             make.left.equalTo(0)
             make.height.equalTo(60)

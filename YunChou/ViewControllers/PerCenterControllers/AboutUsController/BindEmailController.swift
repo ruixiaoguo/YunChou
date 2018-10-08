@@ -69,8 +69,8 @@ class BindEmailController: BaseController {
         tagImage.snp.makeConstraints { (make) in
             make.top.equalTo(overButton.snp.bottom).offset(25)
             make.left.equalTo(30)
-            make.width.equalTo(25)
-            make.height.equalTo(25)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
         }
         //名称
         tagLable.text = "请正确填写收件人信息，以便给您发送投资协议等文件."

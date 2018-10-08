@@ -15,7 +15,8 @@ class BaseController: UIViewController {
 
     let messageButton = UIButton(type:.custom)
     let searchButton = UIButton(type:.custom)
-    
+    let button =   UIButton(type: .custom)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = YCColorWhite
@@ -23,8 +24,7 @@ class BaseController: UIViewController {
         leftView = UIButton(type: .custom);
         leftView.frame = CGRect(x:0, y:0, width:100, height:40)
         leftView.addTarget(self, action: #selector(backToPrevious), for: .touchUpInside)
-        let button =   UIButton(type: .custom)
-        button.frame = CGRect(x:0, y:2, width:22, height:25)
+        button.frame = CGRect(x:0, y:4, width:22, height:25)
         button.setImage(UIImage(named:"back"), for: .normal)
         button.addTarget(self, action: #selector(backToPrevious), for: .touchUpInside)
         leftView.addSubview(button)

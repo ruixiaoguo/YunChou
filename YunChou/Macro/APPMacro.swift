@@ -57,6 +57,9 @@ let YCColorTitleBlack = gof_ColorWithHex(0x666666);   // 主色调，标题黑�
 let YCColorLight = gof_ColorWithHex(0xF2F4F6);   //全局灰色
 let YCColorDarkLight = gof_ColorWithHex(0xA6A6A6);   //全局深灰色
 let YCColorBlue = gof_ColorWithHex(0x309FFF);   //全局浅蓝色
+let YCColorDarkBlue = gof_ColorWithHex(0x3A69EF);   //全局深蓝色
+let YCColorRed = gof_ColorWithHex(0xFF2633);   //全局红色
+
 let YCColorLoginLine = gof_ColorWithHex(0xDCE1ED);   //登录分割线
 
 

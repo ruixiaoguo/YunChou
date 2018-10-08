@@ -212,7 +212,7 @@ class LoginViewController: BaseController {
         self.view.addSubview(loginView)
         loginView.sureOverBtn.setTitle("注册/登录", for: .normal)
         loginView.snp.makeConstraints { (make) in
-            make.top.equalTo(xieyiLable.snp.bottom).offset(25)
+            make.top.equalTo(xieyiLable.snp.bottom).offset(kWidth(R: 15))
             make.right.equalTo(-0)
             make.left.equalTo(0)
             make.height.equalTo(60)

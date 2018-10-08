@@ -107,6 +107,9 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
         let bindWeixin = BindWeiXinController()
         // 绑定邮箱
         let bindEmailVC = BindEmailController()
+        // 设置密码
+        let setPswVC = SettingPswController()
+        
         // 关于我们
         let aboutUsVC = AboutUsController()
         if(indexPath.section==0&&indexPath.row==0){
@@ -121,15 +124,18 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
         }else if(indexPath.section==1&&indexPath.row==2){
             bindEmailVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(bindEmailVC, animated: true)
-        }else if(indexPath.section==3&&indexPath.row==2){
-            aboutUsVC.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(aboutUsVC, animated: true)
+        }else if(indexPath.section==3&&indexPath.row==0){
+            setPswVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(setPswVC, animated: true)
         }else if(indexPath.section==3&&indexPath.row==1){
             //清除缓存
             FileCacheManager.clearCache()
             let model:PersionModel = self.allArray[indexPath.section][indexPath.row]
-             model.introduction = FileCacheManager.fileSizeOfCache()
+            model.introduction = FileCacheManager.fileSizeOfCache()
             self.userCenterTableView.reloadRows(at: [indexPath], with: .fade)
+        }else if(indexPath.section==3&&indexPath.row==2){
+            aboutUsVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(aboutUsVC, animated: true)
         }
     }
     

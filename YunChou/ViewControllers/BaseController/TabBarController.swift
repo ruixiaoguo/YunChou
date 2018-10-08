@@ -13,8 +13,8 @@ class TabBarController: UITabBarController {
     var _backView:UIView? = nil
     var items:NSArray = []
     let NameArray = ["投资","新闻","我的"];
-    let PicArr = ["main_blue","me_blue","me_blue"]
-    let PicSelectArr = ["main","me","me"]
+    let PicArr = ["main","new","me"]
+    let PicSelectArr = ["main_sel","new_sel","me_sel"]
     let VCArray = [YCHomeViewController(),NewsViewController(),PersionViewController()]
     //初始化数组
     var NavVCArr:[NSObject] = [NSObject]()
@@ -49,7 +49,7 @@ class TabBarController: UITabBarController {
         self.tabBar.barTintColor = YCColorWhite
         self.tabBar.backgroundColor = YCColorWhite
         //设置 tabBar 工具栏字体颜色 (未选中  和  选中)
-        self.tabBar.tintColor = gof_ColorWithHex(0xcfb292)
+        self.tabBar.tintColor = YCColorBlue
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

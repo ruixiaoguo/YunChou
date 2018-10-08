@@ -72,7 +72,7 @@ class YCHomeViewController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Home"
+        self.title = "投资"
         self.view.backgroundColor = UIColor.white
         view.addSubview(advancedManager)
         advancedManagerConfig()
