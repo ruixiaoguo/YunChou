@@ -22,7 +22,7 @@ class BaseController: UIViewController {
         leftView = UIButton(type: .custom);
         leftView.frame = CGRect(x:0, y:0, width:100, height:40)
         leftView.addTarget(self, action: #selector(backToPrevious), for: .touchUpInside)
-        button.frame = CGRect(x:0, y:2, width:22, height:25)
+        button.frame = CGRect(x:0, y:4, width:22, height:25)
         button.setImage(UIImage(named:"back"), for: .normal)
         button.addTarget(self, action: #selector(backToPrevious), for: .touchUpInside)
         leftView.addSubview(button)

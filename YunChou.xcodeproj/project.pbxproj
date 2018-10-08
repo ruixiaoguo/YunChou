@@ -71,6 +71,8 @@
 		2122C9542154E65600571301 /* IdentifierMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122C9532154E65600571301 /* IdentifierMacro.swift */; };
 		21CCBADB216AEA9700078426 /* RiskAssessController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBADA216AEA9700078426 /* RiskAssessController.swift */; };
 		21CCBADD216AEC4600078426 /* CumerInterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBADC216AEC4600078426 /* CumerInterController.swift */; };
+		21CCBAE0216B255400078426 /* CumerInterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBADF216B255400078426 /* CumerInterCell.swift */; };
+		21CCBAE3216B41D600078426 /* SettingPswController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAE2216B41D600078426 /* SettingPswController.swift */; };
 		21D5AB83215A0EE000D5EC1F /* PersionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5AB81215A0EE000D5EC1F /* PersionTableCell.swift */; };
 		21D5AB85215A0EF200D5EC1F /* PersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5AB84215A0EF200D5EC1F /* PersionModel.swift */; };
 		21D5AB88215A20DE00D5EC1F /* PersionHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5AB87215A20DE00D5EC1F /* PersionHeadView.swift */; };
@@ -180,6 +182,8 @@
 		2122C9532154E65600571301 /* IdentifierMacro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierMacro.swift; sourceTree = "<group>"; };
 		21CCBADA216AEA9700078426 /* RiskAssessController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiskAssessController.swift; sourceTree = "<group>"; };
 		21CCBADC216AEC4600078426 /* CumerInterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CumerInterController.swift; sourceTree = "<group>"; };
+		21CCBADF216B255400078426 /* CumerInterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CumerInterCell.swift; sourceTree = "<group>"; };
+		21CCBAE2216B41D600078426 /* SettingPswController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPswController.swift; sourceTree = "<group>"; };
 		21D5AB81215A0EE000D5EC1F /* PersionTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersionTableCell.swift; sourceTree = "<group>"; };
 		21D5AB84215A0EF200D5EC1F /* PersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersionModel.swift; sourceTree = "<group>"; };
 		21D5AB87215A20DE00D5EC1F /* PersionHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersionHeadView.swift; sourceTree = "<group>"; };
@@ -524,6 +528,7 @@
 		21CCBAD8216AE9F200078426 /* CumerInterController */ = {
 			isa = PBXGroup;
 			children = (
+				21CCBADE216B253F00078426 /* Cells */,
 				21CCBADC216AEC4600078426 /* CumerInterController.swift */,
 			);
 			path = CumerInterController;
@@ -535,6 +540,14 @@
 				21CCBADA216AEA9700078426 /* RiskAssessController.swift */,
 			);
 			path = RiskAssessController;
+			sourceTree = "<group>";
+		};
+		21CCBADE216B253F00078426 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				21CCBADF216B255400078426 /* CumerInterCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		21D5AB80215A0EE000D5EC1F /* Cells */ = {
@@ -658,6 +671,7 @@
 				21D5ABE521605BC000D5EC1F /* ModifyNickController.swift */,
 				21D5ABE921606FEB00D5EC1F /* BindPhoneController.swift */,
 				21D5ABEB2160711800D5EC1F /* BindWeiXinController.swift */,
+				21CCBAE2216B41D600078426 /* SettingPswController.swift */,
 			);
 			path = UserSettingController;
 			sourceTree = "<group>";
@@ -803,6 +817,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2122C901215346B700571301 /* WRPageControl.swift in Sources */,
+				21CCBAE0216B255400078426 /* CumerInterCell.swift in Sources */,
 				2122C912215349E900571301 /* PersionViewController.swift in Sources */,
 				21D5ABDC215F049500D5EC1F /* WPAttributedStyleAction.m in Sources */,
 				21D5AB96215B366A00D5EC1F /* UserCenterHeadView.swift in Sources */,
@@ -837,6 +852,7 @@
 				21D5AB85215A0EF200D5EC1F /* PersionModel.swift in Sources */,
 				21D5ABA1215B83CB00D5EC1F /* MyAdressController.swift in Sources */,
 				21D5ABB0215CA7DF00D5EC1F /* AddAdressView.swift in Sources */,
+				21CCBAE3216B41D600078426 /* SettingPswController.swift in Sources */,
 				21D5ABB2215CC0F100D5EC1F /* SelectAdressController.swift in Sources */,
 				1B175DBC215F6FD000019D1E /* YCProjectHeaderView.swift in Sources */,
 				2122C900215346B700571301 /* WRProxy.swift in Sources */,
@@ -856,9 +872,7 @@
 				21D5ABF42160AC0200D5EC1F /* BindTableCell.swift in Sources */,
 				1B175DB2215F4DEF00019D1E /* YCMessageTableViewCell.swift in Sources */,
 				1B175DB1215F4DEF00019D1E /* YCAccountMessageTableViewCell.swift in Sources */,
-
 				21D5ABEC2160711800D5EC1F /* BindWeiXinController.swift in Sources */,
-				1B175D84215F4D4600019D1E /* LTSimpleManager.swift in Sources */,
 				1B175D87215F4D4600019D1E /* LTAdvancedManager.swift in Sources */,
 				1B175D6F215F4BB600019D1E /* YCHomeViewController.swift in Sources */,
 				2122C90A2153490E00571301 /* BaseHtmlController.swift in Sources */,

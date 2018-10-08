@@ -23,4 +23,5 @@ let AboutUsAdressCellIdentifier = "aboutUsAdressCellIdentifier"
 let MyAdressCellIdentifier = "myAdressCellIdentifier"
 //绑定信息
 let BindTableCellIdentifier = "bindTableCellIdentifier"
-
+//消费权益
+let CumerInterCellIdentifier = "cumerInterCellIdentifier"
