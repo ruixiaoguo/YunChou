@@ -71,6 +71,8 @@ extension YCAccountMessageViewController:UITableViewDelegate,UITableViewDataSour
         let cell:YCAccountMessageTableViewCell = tableView.dequeueReusableCell(withIdentifier: accountMessageCll, for: indexPath) as! YCAccountMessageTableViewCell
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
     
 }

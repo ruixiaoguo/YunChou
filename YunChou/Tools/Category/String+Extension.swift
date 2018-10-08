@@ -40,5 +40,10 @@ extension String {
         return stringSize.width
 
     }
+    
+    /// range转换为NSRange
+    func nsRange(from range: Range<String.Index>) -> NSRange {
+        return NSRange(range, in: self)
+    }
 
 }

@@ -127,6 +127,7 @@ extension LTPageTitleView {
             toTopHeight = 20
             
         }else{
+            toTopHeight = 10
             
             // 将所有的宽度计算出来放入数组
             for (_, text) in titles.enumerated() {

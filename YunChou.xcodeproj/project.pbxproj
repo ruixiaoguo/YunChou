@@ -11,7 +11,6 @@
 		1B175D73215F4C5E00019D1E /* YCHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D72215F4C5E00019D1E /* YCHomeTableViewCell.swift */; };
 		1B175D75215F4C7D00019D1E /* YCHomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D74215F4C7D00019D1E /* YCHomeHeaderView.swift */; };
 		1B175D77215F4CA300019D1E /* YCHomeNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D76215F4CA300019D1E /* YCHomeNavBarView.swift */; };
-		1B175D84215F4D4600019D1E /* LTSimpleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D79215F4D4600019D1E /* LTSimpleManager.swift */; };
 		1B175D85215F4D4600019D1E /* LTCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D7A215F4D4600019D1E /* LTCollectionFlowLayout.swift */; };
 		1B175D86215F4D4600019D1E /* LTDispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D7B215F4D4600019D1E /* LTDispatchQueue.swift */; };
 		1B175D87215F4D4600019D1E /* LTAdvancedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175D7C215F4D4600019D1E /* LTAdvancedManager.swift */; };
@@ -39,6 +38,11 @@
 		1B175DB2215F4DEF00019D1E /* YCMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175DA4215F4DEF00019D1E /* YCMessageTableViewCell.swift */; };
 		1B175DB5215F4E0300019D1E /* OneTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175DB3215F4E0200019D1E /* OneTestViewController.swift */; };
 		1B175DB6215F4E0300019D1E /* twoTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175DB4215F4E0300019D1E /* twoTestViewController.swift */; };
+		1B175DB9215F6F7200019D1E /* YCProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175DB8215F6F7200019D1E /* YCProjectDetailViewController.swift */; };
+		1B175DBC215F6FD000019D1E /* YCProjectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175DBB215F6FD000019D1E /* YCProjectHeaderView.swift */; };
+		1B175DBE215F80E900019D1E /* TwoTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175DBD215F80E900019D1E /* TwoTestViewController.swift */; };
+		1B3ADB792160AF4B00040E66 /* LTSimpleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3ADB782160AF4A00040E66 /* LTSimpleManager.swift */; };
+		1BAA5EB421606CDE007307D3 /* YCProjectBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA5EB321606CDE007307D3 /* YCProjectBottomView.swift */; };
 		2122C8B521533F7300571301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122C8B421533F7300571301 /* AppDelegate.swift */; };
 		2122C8BC21533F7400571301 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2122C8BB21533F7400571301 /* Assets.xcassets */; };
 		2122C8BF21533F7400571301 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2122C8BD21533F7400571301 /* LaunchScreen.storyboard */; };
@@ -106,7 +110,6 @@
 		1B175D72215F4C5E00019D1E /* YCHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCHomeTableViewCell.swift; sourceTree = "<group>"; };
 		1B175D74215F4C7D00019D1E /* YCHomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCHomeHeaderView.swift; sourceTree = "<group>"; };
 		1B175D76215F4CA300019D1E /* YCHomeNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCHomeNavBarView.swift; sourceTree = "<group>"; };
-		1B175D79215F4D4600019D1E /* LTSimpleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTSimpleManager.swift; sourceTree = "<group>"; };
 		1B175D7A215F4D4600019D1E /* LTCollectionFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		1B175D7B215F4D4600019D1E /* LTDispatchQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTDispatchQueue.swift; sourceTree = "<group>"; };
 		1B175D7C215F4D4600019D1E /* LTAdvancedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTAdvancedManager.swift; sourceTree = "<group>"; };
@@ -134,6 +137,11 @@
 		1B175DA4215F4DEF00019D1E /* YCMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YCMessageTableViewCell.swift; sourceTree = "<group>"; };
 		1B175DB3215F4E0200019D1E /* OneTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneTestViewController.swift; sourceTree = "<group>"; };
 		1B175DB4215F4E0300019D1E /* twoTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = twoTestViewController.swift; sourceTree = "<group>"; };
+		1B175DB8215F6F7200019D1E /* YCProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCProjectDetailViewController.swift; sourceTree = "<group>"; };
+		1B175DBB215F6FD000019D1E /* YCProjectHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCProjectHeaderView.swift; sourceTree = "<group>"; };
+		1B175DBD215F80E900019D1E /* TwoTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoTestViewController.swift; sourceTree = "<group>"; };
+		1B3ADB782160AF4A00040E66 /* LTSimpleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTSimpleManager.swift; sourceTree = "<group>"; };
+		1BAA5EB321606CDE007307D3 /* YCProjectBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCProjectBottomView.swift; sourceTree = "<group>"; };
 		2122C8B121533F7200571301 /* YunChou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YunChou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2122C8B421533F7300571301 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2122C8BB21533F7400571301 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -249,8 +257,9 @@
 		1B175D71215F4C2600019D1E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1B175DB3215F4E0200019D1E /* OneTestViewController.swift */,
 				1B175DB4215F4E0300019D1E /* twoTestViewController.swift */,
+				1B175DB3215F4E0200019D1E /* OneTestViewController.swift */,
+				1B175DB7215F6F5300019D1E /* ProjectDetail */,
 				1B175D9A215F4DEF00019D1E /* Message */,
 				1B175D91215F4DEF00019D1E /* Search */,
 			);
@@ -260,7 +269,7 @@
 		1B175D78215F4D4600019D1E /* LTScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				1B175D79215F4D4600019D1E /* LTSimpleManager.swift */,
+				1B3ADB782160AF4A00040E66 /* LTSimpleManager.swift */,
 				1B175D7A215F4D4600019D1E /* LTCollectionFlowLayout.swift */,
 				1B175D7B215F4D4600019D1E /* LTDispatchQueue.swift */,
 				1B175D7C215F4D4600019D1E /* LTAdvancedManager.swift */,
@@ -331,6 +340,25 @@
 				1B175DA2215F4DEF00019D1E /* YCSystemMessageTableViewCell.swift */,
 				1B175DA3215F4DEF00019D1E /* YCAccountMessageTableViewCell.swift */,
 				1B175DA4215F4DEF00019D1E /* YCMessageTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1B175DB7215F6F5300019D1E /* ProjectDetail */ = {
+			isa = PBXGroup;
+			children = (
+				1B175DBA215F6F8700019D1E /* Views */,
+				1B175DB8215F6F7200019D1E /* YCProjectDetailViewController.swift */,
+				1B175DBD215F80E900019D1E /* TwoTestViewController.swift */,
+			);
+			path = ProjectDetail;
+			sourceTree = "<group>";
+		};
+		1B175DBA215F6F8700019D1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1B175DBB215F6FD000019D1E /* YCProjectHeaderView.swift */,
+				1BAA5EB321606CDE007307D3 /* YCProjectBottomView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -748,6 +776,7 @@
 				1B175D77215F4CA300019D1E /* YCHomeNavBarView.swift in Sources */,
 				1B175D8A215F4D4600019D1E /* LTPageTitleView.swift in Sources */,
 				2122C8E92153467D00571301 /* APPMacro.swift in Sources */,
+				1BAA5EB421606CDE007307D3 /* YCProjectBottomView.swift in Sources */,
 				21D5AB94215B34C600D5EC1F /* CenterTableCell.swift in Sources */,
 				2122C90C2153490E00571301 /* TabBarController.swift in Sources */,
 				21D5AB9B215B5B3800D5EC1F /* AboutUsTableCell.swift in Sources */,
@@ -770,12 +799,14 @@
 				21D5ABA1215B83CB00D5EC1F /* MyAdressController.swift in Sources */,
 				21D5ABB0215CA7DF00D5EC1F /* AddAdressView.swift in Sources */,
 				21D5ABB2215CC0F100D5EC1F /* SelectAdressController.swift in Sources */,
+				1B175DBC215F6FD000019D1E /* YCProjectHeaderView.swift in Sources */,
 				2122C900215346B700571301 /* WRProxy.swift in Sources */,
 				21D5ABC6215E0B5300D5EC1F /* SMSCodeView.swift in Sources */,
 				1B175DB5215F4E0300019D1E /* OneTestViewController.swift in Sources */,
 				1B175D8C215F4D4600019D1E /* LTVCExtension.swift in Sources */,
 				1B175DA8215F4DEF00019D1E /* YCSearchSegmentBtnView.swift in Sources */,
 				2122C8F7215346A200571301 /* UIImage+Extension.swift in Sources */,
+				1B3ADB792160AF4B00040E66 /* LTSimpleManager.swift in Sources */,
 				21D5ABAE215CA34B00D5EC1F /* AddMyAdressController.swift in Sources */,
 				1B175DB0215F4DEF00019D1E /* YCSystemMessageTableViewCell.swift in Sources */,
 				1B175DA5215F4DEF00019D1E /* YCSearchViewController.swift in Sources */,
@@ -784,7 +815,6 @@
 				21D5ABA7215C6A9F00D5EC1F /* MyAdressCell.swift in Sources */,
 				1B175DB2215F4DEF00019D1E /* YCMessageTableViewCell.swift in Sources */,
 				1B175DB1215F4DEF00019D1E /* YCAccountMessageTableViewCell.swift in Sources */,
-				1B175D84215F4D4600019D1E /* LTSimpleManager.swift in Sources */,
 				1B175D87215F4D4600019D1E /* LTAdvancedManager.swift in Sources */,
 				1B175D6F215F4BB600019D1E /* YCHomeViewController.swift in Sources */,
 				2122C90A2153490E00571301 /* BaseHtmlController.swift in Sources */,
@@ -793,6 +823,7 @@
 				2122C9092153490E00571301 /* BaseController.swift in Sources */,
 				2122C94F2154E29800571301 /* NewsViewController.swift in Sources */,
 				2122C902215346B700571301 /* WRCycleScrollView.swift in Sources */,
+				1B175DB9215F6F7200019D1E /* YCProjectDetailViewController.swift in Sources */,
 				21D5ABDB215F049500D5EC1F /* NSMutableString+TagReplace.m in Sources */,
 				21D5AB9D215B739900D5EC1F /* BindEmailController.swift in Sources */,
 				2122C8F4215346A200571301 /* UIColor+Extension.swift in Sources */,
@@ -815,6 +846,7 @@
 				21D5ABDA215F049500D5EC1F /* WPTappableLabel.m in Sources */,
 				21D5AB9F215B7EF500D5EC1F /* UtilityFunction.swift in Sources */,
 				21D5ABB5215CC58300D5EC1F /* InvitFriendController.swift in Sources */,
+				1B175DBE215F80E900019D1E /* TwoTestViewController.swift in Sources */,
 				2122C8F9215346A200571301 /* String+Extension.swift in Sources */,
 				2122C8DB215343AD00571301 /* YCNetworkRequest.swift in Sources */,
 				1B175D89215F4D4600019D1E /* LTTableViewProtocal.swift in Sources */,
@@ -965,7 +997,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7B79DUQBF7;
+				DEVELOPMENT_TEAM = V7JHM69EG3;
 				INFOPLIST_FILE = YunChou/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -987,7 +1019,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7B79DUQBF7;
+				DEVELOPMENT_TEAM = V7JHM69EG3;
 				INFOPLIST_FILE = YunChou/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
