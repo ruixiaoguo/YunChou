@@ -78,6 +78,7 @@
 		21CCBADD216AEC4600078426 /* CumerInterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBADC216AEC4600078426 /* CumerInterController.swift */; };
 		21CCBAE0216B255400078426 /* CumerInterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBADF216B255400078426 /* CumerInterCell.swift */; };
 		21CCBAE3216B41D600078426 /* SettingPswController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAE2216B41D600078426 /* SettingPswController.swift */; };
+		21CCBAE5216C75FE00078426 /* RealAuthenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAE4216C75FE00078426 /* RealAuthenController.swift */; };
 		21D5AB83215A0EE000D5EC1F /* PersionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5AB81215A0EE000D5EC1F /* PersionTableCell.swift */; };
 		21D5AB85215A0EF200D5EC1F /* PersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5AB84215A0EF200D5EC1F /* PersionModel.swift */; };
 		21D5AB88215A20DE00D5EC1F /* PersionHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5AB87215A20DE00D5EC1F /* PersionHeadView.swift */; };
@@ -194,6 +195,7 @@
 		21CCBADC216AEC4600078426 /* CumerInterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CumerInterController.swift; sourceTree = "<group>"; };
 		21CCBADF216B255400078426 /* CumerInterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CumerInterCell.swift; sourceTree = "<group>"; };
 		21CCBAE2216B41D600078426 /* SettingPswController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPswController.swift; sourceTree = "<group>"; };
+		21CCBAE4216C75FE00078426 /* RealAuthenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealAuthenController.swift; sourceTree = "<group>"; };
 		21D5AB81215A0EE000D5EC1F /* PersionTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersionTableCell.swift; sourceTree = "<group>"; };
 		21D5AB84215A0EF200D5EC1F /* PersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersionModel.swift; sourceTree = "<group>"; };
 		21D5AB87215A20DE00D5EC1F /* PersionHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersionHeadView.swift; sourceTree = "<group>"; };
@@ -710,6 +712,7 @@
 				21D5ABE521605BC000D5EC1F /* ModifyNickController.swift */,
 				21D5ABE921606FEB00D5EC1F /* BindPhoneController.swift */,
 				21D5ABEB2160711800D5EC1F /* BindWeiXinController.swift */,
+				21CCBAE4216C75FE00078426 /* RealAuthenController.swift */,
 				21CCBAE2216B41D600078426 /* SettingPswController.swift */,
 			);
 			path = UserSettingController;
@@ -883,8 +886,6 @@
 				21D5ABCA215E2B8500D5EC1F /* ForgetPassController.swift in Sources */,
 				1B175DAF215F4DEF00019D1E /* YCProjectMessageTableViewCell.swift in Sources */,
 				1BF5A42F216B43D80082D241 /* YCInvestPlanModel.swift in Sources */,
-				2122C90F2153495400571301 /* MainViewController.swift in Sources */,
-
 				21D5ABC0215DF5B700D5EC1F /* LoginViewController.swift in Sources */,
 				21D5ABEA21606FEB00D5EC1F /* BindPhoneController.swift in Sources */,
 				2122C903215346B700571301 /* WRCycleCell.swift in Sources */,
@@ -931,6 +932,7 @@
 				2122C8F4215346A200571301 /* UIColor+Extension.swift in Sources */,
 				2122C8FA215346A200571301 /* UIBarButtonItem+Extesion.swift in Sources */,
 				21D5ABA4215B88AF00D5EC1F /* MyFootButtonView.swift in Sources */,
+				21CCBAE5216C75FE00078426 /* RealAuthenController.swift in Sources */,
 				21D5AB99215B55A200D5EC1F /* AboutUsController.swift in Sources */,
 				21CCBADB216AEA9700078426 /* RiskAssessController.swift in Sources */,
 				1B175DA9215F4DEF00019D1E /* YCSearchResultView.swift in Sources */,

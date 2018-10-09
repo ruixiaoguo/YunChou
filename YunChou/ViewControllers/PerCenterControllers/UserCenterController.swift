@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import SwiftProgressHUD
 
 let centerCellHight = 55
 
-class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSource {
+class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
+    var uploadAlertController:UIAlertController!
+    
     lazy var userCenterTableView = UITableView(frame: self.view.frame, style: .grouped)
     private lazy var titleSouce :[String] = [String]()
     var sectionOneArray:Array = [PersionModel]()
@@ -19,7 +22,8 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
     var sectionThirdArray:Array = [PersionModel]()
     var sectionForArray:Array = [PersionModel]()
     var allArray:Array = [[PersionModel]]()
-    
+    let hearView = UserCenterHeadView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "个人设置"
@@ -78,14 +82,90 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0:
-            let hearView = UserCenterHeadView()
             hearView.owner = self
+            hearView.selectHeadBlock = {[unowned self]()in
+                self.uploadAlertController = UIAlertController(title:nil,
+                                                               message: nil, preferredStyle:UIAlertController.Style.actionSheet)
+                self.uploadAlertController.view.tintColor = YCColorBlue
+                let takePhoto = UIAlertAction(title: "拍照", style: UIAlertAction.Style.default){ (action:UIAlertAction)in
+                       //填写需要的响应方法
+                       self.initCameraPicker()
+                    }
+                let photoLib = UIAlertAction(title: "从相册选择", style: UIAlertAction.Style.default){ (action:UIAlertAction)in
+                       //填写需要的响应方法
+                       self.initPhotoPicker()
+                    }
+                let cancel = UIAlertAction(title: "取消", style: UIAlertAction.Style.default){ (action:UIAlertAction)in
+                }
+                self.uploadAlertController?.addAction(takePhoto)
+                self.uploadAlertController?.addAction(photoLib)
+                self.uploadAlertController?.addAction(cancel)
+                self.present(self.uploadAlertController, animated: true, completion: nil)
+            }
             return hearView
         default:
             return nil
         }
     }
     
+    //MARK:===============从相册中选择
+    func initPhotoPicker(){
+        let photoPicker =  UIImagePickerController()
+        photoPicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        photoPicker.allowsEditing = true
+        photoPicker.sourceType = .photoLibrary
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            self.present(photoPicker, animated: true, completion: {
+                () -> Void in
+            })
+        }else{
+            SwiftProgressHUD.showOnlyText("未授予防问相册权限!")
+        }
+    }
+    //MARK:===============拍照
+    func initCameraPicker(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let  cameraPicker = UIImagePickerController()
+            cameraPicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            cameraPicker.allowsEditing = true
+            cameraPicker.sourceType = .camera
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                self.present(cameraPicker, animated: true, completion: { () -> Void in
+                })
+            }else{
+                SwiftProgressHUD.showOnlyText("未授予防问相机权限!")
+            }
+        } else {
+            SwiftProgressHUD.showOnlyText("不支持拍照!")
+        }
+    }
+    // MARK: ImagePicker Delegate 选择图片成功后代理
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let choseImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
+        let data = choseImage.jpegData(compressionQuality: 0.5)
+        hearView.headImage.image = choseImage
+        printLog(message: "\(String(describing: data))")
+        // 拍照
+        if picker.sourceType == .camera {
+        //保存相册
+        UIImageWriteToSavedPhotosAlbum(choseImage, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker:UIImagePickerController){
+        picker.dismiss(animated:true, completion:nil)
+    }
+    
+    //MARK:===============相机拍照自动保存到相册
+    @objc func image(image:UIImage,didFinishSavingWithError error:NSError?,contextInfo:AnyObject) {
+        if error != nil {
+            SwiftProgressHUD.showOnlyText("保存失败!")
+        } else {
+            SwiftProgressHUD.showOnlyText("保存成功!")
+        }
+    }
+ 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(centerCellHight)
     }
@@ -107,6 +187,8 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
         let bindWeixin = BindWeiXinController()
         // 绑定邮箱
         let bindEmailVC = BindEmailController()
+        // 实名认证
+        let realAuthenVC = RealAuthenController()
         // 设置密码
         let setPswVC = SettingPswController()
         
@@ -124,6 +206,9 @@ class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSo
         }else if(indexPath.section==1&&indexPath.row==2){
             bindEmailVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(bindEmailVC, animated: true)
+        }else if(indexPath.section==2&&indexPath.row==0){
+            realAuthenVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(realAuthenVC, animated: true)
         }else if(indexPath.section==3&&indexPath.row==0){
             setPswVC.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(setPswVC, animated: true)
