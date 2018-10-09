@@ -9,6 +9,9 @@
 import UIKit
 
 class UserCenterHeadView: UIView {
+    
+    var selectHeadBlock:(()->Void)?
+
     var owner = UIViewController()
     let lineView = UIView()
     let headImage = UIImageView() //头像
@@ -19,6 +22,13 @@ class UserCenterHeadView: UIView {
         super.init(frame: frame)
         self.backgroundColor = YCColorWhite
         self.initUi()
+        //加个手势
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(selectHeadTap))
+        self.addGestureRecognizer(gesture)
+    }
+    
+    @objc func selectHeadTap(sender: UITapGestureRecognizer) {
+        selectHeadBlock!()
     }
     
     func initUi() {

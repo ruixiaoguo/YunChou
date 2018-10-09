@@ -71,7 +71,14 @@ class PersionViewController: BaseController,UITableViewDelegate,UITableViewDataS
                 messageVC.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(messageVC, animated: true)
             }
-            
+            hearView.orderView.orderCallBlock = {[unowned self](tag:Int) in
+                let realAuthenVC = RealAuthenController()
+                if(tag==13){
+                    //实名认证
+                    realAuthenVC.hidesBottomBarWhenPushed = true
+                    self.navigationController?.pushViewController(realAuthenVC, animated: true)
+                }
+            }
             return hearView
         default:
             return nil

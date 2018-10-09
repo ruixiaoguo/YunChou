@@ -31,6 +31,4 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return image ?? UIImage()
     }
-
-
 }

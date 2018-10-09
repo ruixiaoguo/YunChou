@@ -1,0 +1,304 @@
+//
+//  RealAuthenController.swift
+//  YunChou
+//
+//  Created by grx on 2018/10/9.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import UIKit
+import SwiftProgressHUD
+
+class RealAuthenController: BaseController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    let mainScrollView = UIScrollView()
+    let headBgImage = UIImageView()
+    let inputBgView = UIView()
+    let upLoadPicBgView = UIView()
+    var uploadAlertController:UIAlertController!
+    var selTag:NSInteger?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.title = "实名认证"
+        self.view.backgroundColor = YCColorLight
+        self.leftView.isHidden = false
+        self.view.addSubview(mainScrollView)
+        mainScrollView.frame = self.view.bounds
+        mainScrollView.contentSize = CGSize(width: Main_Screen_Width, height: 630)
+        self.initUI()
+        self.initSaveButton()
+    }
+    
+    //MARK:===========创建视图
+    func initUI() {
+        //===============创建头部背景图片====================
+        headBgImage.image = UIImage(named: "realAuthenBg")
+        mainScrollView.addSubview(headBgImage)
+        headBgImage.frame = CGRect(x: 15, y: 15, width: Main_Screen_Width-30, height: 97)
+        let headTitleLable = UILabel()
+        headTitleLable.text = "身份认证"
+        headTitleLable.textColor = YCColorWhite
+        headTitleLable.font = YC_FONT_PFSC_Semibold(20)
+        headBgImage.addSubview(headTitleLable)
+        headTitleLable.snp.makeConstraints { (make) in
+            make.left.equalTo(25)
+            make.top.equalTo(25)
+        }
+        let headDisLable = UILabel()
+        headDisLable.text = "提交成功将获得100元代金券"
+        headDisLable.textColor = gof_ColorWithHex(0xB8CAFF)
+        headDisLable.font = YC_FONT_PFSC_Medium(12)
+        headBgImage.addSubview(headDisLable)
+        headDisLable.snp.makeConstraints { (make) in
+            make.top.equalTo(headTitleLable.snp.bottom).offset(5)
+            make.left.equalTo(headTitleLable)
+        }
+        //===============创建姓名身份证输入框====================
+        mainScrollView.addSubview(inputBgView)
+        inputBgView.backgroundColor = YCColorWhite
+        inputBgView.frame = CGRect(x: 0, y: (headBgImage.frame.maxY), width: Main_Screen_Width, height: 100)
+
+        let titleArray:Array = ["真实姓名","身份证号"]
+        let placehArray:Array = ["请输入真实姓名","请输入15位或者18位身份证号"]
+        for i in 0..<titleArray.count {
+            let titleLable = UILabel()
+            titleLable.text = titleArray[i]
+            titleLable.textColor = YCColorTitleBlack
+            titleLable.font = YC_FONT_PFSC_Medium(14)
+            inputBgView.addSubview(titleLable)
+            titleLable.snp.makeConstraints { (make) in
+                make.left.equalTo(20)
+                make.top.equalTo(i*50)
+                make.height.equalTo(50)
+            }
+            let textField = UITextField()
+            textField.placeholder = placehArray[i]
+            textField.textAlignment = NSTextAlignment.right
+            textField.textColor = YCColorTitleBlack
+            textField.font = YC_FONT_PFSC_Medium(14)
+            textField.tag = i+10
+            inputBgView.addSubview(textField)
+            textField.snp.makeConstraints { (make) in
+                make.right.equalTo(-20)
+                make.top.equalTo(i*50)
+                make.height.equalTo(50)
+            }
+            if(textField.tag==11){
+                textField.keyboardType = UIKeyboardType.numbersAndPunctuation
+            }
+        }
+        //分割线
+        let line = UIView()
+        line.backgroundColor = YCColorLight
+        inputBgView.addSubview(line)
+        line.snp.makeConstraints({ (make) in
+            make.top.equalTo(49)
+            make.left.right.equalTo(0)
+            make.height.equalTo(1)
+        })
+        //===============创建上传身份证====================
+        mainScrollView.addSubview(upLoadPicBgView)
+        upLoadPicBgView.backgroundColor = YCColorWhite
+        upLoadPicBgView.frame = CGRect(x: 0, y:(inputBgView.frame.maxY)+10, width: Main_Screen_Width, height: 295)
+
+        let upLoadTitleLable = UILabel()
+        upLoadTitleLable.text = "上传身份证照片"
+        upLoadTitleLable.textColor = YCColorBlack
+        upLoadTitleLable.font = YC_FONT_PFSC_Semibold(14)
+        upLoadPicBgView.addSubview(upLoadTitleLable)
+        upLoadTitleLable.snp.makeConstraints { (make) in
+            make.left.equalTo(20)
+            make.top.equalTo(15)
+        }
+        let upImageArray:Array = ["realAuthenZh","realAuthenFan"]
+        let width:NSInteger = NSInteger((Main_Screen_Width-20*3)/2)
+        for i in 0..<upImageArray.count {
+            let upImage = UIImageView()
+            upImage.image = UIImage(named: upImageArray[i])
+            upImage.tag = i+100
+            upImage.isUserInteractionEnabled = true
+            upImage.layer.cornerRadius = 3
+            upImage.layer.masksToBounds = true
+            upLoadPicBgView.addSubview(upImage)
+            //加个手势
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(selectRealAthenTap))
+            upImage.addGestureRecognizer(gesture)
+            upImage.snp.makeConstraints { (make) in
+                make.left.equalTo(20+i*(20+width))
+                make.top.equalTo(upLoadTitleLable.snp.bottom).offset(20)
+                make.width.equalTo(width)
+                make.height.equalTo(kWidth(R: 100))
+            }
+        }
+
+        let lastUpImage:UIImageView = self.view.viewWithTag(101) as! UIImageView
+        let upLoadDisLable = UILabel()
+        upLoadDisLable.text = "要求：文字清晰、无遮挡；支持jpg、pn，小于5M"
+        upLoadDisLable.textColor = YCColorBlack
+        upLoadDisLable.font = YC_FONT_PFSC_Regular(12)
+        upLoadPicBgView.addSubview(upLoadDisLable)
+        upLoadDisLable.snp.makeConstraints { (make) in
+            make.left.equalTo(20)
+            make.top.equalTo(lastUpImage.snp.bottom).offset(15)
+        }
+        let upsamTileArray:Array = ["边角缺失","照片模糊","闪光强烈","角度倾斜"]
+        let updisWidth:NSInteger = NSInteger((Main_Screen_Width-20*5)/4)
+        for i in 0..<upsamTileArray.count {
+            let updisImage = UIImageView()
+            updisImage.image = UIImage(named: "sample\(i)")
+            upLoadPicBgView.addSubview(updisImage)
+            updisImage.snp.makeConstraints { (make) in
+                make.left.equalTo(20+i*(20+updisWidth))
+                make.top.equalTo(upLoadDisLable.snp.bottom).offset(15)
+                make.width.equalTo(updisWidth)
+                make.height.equalTo(50)
+            }
+            let upSamLable = UILabel()
+            upSamLable.text = upsamTileArray[i]
+            upSamLable.textAlignment = NSTextAlignment.center
+            upSamLable.textColor = gof_ColorWithHex(0x747474)
+            upSamLable.font = YC_FONT_PFSC_Medium(13)
+            upLoadPicBgView.addSubview(upSamLable)
+            upSamLable.snp.makeConstraints { (make) in
+                make.left.equalTo(20+i*(20+updisWidth))
+                make.top.equalTo(upLoadDisLable.snp.bottom).offset(75)
+                make.width.equalTo(updisWidth)
+            }
+        }
+        //===============创建隐私描述====================
+        let tagImage = UIImageView()
+        tagImage.contentMode = .scaleAspectFill
+        tagImage.clipsToBounds = true
+        tagImage.image = UIImage(named: "info")
+        mainScrollView.addSubview(tagImage)
+        tagImage.snp.makeConstraints { (make) in
+            make.top.equalTo(upLoadPicBgView.snp.bottom).offset(15)
+            make.left.equalTo(15)
+            make.width.equalTo(17)
+            make.height.equalTo(17)
+        }
+        let agreementLable = UILabel()
+        agreementLable.numberOfLines = 0
+        agreementLable.text = "您的信息将收到严格保护，除办理相关登记手续外，不会用于其他用途。"
+        agreementLable.textColor = YCColorTitleBlack
+        agreementLable.font = YC_FONT_PFSC_Regular(12)
+        mainScrollView.addSubview(agreementLable)
+        agreementLable.frame = CGRect(x: 42, y: upLoadPicBgView.frame.maxY+15, width: Main_Screen_Width-65, height: 35)
+
+    }
+    
+    
+    //添加保存按钮
+    func initSaveButton() {
+        let footView = MyFootButtonView()
+        self.view.addSubview(footView)
+        footView.sureOverBtn.setTitle("保存", for: .normal)
+        footView.snp.makeConstraints { (make) in
+            make.bottom.equalTo(-SafeBottomMargin)
+            make.right.equalTo(-0)
+            make.left.equalTo(0)
+            make.height.equalTo(50)
+        }
+        footView.sureOverBtn.snp.updateConstraints { (make) in
+            make.left.equalTo(30)
+            make.right.equalTo(-30)
+            make.bottom.equalTo(-5)
+        }
+        footView.sureOvercallBlock = {[unowned self]() in
+            
+        }
+    }
+    
+    
+    @objc func selectRealAthenTap(sender: UITapGestureRecognizer) {
+        selTag = sender.view?.tag
+        self.uploadAlertController = UIAlertController(title:nil,
+                                                       message: nil, preferredStyle:UIAlertController.Style.actionSheet)
+        self.uploadAlertController.view.tintColor = YCColorBlue
+        let takePhoto = UIAlertAction(title: "拍照", style: UIAlertAction.Style.default){ (action:UIAlertAction)in
+            //填写需要的响应方法
+            self.initCameraPicker()
+        }
+        let photoLib = UIAlertAction(title: "从相册选择", style: UIAlertAction.Style.default){ (action:UIAlertAction)in
+            //填写需要的响应方法
+            self.initPhotoPicker()
+        }
+        let cancel = UIAlertAction(title: "取消", style: UIAlertAction.Style.default){ (action:UIAlertAction)in
+        }
+        self.uploadAlertController?.addAction(takePhoto)
+        self.uploadAlertController?.addAction(photoLib)
+        self.uploadAlertController?.addAction(cancel)
+        self.present(self.uploadAlertController, animated: true, completion: nil)
+    }
+    
+    //MARK:===============从相册中选择
+    func initPhotoPicker(){
+        let photoPicker =  UIImagePickerController()
+        photoPicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        photoPicker.allowsEditing = true
+        photoPicker.sourceType = .photoLibrary
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            self.present(photoPicker, animated: true, completion: {
+                () -> Void in
+            })
+        }else{
+            SwiftProgressHUD.showOnlyText("未授予防问相册权限!")
+        }
+    }
+    //MARK:===============拍照
+    func initCameraPicker(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let  cameraPicker = UIImagePickerController()
+            cameraPicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            cameraPicker.allowsEditing = true
+            cameraPicker.sourceType = .camera
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                self.present(cameraPicker, animated: true, completion: { () -> Void in
+                })
+            }else{
+                SwiftProgressHUD.showOnlyText("未授予防问相机权限!")
+            }
+        } else {
+            SwiftProgressHUD.showOnlyText("不支持拍照!")
+        }
+    }
+    // MARK: ImagePicker Delegate 选择图片成功后代理
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let choseImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
+        let data = choseImage.jpegData(compressionQuality: 0.5)
+        let selImageView:UIImageView = self.view.viewWithTag(selTag!) as! UIImageView
+        selImageView.image = choseImage
+        printLog(message: "\(String(describing: data))")
+        // 拍照
+        if picker.sourceType == .camera {
+            //保存相册
+            UIImageWriteToSavedPhotosAlbum(choseImage, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker:UIImagePickerController){
+        picker.dismiss(animated:true, completion:nil)
+    }
+    
+    //MARK:===============相机拍照自动保存到相册
+    @objc func image(image:UIImage,didFinishSavingWithError error:NSError?,contextInfo:AnyObject) {
+        if error != nil {
+            SwiftProgressHUD.showOnlyText("保存失败!")
+        } else {
+            SwiftProgressHUD.showOnlyText("保存成功!")
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for i in 0..<2 {
+            let textField:UITextField = self.view.viewWithTag(i+10) as! UITextField
+            textField.resignFirstResponder()
+        }
+    }
+    
+    override func backToPrevious() {
+        self.navigationController!.popViewController(animated: true)
+    }
+
+}
