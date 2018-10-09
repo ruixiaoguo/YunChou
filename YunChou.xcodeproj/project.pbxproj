@@ -42,6 +42,12 @@
 		1B175DBC215F6FD000019D1E /* YCProjectHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175DBB215F6FD000019D1E /* YCProjectHeaderView.swift */; };
 		1B175DBE215F80E900019D1E /* TwoTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B175DBD215F80E900019D1E /* TwoTestViewController.swift */; };
 		1B3ADB792160AF4B00040E66 /* LTSimpleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3ADB782160AF4A00040E66 /* LTSimpleManager.swift */; };
+		1BA4FE94216C3F21009F6F8D /* YCOrderBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA4FE93216C3F21009F6F8D /* YCOrderBottomView.swift */; };
+		1BA4FE96216C45C1009F6F8D /* CAGradientLayer+ycGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA4FE95216C45C1009F6F8D /* CAGradientLayer+ycGradientLayer.swift */; };
+		1BA4FE98216C4B7B009F6F8D /* YCNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA4FE97216C4B7B009F6F8D /* YCNumberButton.swift */; };
+		1BA4FE9A216C6D88009F6F8D /* YCOrderTopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA4FE99216C6D88009F6F8D /* YCOrderTopTableViewCell.swift */; };
+		1BA4FE9C216C6DAA009F6F8D /* YCOrderMiddleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA4FE9B216C6DAA009F6F8D /* YCOrderMiddleTableViewCell.swift */; };
+		1BA4FE9E216C6DBE009F6F8D /* YCOrderBottomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA4FE9D216C6DBE009F6F8D /* YCOrderBottomTableViewCell.swift */; };
 		1BAA5EB421606CDE007307D3 /* YCProjectBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA5EB321606CDE007307D3 /* YCProjectBottomView.swift */; };
 		1BF5A429216B03AC0082D241 /* YCInvestPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF5A428216B03AC0082D241 /* YCInvestPlanViewController.swift */; };
 		1BF5A42C216B05490082D241 /* YCInvestPlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF5A42B216B05490082D241 /* YCInvestPlanTableViewCell.swift */; };
@@ -155,6 +161,12 @@
 		1B175DBB215F6FD000019D1E /* YCProjectHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCProjectHeaderView.swift; sourceTree = "<group>"; };
 		1B175DBD215F80E900019D1E /* TwoTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoTestViewController.swift; sourceTree = "<group>"; };
 		1B3ADB782160AF4A00040E66 /* LTSimpleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTSimpleManager.swift; sourceTree = "<group>"; };
+		1BA4FE93216C3F21009F6F8D /* YCOrderBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCOrderBottomView.swift; sourceTree = "<group>"; };
+		1BA4FE95216C45C1009F6F8D /* CAGradientLayer+ycGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+ycGradientLayer.swift"; sourceTree = "<group>"; };
+		1BA4FE97216C4B7B009F6F8D /* YCNumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCNumberButton.swift; sourceTree = "<group>"; };
+		1BA4FE99216C6D88009F6F8D /* YCOrderTopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCOrderTopTableViewCell.swift; sourceTree = "<group>"; };
+		1BA4FE9B216C6DAA009F6F8D /* YCOrderMiddleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCOrderMiddleTableViewCell.swift; sourceTree = "<group>"; };
+		1BA4FE9D216C6DBE009F6F8D /* YCOrderBottomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCOrderBottomTableViewCell.swift; sourceTree = "<group>"; };
 		1BAA5EB321606CDE007307D3 /* YCProjectBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCProjectBottomView.swift; sourceTree = "<group>"; };
 		1BF5A428216B03AC0082D241 /* YCInvestPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCInvestPlanViewController.swift; sourceTree = "<group>"; };
 		1BF5A42B216B05490082D241 /* YCInvestPlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCInvestPlanTableViewCell.swift; sourceTree = "<group>"; };
@@ -408,6 +420,11 @@
 			children = (
 				1BF5A42B216B05490082D241 /* YCInvestPlanTableViewCell.swift */,
 				1BF5A432216B51310082D241 /* YCInvestOrderTableViewCell.swift */,
+				1BA4FE93216C3F21009F6F8D /* YCOrderBottomView.swift */,
+				1BA4FE97216C4B7B009F6F8D /* YCNumberButton.swift */,
+				1BA4FE99216C6D88009F6F8D /* YCOrderTopTableViewCell.swift */,
+				1BA4FE9B216C6DAA009F6F8D /* YCOrderMiddleTableViewCell.swift */,
+				1BA4FE9D216C6DBE009F6F8D /* YCOrderBottomTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -512,6 +529,7 @@
 				2122C8F2215346A200571301 /* UIBarButtonItem+Extesion.swift */,
 				21D5ABA8215C6D6100D5EC1F /* UIButton+Extension.swift */,
 				21D5ABE72160686600D5EC1F /* UITextField+Extension.swift */,
+				1BA4FE95216C45C1009F6F8D /* CAGradientLayer+ycGradientLayer.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -870,11 +888,14 @@
 				2122C8E92153467D00571301 /* APPMacro.swift in Sources */,
 				1BF5A429216B03AC0082D241 /* YCInvestPlanViewController.swift in Sources */,
 				1BAA5EB421606CDE007307D3 /* YCProjectBottomView.swift in Sources */,
+				1BA4FE98216C4B7B009F6F8D /* YCNumberButton.swift in Sources */,
 				21D5AB94215B34C600D5EC1F /* CenterTableCell.swift in Sources */,
 				2122C90C2153490E00571301 /* TabBarController.swift in Sources */,
+				1BA4FE96216C45C1009F6F8D /* CAGradientLayer+ycGradientLayer.swift in Sources */,
 				21D5AB9B215B5B3800D5EC1F /* AboutUsTableCell.swift in Sources */,
 				21D5AB88215A20DE00D5EC1F /* PersionHeadView.swift in Sources */,
 				1B175DB6215F4E0300019D1E /* twoTestViewController.swift in Sources */,
+				1BA4FE9E216C6DBE009F6F8D /* YCOrderBottomTableViewCell.swift in Sources */,
 				21D5ABE2215F0AAC00D5EC1F /* RegitAgreController.swift in Sources */,
 				21CCBADD216AEC4600078426 /* CumerInterController.swift in Sources */,
 				2122C8F6215346A200571301 /* UIView+Extension.swift in Sources */,
@@ -883,8 +904,6 @@
 				21D5ABCA215E2B8500D5EC1F /* ForgetPassController.swift in Sources */,
 				1B175DAF215F4DEF00019D1E /* YCProjectMessageTableViewCell.swift in Sources */,
 				1BF5A42F216B43D80082D241 /* YCInvestPlanModel.swift in Sources */,
-				2122C90F2153495400571301 /* MainViewController.swift in Sources */,
-
 				21D5ABC0215DF5B700D5EC1F /* LoginViewController.swift in Sources */,
 				21D5ABEA21606FEB00D5EC1F /* BindPhoneController.swift in Sources */,
 				2122C903215346B700571301 /* WRCycleCell.swift in Sources */,
@@ -926,10 +945,12 @@
 				2122C94F2154E29800571301 /* NewsViewController.swift in Sources */,
 				2122C902215346B700571301 /* WRCycleScrollView.swift in Sources */,
 				1B175DB9215F6F7200019D1E /* YCProjectDetailViewController.swift in Sources */,
+				1BA4FE94216C3F21009F6F8D /* YCOrderBottomView.swift in Sources */,
 				21D5ABDB215F049500D5EC1F /* NSMutableString+TagReplace.m in Sources */,
 				21D5AB9D215B739900D5EC1F /* BindEmailController.swift in Sources */,
 				2122C8F4215346A200571301 /* UIColor+Extension.swift in Sources */,
 				2122C8FA215346A200571301 /* UIBarButtonItem+Extesion.swift in Sources */,
+				1BA4FE9C216C6DAA009F6F8D /* YCOrderMiddleTableViewCell.swift in Sources */,
 				21D5ABA4215B88AF00D5EC1F /* MyFootButtonView.swift in Sources */,
 				21D5AB99215B55A200D5EC1F /* AboutUsController.swift in Sources */,
 				21CCBADB216AEA9700078426 /* RiskAssessController.swift in Sources */,
@@ -956,6 +977,7 @@
 				1BF5A433216B51310082D241 /* YCInvestOrderTableViewCell.swift in Sources */,
 				1B175D89215F4D4600019D1E /* LTTableViewProtocal.swift in Sources */,
 				1B175D8B215F4D4600019D1E /* LTPageView.swift in Sources */,
+				1BA4FE9A216C6D88009F6F8D /* YCOrderTopTableViewCell.swift in Sources */,
 				1BF5A42C216B05490082D241 /* YCInvestPlanTableViewCell.swift in Sources */,
 				21D5AB8A215A25D300D5EC1F /* persionAccountView.swift in Sources */,
 				21D5ABD8215F049500D5EC1F /* NSString+WPAttributedMarkup.m in Sources */,

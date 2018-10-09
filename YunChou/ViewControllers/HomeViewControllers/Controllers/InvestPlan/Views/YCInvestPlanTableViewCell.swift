@@ -77,7 +77,7 @@ class YCInvestPlanTableViewCell: UITableViewCell {
        let orderBtn = UIButton()
         orderBtn.setTitle("预约", for: .normal)
         orderBtn.setTitleColor(UIColor.white, for: .normal)
-        orderBtn.backgroundColor = YC_Color_DarkGreen
+        orderBtn.setSomeColors(superView: orderBtn, gradientColors: [gof_ColorWithHex(0x79BD28).cgColor,gof_ColorWithHex(0x9AE340).cgColor])
         orderBtn.titleLabel?.font = YC_FONT_PFSC_Semibold(17)
         return orderBtn
     }()

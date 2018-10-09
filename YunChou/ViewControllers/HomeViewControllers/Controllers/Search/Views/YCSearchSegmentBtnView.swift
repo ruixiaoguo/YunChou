@@ -14,12 +14,12 @@ class YCSearchSegmentBtnView: UIView {
     private lazy var timeBtn : YCButton = {
       let timeBtn = YCButton()
         timeBtn.setTitle("发布时间", for: .normal)
-        timeBtn.setImage(UIImage.init(named: "箭头"), for: .normal)
+        timeBtn.setImage(UIImage.init(named: "yc_sengUP"), for: .normal)
         timeBtn.setTitleColor(YC_FontColor_LightGray, for: .normal)
         timeBtn.titleLabel?.font = YC_FONT_PFSC_Regular(14)
         timeBtn.addTarget(self, action: #selector(timeBtnClickHandel), for: .touchUpInside)
-        timeBtn.layoutContent(style: YCButtonLayoutStyle.ImageRightContentStart, imgSize: CGSize(width: 20, height: 26), space: 5)
-        
+        timeBtn.layoutContent(style: YCButtonLayoutStyle.ImageRightContentStart, imgSize: CGSize(width: 16, height: 16), space: 1)
+
         
         return timeBtn
     }()
@@ -28,11 +28,11 @@ class YCSearchSegmentBtnView: UIView {
         let progresBtn = YCButton.init(type: UIButton.ButtonType.custom)
         
         progresBtn.setTitle("进度", for: .normal)
-        progresBtn.setImage(UIImage.init(named: "箭头"), for: .normal)
+        progresBtn.setImage(UIImage.init(named: "yc_sengUP"), for: .normal)
         progresBtn.setTitleColor(YC_FontColor_LightGray, for: .normal)
         progresBtn.titleLabel?.font = YC_FONT_PFSC_Regular(14)
         progresBtn.addTarget(self, action: #selector(progresBtnClickHandel), for: .touchUpInside)
-        progresBtn.layoutContent(style: YCButtonLayoutStyle.ImageRightContentStart, imgSize: CGSize(width: 20, height: 26), space: 5)
+        progresBtn.layoutContent(style: YCButtonLayoutStyle.ImageRightContentStart, imgSize: CGSize(width: 16, height: 16), space: 1)
 
         return progresBtn
     }()
@@ -44,7 +44,7 @@ class YCSearchSegmentBtnView: UIView {
         stateBtn.setTitleColor(YC_FontColor_LightGray, for: .normal)
         stateBtn.titleLabel?.font = YC_FONT_PFSC_Regular(14)
         stateBtn.addTarget(self, action: #selector(stateBtnClickHandel), for: .touchUpInside)
-        stateBtn.layoutContent(style: YCButtonLayoutStyle.ImageRightContentStart, imgSize: CGSize(width: 20, height: 26), space: 5)
+        stateBtn.layoutContent(style: YCButtonLayoutStyle.ImageRightContentStart, imgSize: CGSize(width: 16, height: 16), space: 1)
 
         return stateBtn
     }()

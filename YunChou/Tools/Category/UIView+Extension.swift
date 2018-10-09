@@ -184,4 +184,29 @@ extension UIView {
         superView.layer.insertSublayer(gradientLayer, at: 0)
         superView.layer.masksToBounds = true;
     }
+    
+    //MARK:======设置渐变色
+    func setSomeColors(superView:UIView , gradientColors:NSArray) {
+        //定义渐变的颜色
+//        let gradientColors = [gof_ColorWithHex(0x237AFF).cgColor,
+//                              gof_ColorWithHex(0x2A90FF).cgColor,
+//                              gof_ColorWithHex(0x309FFF).cgColor]
+        
+        //定义每种颜色所在的位置
+        let gradientLocations:[NSNumber] = [0.0,0.4,0.8,1.0]
+        
+        //创建CAGradientLayer对象并设置参数
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = (gradientColors as! [Any])
+        gradientLayer.locations = gradientLocations
+        
+        //设置渲染的起始结束位置（横向渐变）
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+        
+        //设置其CAGradientLayer对象的frame，并插入view的layer
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: Main_Screen_Width-30, height: 130)
+        superView.layer.insertSublayer(gradientLayer, at: 0)
+        superView.layer.masksToBounds = true;
+    }
 }

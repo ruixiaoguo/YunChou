@@ -61,6 +61,11 @@ class YCInvestOrderTableViewCell: UITableViewCell {
     }()
     
     
+    private lazy var numBtn : YCNumberButton = {
+       let numBtn = YCNumberButton ()
+        return numBtn
+    }()
+    
     
     private lazy var tipLB2 : UILabel = {
         let tipLB2 = UILabel()
@@ -116,6 +121,31 @@ class YCInvestOrderTableViewCell: UITableViewCell {
     }()
     
     
+    private lazy var selectBtn : UIButton = {
+        let selectBtn = UIButton()
+        selectBtn.setImage(UIImage.init(named: "yc_order_normal"), for: .selected)
+        selectBtn.setImage(UIImage.init(named: "yc_order_select"), for: .normal)
+        selectBtn.addTarget(self, action: #selector(selectBtnClickHandel(sender:)), for: .touchUpInside)
+        
+        return selectBtn
+    }()
+    
+    private lazy var textbc : UIView = {
+       let textbc = UIView()
+        textbc.backgroundColor = YCBackground_LightColor
+        return textbc
+    }()
+    
+    private lazy var sayText : UILabel = {
+       let sayText = UILabel()
+        sayText.textColor = YC_FontColor_102Gray
+        sayText.font = YC_FONT_PFSC_Regular(13)
+        sayText.numberOfLines  = 0
+        return sayText
+    }()
+    
+    
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -123,6 +153,12 @@ class YCInvestOrderTableViewCell: UITableViewCell {
         createSubView()
         
     }
+    
+    
+    @objc func selectBtnClickHandel(sender : UIButton){
+        sender.isSelected = !sender.isSelected
+    }
+
     
     
     func createSubView(){
@@ -191,6 +227,16 @@ class YCInvestOrderTableViewCell: UITableViewCell {
             make.height.equalTo(21)
         }
         
+        backvc1.addSubview(self.numBtn)
+        numBtn.snp.makeConstraints { (make) in
+            make.top.equalTo(17)
+            make.right.equalTo(-15)
+            make.width.equalTo(110)
+            make.height.equalTo(30)
+        }
+        
+        
+        
         backvc1.addSubview(self.tipLB2)
         tipLB2.snp.makeConstraints { (make) in
             make.top.equalTo(tipLB1.snp.bottom).offset(30)
@@ -255,6 +301,47 @@ class YCInvestOrderTableViewCell: UITableViewCell {
         }
         
         
+        backvc2.addSubview(self.selectBtn)
+        selectBtn.snp.makeConstraints { (make) in
+            make.top.left.equalTo(15)
+            make.width.height.equalTo(20)
+        }
+        
+        backvc2.addSubview(self.textbc)
+        textbc.snp.makeConstraints { (make) in
+            make.left.equalTo(selectBtn.snp.right).offset(12)
+            make.top.equalTo(15)
+            make.right.equalTo(-12)
+            
+        }
+        textbc.layer.cornerRadius = 6
+        
+        textbc.addSubview(self.sayText)
+        sayText.snp.makeConstraints { (make) in
+            make.top.equalTo(12)
+            make.left.equalTo(15)
+            make.right.equalTo(-15)
+        }
+        
+        
+        let lin4 = UILabel()
+        textbc.addSubview(lin4)
+        lin4.snp.makeConstraints { (make) in
+            make.top.equalTo(sayText.snp.bottom).offset(20)
+            make.left.right.equalTo(0)
+            make.height.equalTo(0.01)
+            make.bottom.equalTo(0)
+        }
+        
+        let lin5 = UILabel()
+        backvc2.addSubview(lin5)
+        lin5.snp.makeConstraints { (make) in
+            make.top.equalTo(textbc.snp.bottom).offset(12)
+            make.left.right.equalTo(0)
+            make.height.equalTo(0.01)
+            make.bottom.equalTo(0)
+        }
+        
         bcimage.image = UIImage.init(named: "yc_invest_bcimage")
 
         titleLB.text = "复华丽江国际度假世界-收益权方案-"
@@ -284,14 +371,25 @@ class YCInvestOrderTableViewCell: UITableViewCell {
         tipLB1.text = "选择份数"
         numLB.text = "您还可以添加4份"
         
+        numBtn.currentNum = "1"
+        numBtn.maxNum = "5"
+        
         tipLB2.text = "订单金额"
         momeyLB1.text = "￥30000.00"
         
         tipLB3.text = "预约金说明"
-        tipImage.image = UIImage.init(named: "yc_invest_tipImage")
+        tipImage.image = UIImage.init(named: "yc_order_tips")
         let cont = "预约斤为投资金额1%，认购时自动抵扣，若您最终放弃认购，预约金将转为代金券，不可退现。预约斤为投资金额1%，认购时自动抵扣，若您最终放弃认购，预约金将转为代金券，不可退现。"
         contentLB.attributedText = YC_FONT_RowSpacing(5 , YC_FONT_PFSC_Medium(14), cont)
       
+        
+        let say = "本人王子，身份证号码130746587698764556.我已认真阅读并同意《风险提示书》及其他相关条款和协议，资源预约人民币30000.00元，并支付预约金300.00元。本人已充分知晓预约金的使用说明，并同意按照预约金说明支付预约金。"
+        sayText.attributedText = YC_FONT_RowSpacing(5 , YC_FONT_PFSC_Regular(13), say)
+        
+        
+        numBtn.numberHasChangedBlolc = { (numStr) -> () in
+            print("-------:\(numStr)")
+        }
         
     }
     

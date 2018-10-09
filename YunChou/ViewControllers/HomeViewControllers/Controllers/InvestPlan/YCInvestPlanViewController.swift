@@ -105,6 +105,7 @@ extension YCInvestPlanViewController:UITableViewDelegate,UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: false)
         
         let vc = YCInvestOrderViewController()
+        vc.types = 1
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

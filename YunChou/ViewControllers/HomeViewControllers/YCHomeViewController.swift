@@ -97,9 +97,6 @@ class YCHomeViewController: BaseController {
     func someBlokHandel(){
         topNavBarView.searchBlock = {
             print("souzuo")
-            
-            
-            
             let vc = YCSearchViewController()
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
