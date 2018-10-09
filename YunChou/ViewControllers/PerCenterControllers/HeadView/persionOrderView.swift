@@ -12,6 +12,7 @@ class persionOrderView: UIView {
 
     let imagesArray = ["myOrder","myProject","myCalendar","myAuthen"]
     let titlesArray = ["我的订单","已投项目","分红日历","实名认证"]
+    var orderCallBlock:((_ tag: Int)->Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,6 +31,7 @@ class persionOrderView: UIView {
                 make.width.equalTo(width)
                 make.height.equalTo(80)
             })
+            orderButton.addTarget(self, action: #selector(orderClick(_:)), for: .touchUpInside)
             let orderImage = UIImageView()
             orderImage.tag = i+100
             orderImage.image = UIImage(named: imagesArray[i])
@@ -55,6 +57,11 @@ class persionOrderView: UIView {
             })
         }
     }
+    
+    @objc func orderClick(_ button:UIButton){
+       orderCallBlock!(button.tag)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
