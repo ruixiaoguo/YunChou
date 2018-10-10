@@ -50,26 +50,21 @@ class YCHomeHeaderView: UIView {
             make.top.left.right.equalToSuperview()
             make.height.equalTo(170)
         }
-        
-        
-        //        self.pagerView.itemSize = CGSize.init(width: YYScreenWidth-60, height: 140)
-        
-        
     }
     
     //MARK: 暂用，待优化。
-    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        for tempView in self.subviews {
-            if tempView.isKind(of: FSPagerView.self) {
-                let button = tempView as! FSPagerView
-                let newPoint = self.convert(point, to: button)
-                if button.bounds.contains(newPoint) {
-                    return true
-                }
-            }
-        }
-        return false
-    }
+//    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+//        for tempView in self.subviews {
+//            if tempView.isKind(of: FSPagerView.self) {
+//                let button = tempView as! FSPagerView
+//                let newPoint = self.convert(point, to: button)
+//                if button.bounds.contains(newPoint) {
+//                    return true
+//                }
+//            }
+//        }
+//        return false
+//    }
 }
 
 extension YCHomeHeaderView:FSPagerViewDelegate,FSPagerViewDataSource{
@@ -79,13 +74,14 @@ extension YCHomeHeaderView:FSPagerViewDelegate,FSPagerViewDataSource{
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        cell.imageView?.image = UIImage.init(named: self.datas?[index] as! String)
+            cell.imageView?.image = UIImage.init(named: self.datas?[index] as! String)
         //        cell.imageView?.kf.setImage(with: URL(string:(self.focus?.data?[index].cover)!))
         return cell
     }
     
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        
+        pagerView.deselectItem(at: index, animated: false)
+        pagerView.scrollToItem(at: index, animated: false)
         self.bonnerPageBlok?()
         
         print(index)

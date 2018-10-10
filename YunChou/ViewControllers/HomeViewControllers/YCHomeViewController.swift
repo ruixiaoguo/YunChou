@@ -34,15 +34,13 @@ class YCHomeViewController: BaseController {
         let titleLayout = LTLayout()
         titleLayout.sliderWidth = 15.0
         titleLayout.isShowBackImage = true
+//        titleLayout.isAverage = true
+        titleLayout.scale = 1.1
         return titleLayout
     }()
     
     
     private func managerReact() -> CGRect{
-//        let BarH = UIApplication.shared.statusBarFrame.size.height + 44
-//
-//        let H: CGFloat = iPhoneXS ? (view.bounds.height - BarH - 34) : view.bounds.height - BarH
-//        return CGRect(x: 0, y: 0, width: view.bounds.width, height: H)
         
         return CGRect(x: 0, y: 0, width: Main_Screen_Width, height: Main_Screen_Height - YC_TabbarHeight)
     }
@@ -73,6 +71,7 @@ class YCHomeViewController: BaseController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "投资"
+
         self.view.backgroundColor = UIColor.white
         view.addSubview(advancedManager)
         advancedManagerConfig()
@@ -139,8 +138,10 @@ extension YCHomeViewController:LTAdvancedScrollViewDelegate{
         if (offsetY > NaviBarHeight) {
             let alpha = (offsetY - NaviBarHeight) / NaviBarHeight
             topNavBarView.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: alpha)
+            topNavBarView.alphaChange(alpha: alpha)
         } else {
             topNavBarView.backgroundColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: 0)
+            topNavBarView.alphaChange(alpha: 0)
         }
     }
     

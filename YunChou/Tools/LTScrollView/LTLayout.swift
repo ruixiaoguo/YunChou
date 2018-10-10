@@ -30,7 +30,7 @@ public class LTLayout: NSObject {
     @objc public var bottomLineColor: UIColor? = UIColor.white
     
     /* 整个滑块的高，pageTitleView的高 */
-    @objc public var sliderHeight: CGFloat = 65.0
+    @objc public var sliderHeight: CGFloat = 75.0
     
     /* 单个滑块的宽度, 一旦设置，将不再自动计算宽度，而是固定为你传递的值 */
     @objc public var sliderWidth: CGFloat = glt_sliderDefaultWidth

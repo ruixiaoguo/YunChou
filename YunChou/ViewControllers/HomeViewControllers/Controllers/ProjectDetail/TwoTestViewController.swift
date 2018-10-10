@@ -14,7 +14,7 @@ class TwoTestViewController: UIViewController {
     private let HomeCell = "HomeCell"
     
     lazy var tableView : UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x: 0, y: 50, width: Main_Screen_Width, height: view.bounds.height-120), style: UITableView.Style.grouped)
+        let tableView = UITableView.init(frame: CGRect(x: 0, y: 50, width: Main_Screen_Width, height: view.bounds.height - 50 - StatusBarHeight - SafeBottomMargin - 50), style: UITableView.Style.grouped)
 
 //        let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
         tableView.delegate = self
@@ -54,6 +54,8 @@ class TwoTestViewController: UIViewController {
 ////            make.bottom.equalTo(view).offset(-50)
 //        }
         
+        tableView.contentOffset = CGPoint(x: 0, y: 5)
+
         if #available(iOS 11.0, *) {
             glt_scrollView?.contentInsetAdjustmentBehavior = .never
         } else {
@@ -62,6 +64,10 @@ class TwoTestViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print("==========")
+//    }
 }
 
 extension TwoTestViewController:UITableViewDelegate,UITableViewDataSource{

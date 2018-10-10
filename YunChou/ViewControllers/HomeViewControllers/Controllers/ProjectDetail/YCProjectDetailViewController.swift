@@ -14,13 +14,7 @@ class YCProjectDetailViewController: UIViewController {
         return ["项目介绍", "投资方案", "信息披露"]
     }()
     
-    private lazy var viewControllers: [UIViewController] = {
-        var vcs = [UIViewController]()
-        for _ in titles {
-            vcs.append(TwoTestViewController())
-        }
-        return vcs
-    }()
+    private lazy var viewControllers: [UIViewController] = [TwoTestViewController(),TwoTestViewController(),YCInfoOpenViewController()]
     
 //    private lazy var projectHeader : YCProjectHeaderView = {
 //       let project = YCProjectHeaderView.init(frame: CGRect(x: 0, y: 0, width: Main_Screen_Width, height: 548))
@@ -57,7 +51,7 @@ class YCProjectDetailViewController: UIViewController {
         let simpleManager = LTSimpleManager(frame: managerReact(), viewControllers: viewControllers, titles: titles, currentViewController: self, layout: self.layout)
         /* 设置代理 监听滚动 */
         simpleManager.delegate = self
-        simpleManager.hoverY = 20
+        simpleManager.hoverY = StatusBarHeight
         return simpleManager
     }()
     

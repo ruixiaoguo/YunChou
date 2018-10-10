@@ -96,8 +96,11 @@ class YCTagsViewTableViewCell: UITableViewCell {
         if (tempBtn == btn) {
             //不做处理
         } else {
-            btn.backgroundColor = UIColor.gray;
-            tempBtn.backgroundColor = YCBackground_LightColor;
+            btn.backgroundColor = YC_Color_DarkBlue
+            btn.setTitleColor(YCColorWhite, for: .normal)
+            tempBtn.backgroundColor = YCBackground_LightColor
+            tempBtn.setTitleColor(YC_FontColor_45Dark, for: .normal)
+
         }
         tempBtn = btn;
     }

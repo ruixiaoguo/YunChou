@@ -69,7 +69,11 @@ public class LTPageTitleView: UIView {
     }()
   
     private lazy var sliderLineView: UIView = {
-        let sliderLineView = UIView(frame: CGRect(x: layout.lrMargin, y: bounds.height - layout.bottomLineHeight - layout.pageBottomLineHeight - 8, width: 0, height: layout.bottomLineHeight))
+        var botm : CGFloat = 10
+        if layout.isShowBackImage{
+            botm = 16
+        }
+        let sliderLineView = UIView(frame: CGRect(x: layout.lrMargin, y: bounds.height - layout.bottomLineHeight - layout.pageBottomLineHeight - botm, width: 0, height: layout.bottomLineHeight))
         sliderLineView.backgroundColor = layout.bottomLineColor
         return sliderLineView
     }()
@@ -124,7 +128,7 @@ extension LTPageTitleView {
             }
             
             Y = 15
-            toTopHeight = 20
+            toTopHeight = 30
             
         }else{
             toTopHeight = 10

@@ -15,6 +15,18 @@ class YCOrderBottomView: UIView {
     typealias BtnClickBlok = () ->Void
     var orderBtnBlock:BtnClickBlok?
     
+    @objc public var btnStr : String = ""{
+        didSet{
+            sureBtn.setTitle(btnStr, for: .normal)
+        }
+    }
+    
+    @objc public var moneyStr : String = ""{
+        didSet{
+            moneyLB.text = moneyStr
+        }
+    }
+    
     private lazy var tipsLB : UILabel = {
         let tipsLB = UILabel ()
         tipsLB.textColor = YC_FontColor_45Dark
