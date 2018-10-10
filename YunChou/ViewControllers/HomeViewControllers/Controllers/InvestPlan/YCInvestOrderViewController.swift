@@ -13,28 +13,19 @@ class YCInvestOrderViewController: BaseController {
     private let InvestPlanOrderCell = "InvestPlanOrderCell"
     //1 预约  2 认购
     @objc public var types : Int = 1
-
     
     var twoArr : NSArray = NSArray()
-    
-    
     
     lazy var tableView : UITableView = {
         let tableView = UITableView.init(frame: .zero, style: UITableView.Style.plain)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = YCColorWhite
-//        tableView.backgroundColor = YCBackground_LightColor
-//        tableView.register(YCInvestOrderTableViewCell.self, forCellReuseIdentifier: InvestPlanOrderCell)
-        
-        
+
         tableView.register(YCOrderTopTableViewCell.self, forCellReuseIdentifier: "ordertop")
         tableView.register(YCOrderMiddleTableViewCell.self, forCellReuseIdentifier: "ordermiddle")
         tableView.register(YCOrderBottomTableViewCell.self, forCellReuseIdentifier: "orderbottom")
 
-        
-        
-        
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
             tableView.estimatedSectionFooterHeight = 0;
@@ -54,21 +45,27 @@ class YCInvestOrderViewController: BaseController {
     
     private lazy var bottomView : YCOrderBottomView = {
        let bottomView = YCOrderBottomView()
+        if types == 2{
+            bottomView.btnStr = "认购"
+        }
         return bottomView
     }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "预约"
         self.leftView.isHidden = false
         
         
         if types == 1{
+            self.navigationItem.title = "预约"
+
           twoArr = [["title":"选择份数","allNum":"您还可以添加4份","currentNum":"1","maxNum":"5"],
              ["title":"订单金额","money":"￥30000.00"],
              ["title":"预约金说明","content":"预约斤为投资金额1%，认购时自动抵扣，若您最终放弃认购，预约金将转为代金券，不可退现。"]]
         }else{
+            self.navigationItem.title = "认购"
+
             twoArr = [["title":"选择份数","allNum":"您还可以添加4份","currentNum":"1","maxNum":"5"],
                       ["title":"订单金额","money":"￥30000.00"],
                       ["title":"代金券","money":"-19389.00"],
@@ -98,9 +95,18 @@ class YCInvestOrderViewController: BaseController {
     
     func someBlock(){
         bottomView.orderBtnBlock = {
-            let vc = YCInvestOrderViewController()
-            vc.types = 2
-            self.navigationController?.pushViewController(vc, animated: true)
+            
+            if self.types == 2{
+                //跳转支付方式页面
+                let vc = YCPayWayViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+
+            }else{
+                //跳转认购
+                let vc = YCInvestOrderViewController()
+                vc.types = 2
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 }
@@ -145,10 +151,6 @@ extension YCInvestOrderViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell:YCInvestOrderTableViewCell = tableView.dequeueReusableCell(withIdentifier: InvestPlanOrderCell, for: indexPath) as! YCInvestOrderTableViewCell
-//        cell.selectionStyle = .none
-//        return cell
-
         if indexPath.section == 0 {
             let cell:YCOrderTopTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ordertop", for: indexPath) as! YCOrderTopTableViewCell
             cell.selectionStyle = .none

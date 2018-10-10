@@ -73,7 +73,7 @@ class YCSearchBoxView: UIView {
     func createSubViews(){
         self.addSubview(self.backVC)
         backVC.snp.makeConstraints { (make) in
-            make.top.equalTo(self).offset(5)
+            make.top.equalTo(self).offset(3)
             make.height.equalTo(33)
             make.left.equalTo(self).offset(12)
             make.right.equalTo(self).offset(-70)
@@ -97,7 +97,7 @@ class YCSearchBoxView: UIView {
         self.addSubview(self.cancelBtn)
         cancelBtn.snp.makeConstraints { (make) in
             make.right.equalTo(-14)
-            make.top.equalTo(5)
+            make.top.equalTo(3)
             make.width.equalTo(50)
             make.height.equalTo(33)
         }
@@ -106,7 +106,7 @@ class YCSearchBoxView: UIView {
         lin.backgroundColor = YCBackground_LightColor
         self.addSubview(lin)
         lin.snp.makeConstraints { (make) in
-            make.bottom.equalTo(1)
+            make.bottom.equalTo(-1)
             make.left.right.equalTo(0)
             make.height.equalTo(1)
         }

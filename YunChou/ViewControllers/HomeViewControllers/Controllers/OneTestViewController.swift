@@ -15,7 +15,7 @@ class OneTestViewController: BaseController {
     private let HomeCell = "HomeCell"
 
     lazy var tableView : UITableView = {
-        let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
+        let tableView = UITableView.init(frame: CGRect(x: 0, y: 0, width: Main_Screen_Width, height: view.bounds.height-YC_TabbarHeight), style: UITableView.Style.grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = YCBackground_LightColor
@@ -40,14 +40,20 @@ class OneTestViewController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-view.backgroundColor = UIColor.yellow
+//view.backgroundColor = UIColor.yellow
         view.addSubview(tableView)
-        glt_scrollView = tableView
         
-        tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(0)
-            make.left.right.equalTo(view).offset(0)
-            make.bottom.equalTo(view).offset(0)
+//        tableView.snp.makeConstraints { (make) in
+//            make.top.equalTo(view).offset(0)
+//            make.left.right.equalTo(view).offset(0)
+//            make.bottom.equalTo(view).offset(0)
+//        }
+        glt_scrollView = tableView
+
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
         }
 
         // Do any additional setup after loading the view.
@@ -65,6 +71,9 @@ extension OneTestViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0{
+            return 0.01
+        }
         return 10
     }
     

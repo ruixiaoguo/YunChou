@@ -54,6 +54,11 @@
 		1BF5A42F216B43D80082D241 /* YCInvestPlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF5A42E216B43D80082D241 /* YCInvestPlanModel.swift */; };
 		1BF5A431216B50DE0082D241 /* YCInvestOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF5A430216B50DE0082D241 /* YCInvestOrderViewController.swift */; };
 		1BF5A433216B51310082D241 /* YCInvestOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF5A432216B51310082D241 /* YCInvestOrderTableViewCell.swift */; };
+		1BF937BD216D8F2C00F86F80 /* YCPayWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF937BC216D8F2C00F86F80 /* YCPayWayViewController.swift */; };
+		1BF937BF216D8F5B00F86F80 /* YCPayWayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF937BE216D8F5B00F86F80 /* YCPayWayTableViewCell.swift */; };
+		1BF937C1216D919400F86F80 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF937C0216D919400F86F80 /* BaseTableViewController.swift */; };
+		1BF937C3216DA31300F86F80 /* YCInfoOpenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF937C2216DA31300F86F80 /* YCInfoOpenViewController.swift */; };
+		1BF937C5216DA3E200F86F80 /* YCInfoOpenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF937C4216DA3E200F86F80 /* YCInfoOpenTableViewCell.swift */; };
 		2122C8B521533F7300571301 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2122C8B421533F7300571301 /* AppDelegate.swift */; };
 		2122C8BC21533F7400571301 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2122C8BB21533F7400571301 /* Assets.xcassets */; };
 		2122C8BF21533F7400571301 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2122C8BD21533F7400571301 /* LaunchScreen.storyboard */; };
@@ -174,6 +179,11 @@
 		1BF5A42E216B43D80082D241 /* YCInvestPlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCInvestPlanModel.swift; sourceTree = "<group>"; };
 		1BF5A430216B50DE0082D241 /* YCInvestOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCInvestOrderViewController.swift; sourceTree = "<group>"; };
 		1BF5A432216B51310082D241 /* YCInvestOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCInvestOrderTableViewCell.swift; sourceTree = "<group>"; };
+		1BF937BC216D8F2C00F86F80 /* YCPayWayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCPayWayViewController.swift; sourceTree = "<group>"; };
+		1BF937BE216D8F5B00F86F80 /* YCPayWayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCPayWayTableViewCell.swift; sourceTree = "<group>"; };
+		1BF937C0216D919400F86F80 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		1BF937C2216DA31300F86F80 /* YCInfoOpenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCInfoOpenViewController.swift; sourceTree = "<group>"; };
+		1BF937C4216DA3E200F86F80 /* YCInfoOpenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YCInfoOpenTableViewCell.swift; sourceTree = "<group>"; };
 		2122C8B121533F7200571301 /* YunChou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YunChou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2122C8B421533F7300571301 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2122C8BB21533F7400571301 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -393,6 +403,7 @@
 				1B175DBA215F6F8700019D1E /* Views */,
 				1B175DB8215F6F7200019D1E /* YCProjectDetailViewController.swift */,
 				1B175DBD215F80E900019D1E /* TwoTestViewController.swift */,
+				1BF937C2216DA31300F86F80 /* YCInfoOpenViewController.swift */,
 			);
 			path = ProjectDetail;
 			sourceTree = "<group>";
@@ -402,6 +413,7 @@
 			children = (
 				1B175DBB215F6FD000019D1E /* YCProjectHeaderView.swift */,
 				1BAA5EB321606CDE007307D3 /* YCProjectBottomView.swift */,
+				1BF937C4216DA3E200F86F80 /* YCInfoOpenTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -413,6 +425,7 @@
 				1BF5A42A216B03D70082D241 /* Views */,
 				1BF5A428216B03AC0082D241 /* YCInvestPlanViewController.swift */,
 				1BF5A430216B50DE0082D241 /* YCInvestOrderViewController.swift */,
+				1BF937BC216D8F2C00F86F80 /* YCPayWayViewController.swift */,
 			);
 			path = InvestPlan;
 			sourceTree = "<group>";
@@ -427,6 +440,7 @@
 				1BA4FE99216C6D88009F6F8D /* YCOrderTopTableViewCell.swift */,
 				1BA4FE9B216C6DAA009F6F8D /* YCOrderMiddleTableViewCell.swift */,
 				1BA4FE9D216C6DBE009F6F8D /* YCOrderBottomTableViewCell.swift */,
+				1BF937BE216D8F5B00F86F80 /* YCPayWayTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -554,6 +568,7 @@
 				2122C9062153490E00571301 /* BaseHtmlController.swift */,
 				2122C9072153490E00571301 /* BaseNavigationController.swift */,
 				2122C9082153490E00571301 /* TabBarController.swift */,
+				1BF937C0216D919400F86F80 /* BaseTableViewController.swift */,
 			);
 			path = BaseController;
 			sourceTree = "<group>";
@@ -891,9 +906,11 @@
 				2122C8E92153467D00571301 /* APPMacro.swift in Sources */,
 				1BF5A429216B03AC0082D241 /* YCInvestPlanViewController.swift in Sources */,
 				1BAA5EB421606CDE007307D3 /* YCProjectBottomView.swift in Sources */,
+				1BF937C3216DA31300F86F80 /* YCInfoOpenViewController.swift in Sources */,
 				1BA4FE98216C4B7B009F6F8D /* YCNumberButton.swift in Sources */,
 				21D5AB94215B34C600D5EC1F /* CenterTableCell.swift in Sources */,
 				2122C90C2153490E00571301 /* TabBarController.swift in Sources */,
+				1BF937BF216D8F5B00F86F80 /* YCPayWayTableViewCell.swift in Sources */,
 				1BA4FE96216C45C1009F6F8D /* CAGradientLayer+ycGradientLayer.swift in Sources */,
 				21D5AB9B215B5B3800D5EC1F /* AboutUsTableCell.swift in Sources */,
 				21D5AB88215A20DE00D5EC1F /* PersionHeadView.swift in Sources */,
@@ -921,6 +938,7 @@
 				21D5ABB2215CC0F100D5EC1F /* SelectAdressController.swift in Sources */,
 				1B175DBC215F6FD000019D1E /* YCProjectHeaderView.swift in Sources */,
 				1BF5A431216B50DE0082D241 /* YCInvestOrderViewController.swift in Sources */,
+				1BF937C1216D919400F86F80 /* BaseTableViewController.swift in Sources */,
 				2122C900215346B700571301 /* WRProxy.swift in Sources */,
 				21D5ABC6215E0B5300D5EC1F /* SMSCodeView.swift in Sources */,
 				1B175DB5215F4E0300019D1E /* OneTestViewController.swift in Sources */,
@@ -945,6 +963,7 @@
 				2122C94C2154C5BF00571301 /* TCMoyaNetWork.swift in Sources */,
 				1B175D90215F4DBE00019D1E /* UIButtonExtension.swift in Sources */,
 				2122C9092153490E00571301 /* BaseController.swift in Sources */,
+				1BF937BD216D8F2C00F86F80 /* YCPayWayViewController.swift in Sources */,
 				2122C94F2154E29800571301 /* NewsViewController.swift in Sources */,
 				2122C902215346B700571301 /* WRCycleScrollView.swift in Sources */,
 				1B175DB9215F6F7200019D1E /* YCProjectDetailViewController.swift in Sources */,
@@ -955,6 +974,7 @@
 				2122C8FA215346A200571301 /* UIBarButtonItem+Extesion.swift in Sources */,
 				1BA4FE9C216C6DAA009F6F8D /* YCOrderMiddleTableViewCell.swift in Sources */,
 				21D5ABA4215B88AF00D5EC1F /* MyFootButtonView.swift in Sources */,
+				1BF937C5216DA3E200F86F80 /* YCInfoOpenTableViewCell.swift in Sources */,
 				21CCBAE5216C75FE00078426 /* RealAuthenController.swift in Sources */,
 				21D5AB99215B55A200D5EC1F /* AboutUsController.swift in Sources */,
 				21CCBADB216AEA9700078426 /* RiskAssessController.swift in Sources */,
@@ -1129,7 +1149,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7B79DUQBF7;
+				DEVELOPMENT_TEAM = V7JHM69EG3;
 				INFOPLIST_FILE = YunChou/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1151,7 +1171,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7B79DUQBF7;
+				DEVELOPMENT_TEAM = V7JHM69EG3;
 				INFOPLIST_FILE = YunChou/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

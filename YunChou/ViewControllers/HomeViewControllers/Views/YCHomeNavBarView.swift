@@ -19,6 +19,15 @@ class YCHomeNavBarView: UIView {
     var messageBlock:messageBtnClickBlok?
     
     
+    private lazy var titleLB : UILabel = {
+       let lb = UILabel(frame: CGRect(x: 100, y: statusBarH, width: Main_Screen_Width - 200, height: NaviBarHeight - statusBarH))
+        lb.text = "复华众筹"
+        lb.textAlignment = NSTextAlignment.center
+        lb.font = YC_FONT_PFSC_Medium(17)
+        lb.textColor = YC_FontColor_45Dark
+        return lb
+    }()
+    
     private lazy var oneBtn : UIButton={
         let oneBtn = UIButton(type: UIButton.ButtonType.custom)
         oneBtn.frame = CGRect(x: self.frame.size.width - 90, y: statusBarH + 10, width: 22, height: 22)
@@ -45,9 +54,15 @@ class YCHomeNavBarView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func alphaChange(alpha : CGFloat){
+        titleLB.alpha = alpha
+    }
+    
     func createSubView(){
         self.addSubview(oneBtn)
         self.addSubview(twoBtn)
+        self.addSubview(titleLB)
+        titleLB.alpha = 0
     }
     
     

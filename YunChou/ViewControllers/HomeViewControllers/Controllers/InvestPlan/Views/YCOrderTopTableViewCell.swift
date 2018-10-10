@@ -278,7 +278,7 @@ class YCOrderTopTableViewCell: UITableViewCell {
         }
 
         tipBtn.setTitle("请正确填写收件信息，以便向您寄送回报商品或协议", for: .normal)
-        addressBtn.setTitle("东三环北路28号 博瑞大厦B座5层东三环北路28号 博瑞大厦B座5层东三环北路28号 博瑞大厦B座5层", for: .normal)
+        addressBtn.setTitle("东三环北路28号 博瑞大厦B座5层", for: .normal)
         nameLB.text = "毛特你  138 8383 7878"
         
     
