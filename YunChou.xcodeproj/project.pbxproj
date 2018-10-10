@@ -85,6 +85,17 @@
 		21CCBAE0216B255400078426 /* CumerInterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBADF216B255400078426 /* CumerInterCell.swift */; };
 		21CCBAE3216B41D600078426 /* SettingPswController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAE2216B41D600078426 /* SettingPswController.swift */; };
 		21CCBAE5216C75FE00078426 /* RealAuthenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAE4216C75FE00078426 /* RealAuthenController.swift */; };
+		21CCBAE8216D987900078426 /* AcountmoneyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAE7216D987900078426 /* AcountmoneyController.swift */; };
+		21CCBAEC216D9D7300078426 /* MyCouponController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAEB216D9D7300078426 /* MyCouponController.swift */; };
+		21CCBAEE216D9D7E00078426 /* MyJFController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAED216D9D7E00078426 /* MyJFController.swift */; };
+		21CCBAF0216DCF1300078426 /* AccountMoneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAEF216DCF1300078426 /* AccountMoneyCell.swift */; };
+		21CCBAF2216DD5DC00078426 /* AcMoneyHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAF1216DD5DC00078426 /* AcMoneyHeadView.swift */; };
+		21CCBAF5216DE7AC00078426 /* MyBankCartController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAF4216DE7AC00078426 /* MyBankCartController.swift */; };
+		21CCBAF7216DE87500078426 /* SaveMoneyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAF6216DE87500078426 /* SaveMoneyController.swift */; };
+		21CCBAF9216DE88D00078426 /* TakeMoneyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAF8216DE88D00078426 /* TakeMoneyController.swift */; };
+		21CCBAFB216DEA1200078426 /* MyJFHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAFA216DEA1200078426 /* MyJFHeadView.swift */; };
+		21CCBAFD216DEA5100078426 /* MyJfCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAFC216DEA5100078426 /* MyJfCell.swift */; };
+		21CCBAFF216DF31800078426 /* MyJfShopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CCBAFE216DF31800078426 /* MyJfShopController.swift */; };
 		21D5AB83215A0EE000D5EC1F /* PersionTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5AB81215A0EE000D5EC1F /* PersionTableCell.swift */; };
 		21D5AB85215A0EF200D5EC1F /* PersionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5AB84215A0EF200D5EC1F /* PersionModel.swift */; };
 		21D5AB88215A20DE00D5EC1F /* PersionHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D5AB87215A20DE00D5EC1F /* PersionHeadView.swift */; };
@@ -208,6 +219,17 @@
 		21CCBADF216B255400078426 /* CumerInterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CumerInterCell.swift; sourceTree = "<group>"; };
 		21CCBAE2216B41D600078426 /* SettingPswController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPswController.swift; sourceTree = "<group>"; };
 		21CCBAE4216C75FE00078426 /* RealAuthenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealAuthenController.swift; sourceTree = "<group>"; };
+		21CCBAE7216D987900078426 /* AcountmoneyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcountmoneyController.swift; sourceTree = "<group>"; };
+		21CCBAEB216D9D7300078426 /* MyCouponController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCouponController.swift; sourceTree = "<group>"; };
+		21CCBAED216D9D7E00078426 /* MyJFController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJFController.swift; sourceTree = "<group>"; };
+		21CCBAEF216DCF1300078426 /* AccountMoneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountMoneyCell.swift; sourceTree = "<group>"; };
+		21CCBAF1216DD5DC00078426 /* AcMoneyHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcMoneyHeadView.swift; sourceTree = "<group>"; };
+		21CCBAF4216DE7AC00078426 /* MyBankCartController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBankCartController.swift; sourceTree = "<group>"; };
+		21CCBAF6216DE87500078426 /* SaveMoneyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMoneyController.swift; sourceTree = "<group>"; };
+		21CCBAF8216DE88D00078426 /* TakeMoneyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMoneyController.swift; sourceTree = "<group>"; };
+		21CCBAFA216DEA1200078426 /* MyJFHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJFHeadView.swift; sourceTree = "<group>"; };
+		21CCBAFC216DEA5100078426 /* MyJfCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJfCell.swift; sourceTree = "<group>"; };
+		21CCBAFE216DF31800078426 /* MyJfShopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyJfShopController.swift; sourceTree = "<group>"; };
 		21D5AB81215A0EE000D5EC1F /* PersionTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersionTableCell.swift; sourceTree = "<group>"; };
 		21D5AB84215A0EF200D5EC1F /* PersionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersionModel.swift; sourceTree = "<group>"; };
 		21D5AB87215A20DE00D5EC1F /* PersionHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersionHeadView.swift; sourceTree = "<group>"; };
@@ -561,6 +583,10 @@
 		2122C910215349CA00571301 /* PerCenterControllers */ = {
 			isa = PBXGroup;
 			children = (
+				21CCBAF3216DE79A00078426 /* MyBankCartController */,
+				21CCBAEA216D9D5C00078426 /* MyCouponController */,
+				21CCBAE9216D9D5C00078426 /* MyJFController */,
+				21CCBAE6216D986D00078426 /* AcountmoneyController */,
 				21D5ABF02160A42C00D5EC1F /* BindInfoController */,
 				21CCBAD9216AE9F200078426 /* RiskAssessController */,
 				21CCBAD8216AE9F200078426 /* CumerInterController */,
@@ -607,6 +633,45 @@
 				21CCBADF216B255400078426 /* CumerInterCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		21CCBAE6216D986D00078426 /* AcountmoneyController */ = {
+			isa = PBXGroup;
+			children = (
+				21CCBAE7216D987900078426 /* AcountmoneyController.swift */,
+				21CCBAEF216DCF1300078426 /* AccountMoneyCell.swift */,
+				21CCBAF1216DD5DC00078426 /* AcMoneyHeadView.swift */,
+				21CCBAF6216DE87500078426 /* SaveMoneyController.swift */,
+				21CCBAF8216DE88D00078426 /* TakeMoneyController.swift */,
+			);
+			path = AcountmoneyController;
+			sourceTree = "<group>";
+		};
+		21CCBAE9216D9D5C00078426 /* MyJFController */ = {
+			isa = PBXGroup;
+			children = (
+				21CCBAED216D9D7E00078426 /* MyJFController.swift */,
+				21CCBAFC216DEA5100078426 /* MyJfCell.swift */,
+				21CCBAFA216DEA1200078426 /* MyJFHeadView.swift */,
+				21CCBAFE216DF31800078426 /* MyJfShopController.swift */,
+			);
+			path = MyJFController;
+			sourceTree = "<group>";
+		};
+		21CCBAEA216D9D5C00078426 /* MyCouponController */ = {
+			isa = PBXGroup;
+			children = (
+				21CCBAEB216D9D7300078426 /* MyCouponController.swift */,
+			);
+			path = MyCouponController;
+			sourceTree = "<group>";
+		};
+		21CCBAF3216DE79A00078426 /* MyBankCartController */ = {
+			isa = PBXGroup;
+			children = (
+				21CCBAF4216DE7AC00078426 /* MyBankCartController.swift */,
+			);
+			path = MyBankCartController;
 			sourceTree = "<group>";
 		};
 		21D5AB80215A0EE000D5EC1F /* Cells */ = {
@@ -915,6 +980,8 @@
 				21D5ABD9215F049500D5EC1F /* WPHotspotLabel.m in Sources */,
 				1B175DAA215F4DEF00019D1E /* YCSearchBoxView.swift in Sources */,
 				21D5AB85215A0EF200D5EC1F /* PersionModel.swift in Sources */,
+				21CCBAFD216DEA5100078426 /* MyJfCell.swift in Sources */,
+				21CCBAF7216DE87500078426 /* SaveMoneyController.swift in Sources */,
 				21D5ABA1215B83CB00D5EC1F /* MyAdressController.swift in Sources */,
 				21D5ABB0215CA7DF00D5EC1F /* AddAdressView.swift in Sources */,
 				21CCBAE3216B41D600078426 /* SettingPswController.swift in Sources */,
@@ -927,21 +994,27 @@
 				1B175D8C215F4D4600019D1E /* LTVCExtension.swift in Sources */,
 				1B175DA8215F4DEF00019D1E /* YCSearchSegmentBtnView.swift in Sources */,
 				2122C8F7215346A200571301 /* UIImage+Extension.swift in Sources */,
+				21CCBAFB216DEA1200078426 /* MyJFHeadView.swift in Sources */,
 				1B3ADB792160AF4B00040E66 /* LTSimpleManager.swift in Sources */,
 				21D5ABAE215CA34B00D5EC1F /* AddMyAdressController.swift in Sources */,
+				21CCBAEE216D9D7E00078426 /* MyJFController.swift in Sources */,
 				1B175DB0215F4DEF00019D1E /* YCSystemMessageTableViewCell.swift in Sources */,
+				21CCBAE8216D987900078426 /* AcountmoneyController.swift in Sources */,
 				1B175DA5215F4DEF00019D1E /* YCSearchViewController.swift in Sources */,
 				21D5ABAC215C86BC00D5EC1F /* MyAdressModel.swift in Sources */,
 				2122C91C215373A700571301 /* StringMd5.swift in Sources */,
 				21D5ABE82160686600D5EC1F /* UITextField+Extension.swift in Sources */,
 				21D5ABA7215C6A9F00D5EC1F /* MyAdressCell.swift in Sources */,
+				21CCBAF5216DE7AC00078426 /* MyBankCartController.swift in Sources */,
 				21D5ABF42160AC0200D5EC1F /* BindTableCell.swift in Sources */,
 				1B175DB2215F4DEF00019D1E /* YCMessageTableViewCell.swift in Sources */,
 				1B175DB1215F4DEF00019D1E /* YCAccountMessageTableViewCell.swift in Sources */,
 				21D5ABEC2160711800D5EC1F /* BindWeiXinController.swift in Sources */,
 				1B175D87215F4D4600019D1E /* LTAdvancedManager.swift in Sources */,
+				21CCBAF9216DE88D00078426 /* TakeMoneyController.swift in Sources */,
 				1B175D6F215F4BB600019D1E /* YCHomeViewController.swift in Sources */,
 				2122C90A2153490E00571301 /* BaseHtmlController.swift in Sources */,
+				21CCBAF0216DCF1300078426 /* AccountMoneyCell.swift in Sources */,
 				2122C94C2154C5BF00571301 /* TCMoyaNetWork.swift in Sources */,
 				1B175D90215F4DBE00019D1E /* UIButtonExtension.swift in Sources */,
 				2122C9092153490E00571301 /* BaseController.swift in Sources */,
@@ -960,11 +1033,14 @@
 				21CCBADB216AEA9700078426 /* RiskAssessController.swift in Sources */,
 				1B175DA9215F4DEF00019D1E /* YCSearchResultView.swift in Sources */,
 				1B175D88215F4D4600019D1E /* LTLayout.swift in Sources */,
+				21CCBAEC216D9D7300078426 /* MyCouponController.swift in Sources */,
 				2122C8F5215346A200571301 /* Date+Extension.swift in Sources */,
+				21CCBAF2216DD5DC00078426 /* AcMoneyHeadView.swift in Sources */,
 				2122C8B521533F7300571301 /* AppDelegate.swift in Sources */,
 				21D5AB92215B2C5C00D5EC1F /* UserCenterController.swift in Sources */,
 				1B175D8D215F4D4600019D1E /* LTScrollExtension.swift in Sources */,
 				1B175D86215F4D4600019D1E /* LTDispatchQueue.swift in Sources */,
+				21CCBAFF216DF31800078426 /* MyJfShopController.swift in Sources */,
 				21D5AB83215A0EE000D5EC1F /* PersionTableCell.swift in Sources */,
 				1B175DA6215F4DEF00019D1E /* YCTagsViewTableViewCell.swift in Sources */,
 				1B175D8E215F4D4600019D1E /* LTTableView.swift in Sources */,

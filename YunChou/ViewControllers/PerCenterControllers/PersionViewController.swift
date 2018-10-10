@@ -46,7 +46,7 @@ class PersionViewController: BaseController,UITableViewDelegate,UITableViewDataS
         case 0:
             return 320
         default:
-            return 15
+            return 10
         }
     }
     
@@ -71,6 +71,28 @@ class PersionViewController: BaseController,UITableViewDelegate,UITableViewDataS
                 messageVC.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(messageVC, animated: true)
             }
+            //查看余额
+            hearView.accountView.checkAccountMoneyBlock = {[unowned self](money:String) in
+                let accountMoneyVC = AcountmoneyController()
+                accountMoneyVC.accountMoneyStr = money
+                accountMoneyVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(accountMoneyVC, animated: true)
+            }
+            //查看积分
+            hearView.accountView.checkJFBlock = {[unowned self](jf:String) in
+                let myJfVC = MyJFController()
+                myJfVC.jfStr = jf
+                myJfVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(myJfVC, animated: true)
+            }
+            //查看代金券
+            hearView.accountView.checkCouponBlock = {[unowned self](coupon:String) in
+                let myCouponVC = MyCouponController()
+                myCouponVC.couponStr = coupon
+                myCouponVC.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(myCouponVC, animated: true)
+            }
+            //订单栏
             hearView.orderView.orderCallBlock = {[unowned self](tag:Int) in
                 let realAuthenVC = RealAuthenController()
                 if(tag==13){

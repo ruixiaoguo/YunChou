@@ -41,13 +41,13 @@ class SettingPswController: BaseController {
 //            make.height.equalTo(0)
 //        }
         let headImage = UIImageView()
-        headImage.image = UIImage(named: "login_phone")
+        headImage.image = UIImage(named: "set_phone")
         modifyPassView.addSubview(headImage)
         headImage.snp.makeConstraints { (make) in
-            make.top.equalTo(15)
+            make.top.equalTo(20)
             make.left.equalTo(30)
             make.width.equalTo(20)
-            make.height.equalTo(25)
+            make.height.equalTo(20)
         }
         //标题
         let titleLable = UILabel()
@@ -144,7 +144,7 @@ class SettingPswController: BaseController {
             make.top.equalTo(titleLable.snp.bottom).offset(10)
             make.height.equalTo(100)
         }
-        let imageArray:Array = ["login_pass","login_pass"]
+        let imageArray:Array = ["set_pass","set_pass"]
         let placeArray:Array = ["请输入新密码","请确认密码 (6-18位数字或字母)"]
 
         //MARK:=======图标
@@ -153,10 +153,10 @@ class SettingPswController: BaseController {
             headImage.image = UIImage(named: imageArray[i])
             bgView.addSubview(headImage)
             headImage.snp.makeConstraints { (make) in
-                make.top.equalTo(15+i*45)
+                make.top.equalTo(18+i*45)
                 make.left.equalTo(30)
                 make.width.equalTo(20)
-                make.height.equalTo(25)
+                make.height.equalTo(20)
             }
             let textFeild = UITextField()
             bgView.addSubview(textFeild)

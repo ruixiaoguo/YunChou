@@ -10,6 +10,10 @@ import UIKit
 
 class persionAccountView: UIView {
 
+    var checkAccountMoneyBlock:((_ money:String)->Void)?
+    var checkJFBlock:((_ jf:String)->Void)?
+    var checkCouponBlock:((_ coupon:String)->Void)?
+
     let titleLable = UILabel() //账户余额
     let seeButton = UIButton() //查看按钮
     let moneyLable = UILabel() //账户金额
@@ -28,10 +32,16 @@ class persionAccountView: UIView {
         let bgViewImage = UIImageView()
         bgViewImage.image = UIImage(named: "Rectangle")
         bgViewImage.layer.cornerRadius = 5
+        bgViewImage.layer.masksToBounds = true
+        bgViewImage.isUserInteractionEnabled = true
         self.addSubview(bgViewImage)
         bgViewImage.snp.makeConstraints({ (make) in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
         })
+        //添加手势
+        let geust = UITapGestureRecognizer(target: self, action: #selector(checkAccountMoney))
+        bgViewImage.addGestureRecognizer(geust)
+        
         self.layer.cornerRadius = 5
         //账户标题
         titleLable.text = "账户余额"
@@ -72,7 +82,7 @@ class persionAccountView: UIView {
             make.left.equalTo(15)
             make.height.equalTo(40)
         })
-        //积分标题
+        //积分
         JfLable.text = "100"
         JfLable.font = YC_FONT_PFSC_Medium(14)
         JfLable.textColor = gof_ColorWithHex(0xB9DAFF)
@@ -82,6 +92,7 @@ class persionAccountView: UIView {
             make.left.equalTo(JfTitleLable.snp.right).offset(0)
             make.height.equalTo(40)
         })
+        
         //代金券标题
         CouponTitleLable.text = "代金券："
         CouponTitleLable.font = YC_FONT_PFSC_Medium(14)
@@ -111,7 +122,43 @@ class persionAccountView: UIView {
             make.width.equalTo(120)
             make.height.equalTo(40)
         })
+        //查看我的积分
+        let checkJfBtn = UIButton()
+        self.addSubview(checkJfBtn)
+        checkJfBtn.snp.makeConstraints({ (make) in
+            make.top.equalTo(moneyLable.snp.bottom).offset(-5)
+            make.left.equalTo(15)
+            make.right.equalTo(CouponTitleLable.snp.left).offset(-0)
+            make.height.equalTo(40)
+        })
+        checkJfBtn.addTarget(self, action: #selector(checkJfBtnClick), for: .touchUpInside)
+        //查看我的代金券
+        let checkCouponBtn = UIButton()
+        self.addSubview(checkCouponBtn)
+        checkCouponBtn.snp.makeConstraints({ (make) in
+            make.top.equalTo(moneyLable.snp.bottom).offset(-5)
+            make.left.equalTo(checkJfBtn.snp.right).offset(0)
+            make.width.equalTo(100)
+            make.height.equalTo(40)
+        })
+        checkCouponBtn.addTarget(self, action: #selector(checkCouponBtnClick), for: .touchUpInside)
     }
+    
+    //MARK:==========查看账户余额
+    @objc func checkAccountMoney(sender:UITapGestureRecognizer) {
+        checkAccountMoneyBlock!(moneyLable.text!)
+    }
+    
+    //MARK:==========查看我的积分
+    @objc func checkJfBtnClick(sender:UITapGestureRecognizer) {
+        checkJFBlock!(JfLable.text!)
+    }
+    
+    //MARK:==========查看代金券
+    @objc func checkCouponBtnClick(sender:UITapGestureRecognizer) {
+        checkCouponBlock!(CouponLable.text!)
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

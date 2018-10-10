@@ -25,3 +25,7 @@ let MyAdressCellIdentifier = "myAdressCellIdentifier"
 let BindTableCellIdentifier = "bindTableCellIdentifier"
 //消费权益
 let CumerInterCellIdentifier = "cumerInterCellIdentifier"
+//账户余额
+let AccountMoneyCellIdentifier = "accountMoneyCellIdentifier"
+//我的积分
+let MyJFCellIdentifier = "myJFCellIdentifier"

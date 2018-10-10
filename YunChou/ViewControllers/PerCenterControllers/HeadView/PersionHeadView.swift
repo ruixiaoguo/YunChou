@@ -103,7 +103,7 @@ class PersionHeadView: UIView {
         lineView.snp.makeConstraints({ (make) in
             make.left.equalTo(0)
             make.right.equalTo(0)
-            make.height.equalTo(15)
+            make.height.equalTo(10)
             make.bottom.equalTo(self).offset(-1)
         })
     }

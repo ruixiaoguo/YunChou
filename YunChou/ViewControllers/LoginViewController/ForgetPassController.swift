@@ -21,6 +21,7 @@ class ForgetPassController: BaseController {
         self.creaUI()
         self.creatSmsViewUI()
         self.creatPassWordUI()
+        self.initSureButton()
     }
     
     //MARK:==========创建视图
@@ -152,6 +153,50 @@ class ForgetPassController: BaseController {
             make.left.equalTo(passImage.snp.right).offset(17)
             make.right.equalTo(-15)
             make.height.equalTo(53)
+        }
+    }
+    
+    //添加确定按钮
+    func initSureButton() {
+        let footView = MyFootButtonView()
+        self.view.addSubview(footView)
+        footView.backgroundColor = YCColorLight
+        footView.sureOverBtn.setTitle("确定", for: .normal)
+        footView.snp.makeConstraints { (make) in
+            make.bottom.equalTo(-(SafeBottomMargin+65))
+            make.right.equalTo(-0)
+            make.left.equalTo(0)
+            make.height.equalTo(60)
+        }
+        footView.sureOverBtn.snp.updateConstraints { (make) in
+            make.height.equalTo(45)
+        }
+        footView.sureOverBtn.layer.cornerRadius = 45/2
+        footView.sureOvercallBlock = {[unowned self]() in
+            
+        }
+        //底部描述
+        let disLable = UILabel()
+        disLable.textAlignment = NSTextAlignment.center
+        disLable.text = "24小时客服热线：400 186 234"
+        disLable.font = YC_FONT_PFSC_Medium(13)
+        disLable.textColor = gof_ColorWithHex(0xA6A6A6)
+        self.view.addSubview(disLable)
+        disLable.snp.makeConstraints { (make) in
+            make.top.equalTo(footView.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+        }
+        //标签
+        let tagImage = UIImageView()
+        tagImage.contentMode = .scaleAspectFill
+        tagImage.clipsToBounds = true
+        tagImage.image = UIImage(named: "callIcon")
+        self.view.addSubview(tagImage)
+        tagImage.snp.makeConstraints { (make) in
+            make.top.equalTo(footView.snp.bottom).offset(12.5)
+            make.left.equalTo(disLable.snp.left).offset(-25)
+            make.width.equalTo(14)
+            make.height.equalTo(14)
         }
     }
     
