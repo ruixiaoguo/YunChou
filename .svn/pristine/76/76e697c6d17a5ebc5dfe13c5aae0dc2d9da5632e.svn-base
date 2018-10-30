@@ -1,0 +1,236 @@
+//
+//  YCCalendarDayView.m
+//  caltextsssss
+//
+//  Created by yy on 2018/10/12.
+//  Copyright © 2018年 yy. All rights reserved.
+//
+
+#import "YCCalendarDayView.h"
+#import "YCCalendarSupport.h"
+#import "NSDate+YCCategory.h"
+#import "YCCalendarManager.h"
+
+@interface YCCalendarDaySelectView : CAShapeLayer
+
+@property (nonatomic, strong) UIColor *selectColor;
+
+@property (nonatomic, assign) BOOL fill;
+
+@end
+
+@implementation YCCalendarDaySelectView
+
+- (instancetype)init
+{
+    if (self = [super init])
+    {
+        self.fill = YES;
+        self.backgroundColor = [UIColor clearColor].CGColor;
+        self.selectColor = Calendar_DayView_SelectColor;
+    }
+    return self;
+}
+
+- (void)reloadPath
+{
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, 2, 2)  cornerRadius:self.bounds.size.width / 2];
+    self.path = path.CGPath;
+    if (self.fill)
+    {
+        self.fillColor = self.selectColor.CGColor;
+    }
+    else
+    {
+        self.fillColor = [UIColor clearColor].CGColor;
+    }
+    self.strokeColor = self.selectColor.CGColor;
+    self.lineWidth = 2;
+    self.lineCap = kCALineCapRound;
+    self.strokeStart = 0;
+    self.strokeEnd = 1;
+}
+
+
+
+@end
+
+@interface YCCalendarDayView ()
+
+@property (nonatomic, strong) YCCalendarDaySelectView *selectView;
+
+@property (nonatomic, strong) YCCalendarDaySelectView *currentDateView;
+
+@property (nonatomic, strong) YCCalendarDaySelectView *pointView;
+
+@end
+
+@implementation YCCalendarDayView
+
+- (instancetype)init
+{
+    if (self = [super init])
+    {
+        [self addSubview:self.contentView];
+        [self.contentView.layer addSublayer:self.currentDateView];
+        [self.contentView.layer addSublayer:self.selectView];
+        [self.contentView.layer addSublayer:self.pointView];
+        [self.contentView addSubview:self.textLabel];
+        
+    }
+    return self;
+}
+
+- (void)layoutSubviews
+{
+    self.contentView.frame = self.bounds;
+    
+    CGFloat backViewWidth = self.contentView.bounds.size.height;
+    
+    self.currentDateView.frame = CGRectMake((self.contentView.bounds.size.width - backViewWidth) / 2  , 0, backViewWidth, backViewWidth);
+    self.selectView.frame = self.currentDateView.frame;
+    self.textLabel.frame = CGRectMake(0, self.contentView.bounds.size.height / 2 - 7.5, self.contentView.bounds.size.width, 15);
+    self.pointView.frame = CGRectMake(self.contentView.bounds.size.width / 2 - 2, CGRectGetMaxY(self.textLabel.frame), 4, 4);
+    [self.currentDateView reloadPath];
+    [self.selectView reloadPath];
+    [self.pointView reloadPath];
+    [super layoutSubviews];
+}
+
+#pragma mark - get / set
+- (void)setSelected:(BOOL)selected
+{
+    //    if (self.selectView.hidden == !selected) return;
+    [super setSelected:selected];
+    self.selectView.hidden = !selected;
+    if (!self.selectView.hidden) {
+        self.textLabel.textColor = [UIColor whiteColor];
+    }else{
+        self.textLabel.textColor =  Calendar_DayView_TextColor;
+
+        [self judgementDateSetColor:_date];
+    }
+    
+    if (selected)
+    {
+        if ([YCCalendarManager defaultManager].selectDayView != self)
+        {
+            //            [YCCalendarManager defaultManager].selectDayView.selected = NO;
+            [YCCalendarManager defaultManager].selectDayView = self;
+        }
+        //        [_dateArr addObject:self.date];
+        //        [[YCCalendarManager defaultManager].selectDateArr addObject:self.date];
+        
+        //        [YCCalendarManager defaultManager].selectDateArr = [NSArray arrayWithArray:_dateArr];
+        //        [YCCalendarManager defaultManager].selectDate = self.date;
+    }
+}
+
+- (void)setHaveEvent:(BOOL)haveEvent
+{
+    if (_haveEvent == haveEvent) return;
+    _haveEvent = haveEvent;
+    self.pointView.hidden = !_haveEvent;
+}
+
+- (void)setDate:(NSDate *)date
+{
+    _date = date;
+    self.currentDateView.hidden = !date.isToday;
+    
+    self.textLabel.text = [_date YC_stringWithFormate:@"dd"];
+    [self judgementDateSetColor:_date];
+    
+}
+
+//判断日期类型赋值颜色
+-(void)judgementDateSetColor:(NSDate *)date{
+    if (self.month == _date.month || [YCCalendarManager defaultManager].displayType == YCCalendarDisplayWeekType)
+    {
+        
+        //判断是否是周末
+        if ([date weekday:date]) {
+            self.textLabel.textColor = Calendar_DayView_WeekColor;
+        }else{
+            for (NSDate *dates in [YCCalendarManager defaultManager].selectDateArr) {
+                if ([date isEqualToDate:dates]) {
+                    self.textLabel.textColor =  Calendar_DayView_TextColor;
+                }else{
+                    self.textLabel.textColor = Calendar_DayView_TextColor;
+                }
+            }
+            if (date.isToday) {
+                self.textLabel.textColor = [UIColor whiteColor];
+            }else{
+                self.textLabel.textColor = Calendar_DayView_TextColor;
+            }
+        }
+        
+    }
+    else
+    {
+        if ([date weekday:date]) {
+            self.textLabel.textColor = RGBACOLOR(255, 197, 198, 1);
+        }else{
+            self.textLabel.textColor = Calendar_DayView_NOMonthTextColor;
+        }
+    }
+}
+
+- (UIView *)contentView
+{
+    if (!_contentView)
+    {
+        _contentView = [[UIView alloc] init];
+        _contentView.backgroundColor = [UIColor whiteColor];
+    }
+    return _contentView;
+}
+
+- (YCCalendarDaySelectView *)currentDateView
+{
+    if (!_currentDateView)
+    {
+        _currentDateView = [[YCCalendarDaySelectView alloc] init];
+        _currentDateView.hidden = YES;
+        _currentDateView.fill = YES;
+        _currentDateView.selectColor = Calendar_DayView_WeekColor;
+    }
+    return _currentDateView;
+}
+
+- (YCCalendarDaySelectView *)selectView
+{
+    if (!_selectView)
+    {
+        _selectView = [[YCCalendarDaySelectView alloc] init];
+        _selectView.hidden = YES;
+    }
+    return _selectView;
+}
+
+- (YCCalendarDaySelectView *)pointView
+{
+    if (!_pointView)
+    {
+        _pointView = [[YCCalendarDaySelectView alloc] init];
+        _pointView.selectColor = Calendar_DayView_PointColor;
+        _pointView.hidden = YES;
+    }
+    return _pointView;
+}
+
+- (UILabel *)textLabel
+{
+    if (!_textLabel)
+    {
+        _textLabel = [[UILabel alloc] init];
+        _textLabel.textAlignment = NSTextAlignmentCenter;
+        _textLabel.font = yc_Font_PFSCRegular(16);
+        _textLabel.adjustsFontSizeToFitWidth = YES;
+    }
+    return _textLabel;
+}
+
+
+@end

@@ -1,0 +1,184 @@
+//
+//  YCProjectMessageTableViewCell.swift
+//  swiftRNTest
+//
+//  Created by yy on 2018/9/27.
+//  Copyright © 2018年 yy. All rights reserved.
+//
+
+import UIKit
+
+class YCProjectMessageTableViewCell: UITableViewCell {
+
+    
+   private lazy var timeLable : UILabel = {
+        let timeLable = UILabel ()
+        timeLable.font = YC_FONT_PFSC_Medium(13)
+        timeLable.textColor = gof_RGBAColor(187,187,187,1)
+        timeLable.textAlignment = NSTextAlignment.center
+        return timeLable
+    }()
+    
+   private lazy var backView : UIView = {
+        let backView = UIView ()
+        backView.backgroundColor = YCColorWhite
+        backView.layer.cornerRadius = 7
+        return backView
+    }()
+    
+   private lazy var titleLable : UILabel = {
+        let titleLable = UILabel ()
+        titleLable.font = YC_FONT_PFSC_Medium(18)
+        titleLable.textColor = YC_FontColor_45Dark
+        return titleLable
+    }()
+    
+    private lazy var imgView : UIImageView = {
+       let imgView = UIImageView()
+        imgView.backgroundColor = UIColor.yellow
+        return imgView
+    }()
+    
+   private lazy var contentLable : UILabel = {
+        let contentLable = UILabel ()
+        contentLable.font = YC_FONT_PFSC_Medium(14)
+        contentLable.textColor = YC_FontColor_DarkGray
+        contentLable.numberOfLines = 0
+        return contentLable
+    }()
+    
+    private lazy var lin : UILabel = {
+       let lin = UILabel()
+        lin.backgroundColor = gof_RGBAColor(237,239,244,1)
+        return lin
+    }()
+    
+    private lazy var lookLable : UILabel = {
+        let lookLable = UILabel()
+        lookLable.text = "查看详情"
+        lookLable.font = YC_FONT_PFSC_Medium(13)
+        lookLable.textColor = YC_FontColor_LightGray
+        return lookLable
+    }()
+    
+    private lazy var rowImage : UIImageView = {
+       let rowImage = UIImageView()
+        
+        return rowImage
+    }()
+    
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        createSubViews()
+        self.backgroundColor = YCBackground_LightColor
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    var messageDate:YCMessageDateModel?{
+        didSet{
+            guard let model = messageDate else { return }
+            
+            timeLable.text = model.createTime
+            titleLable.text = model.title
+            let str = model.message
+            contentLable.attributedText = YC_FONT_RowSpacing(5, YC_FONT_PFSC_Medium(14),str!)
+            
+            imgView.sd_setImage(with:NSURL.init(string: model.img ?? "")! as URL, placeholderImage: UIImage(named: placeholderImg()), options: [], completed: nil)
+            
+        }
+    }
+    
+    func createSubViews(){
+        self.addSubview(self.timeLable)
+        timeLable.snp.makeConstraints { (make) in
+            make.top.left.right.equalTo(self).offset(0)
+            make.height.equalTo(36)
+        }
+        
+        self.addSubview(self.backView)
+        backView.snp.makeConstraints { (make) in
+            make.top.equalTo(timeLable.snp.bottom).offset(0)
+            make.left.equalTo(self).offset(10)
+            make.right.equalTo(self).offset(-10)
+            make.bottom.equalTo(0)//这句一定要放在最后一个view不然无法自动计算高度
+        }
+        
+        backView.addSubview(self.titleLable)
+        titleLable.snp.makeConstraints { (make) in
+            make.top.equalTo(backView).offset(0)
+            make.left.equalTo(backView).offset(10)
+            make.height.equalTo(46)
+            make.right.equalTo(backView).offset(-10)
+        }
+        
+        backView.addSubview(self.imgView)
+        imgView.snp.makeConstraints { (make) in
+            make.top.equalTo(titleLable.snp.bottom).offset(0)
+            make.left.equalTo(backView).offset(10)
+            make.right.equalTo(backView).offset(-10)
+            make.height.equalTo(125)
+        }
+        
+
+        backView.addSubview(self.contentLable)
+        contentLable.snp.makeConstraints { (make) in
+            make.left.equalTo(backView).offset(10)
+            make.top.equalTo(imgView.snp.bottom).offset(5)
+            make.right.equalTo(backView).offset(-10)
+            
+        }
+        
+        backView.addSubview(self.lin)
+        lin.snp.makeConstraints { (make) in
+            make.left.equalTo(backView).offset(10)
+            make.right.equalTo(backView).offset(-10)
+            make.top.equalTo(contentLable.snp.bottom).offset(10)
+            make.height.equalTo(1)
+        }
+        
+        backView.addSubview(self.lookLable)
+        lookLable.snp.makeConstraints { (make) in
+            make.top.equalTo(lin).offset(0)
+            make.left.equalTo(backView).offset(10)
+            make.width.equalTo(160)
+            make.height.equalTo(45)
+            make.bottom.equalTo(-0)
+
+        }
+        
+//        backView.addSubview(self.rowImage)
+//        rowImage.snp.makeConstraints { (make) in
+//            make.right.equalTo(backView).offset(-10)
+//            make.centerY.equalTo(lookLable)
+//            make.height.equalTo(20)
+//            make.width.equalTo(10)
+//            make.bottom.equalTo(-10)
+//        }
+        timeLable.text = "今天 10:10"
+        titleLable.text = "丽郎丽江度假村项目上线啦！"
+        let str = "凭借多年来对中国文化旅游市场发展规律的深刻理解，复华文旅以自身强大的全球资源整合能力与创新的“文…"
+        contentLable.attributedText = YC_FONT_RowSpacing(5, YC_FONT_PFSC_Medium(14),str)
+    }
+    
+    
+    
+    
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+}

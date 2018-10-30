@@ -1,0 +1,6 @@
+module Pods_YunChou {
+  umbrella header "Pods-YunChou-umbrella.h"
+
+  export *
+  module * { export * }
+}

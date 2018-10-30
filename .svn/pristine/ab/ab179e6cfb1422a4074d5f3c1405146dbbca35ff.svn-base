@@ -1,0 +1,60 @@
+//
+//  SuccessOrderController.swift
+//  YunChou
+//
+//  Created by grx on 2018/10/11.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import UIKit
+
+class SuccessOrderController: BaseController,UITableViewDelegate,UITableViewDataSource {
+    lazy var waitPayTableView = UITableView(frame: CGRect(x: 0, y: 0, width: Main_Screen_Width, height: Main_Screen_Height-NaviBarHeight-SafeBottomMargin-40), style: .grouped)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = YCColorLight
+        self.waitPayTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        self.waitPayTableView.delegate = self
+        self.waitPayTableView.dataSource = self
+        self.waitPayTableView.backgroundColor = YCColorLight
+        //注册cell重用
+        self.waitPayTableView .register(WaitPayCell.self, forCellReuseIdentifier: WaitPayCellIdentifier)
+        self.view.addSubview(waitPayTableView)
+    }
+    
+    //MARK:========tableViewDelegate协议代理
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 10
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 235
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return nil
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let successCell = tableView.dequeueReusableCell(withIdentifier:WaitPayCellIdentifier) as! WaitPayCell
+        successCell.ModifySuccessCellsStyle()
+        return successCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let succesOrdDetailVC = SuccesOrdDetailController()
+        self.navigationController?.pushViewController(succesOrdDetailVC, animated: true)
+    }
+    
+}

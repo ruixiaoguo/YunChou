@@ -1,0 +1,20 @@
+//
+//  AppLoginKey.swift
+//  YunChou
+//
+//  Created by grx on 2018/10/17.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import Foundation
+
+#if DEBUG
+let YCBASEURL = "http://192.168.75.7:8707/org/business/basics"
+#else
+let YCBASEURL = "http://192.168.75.7:8707/org/business/basics"
+#endif
+
+func ISLOGIN() -> Bool {
+    return (MMKV.default()?.getBoolForKey("isLogin"))!
+}
+

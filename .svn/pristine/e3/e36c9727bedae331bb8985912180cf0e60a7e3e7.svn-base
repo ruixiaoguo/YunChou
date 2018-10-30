@@ -1,0 +1,70 @@
+//
+//  YCNewsViewController.swift
+//  YunChou
+//
+//  Created by yy on 2018/10/10.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import UIKit
+
+class YCNewsViewController: BaseTableViewController {
+    private var newsCell : String = "newsCell"
+    
+    
+    private lazy var headerVC : YCNewsHeaderView = {
+        let vc = YCNewsHeaderView(frame: CGRect(x: 0, y: 0, width: Main_Screen_Width, height: kWidth(R: 185)))
+        return vc
+    }()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.title = "新闻中心"
+        self.leftView.isHidden = true
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.top.equalTo(NaviBarHeight)
+            make.left.right.equalTo(0)
+            make.bottom.equalTo(-YC_TabbarHeight)
+        }
+        tableView.tableHeaderView = headerVC
+        
+        tableView.register(YCNewsTableViewCell.self, forCellReuseIdentifier: newsCell)
+        
+        // Do any additional setup after loading the view.
+    }
+    
+
+    
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      return 6
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+       
+        return 0.01
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return iPhone5 ? kWidth(R: 152) : 152
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
+        return 0.01
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:YCNewsTableViewCell = tableView.dequeueReusableCell(withIdentifier: newsCell, for: indexPath) as! YCNewsTableViewCell
+       
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+
+
+}

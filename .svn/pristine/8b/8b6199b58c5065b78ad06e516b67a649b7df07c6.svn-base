@@ -1,0 +1,136 @@
+//
+//  YCUserCenterNetWork.swift
+//  YunChou
+//
+//  Created by grx on 2018/10/18.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import Foundation
+import Moya
+import SwiftyJSON
+
+//MARK:=========定义一个枚举，存放我们的网络请求k接口
+enum userCenterApiManager {
+    case gaintUserInfo(userId: String)  //获取用户信息
+    case ModifyUserInfo(userId: String, nickName: String, weixin: String, email: String)  //修改用户信息
+    case uploadUserImage(imageData: Data)  //上传头像
+    case setNewPassWord(userId: String, loginPwd: String)  //设置新密码
+    case modifyPassWord(phone: String, loginPwd: String, vaCode:String)  //修改密码/忘记密码
+}
+
+extension userCenterApiManager:TargetType{
+    //MARK:=========设置不同接口的请求路径
+    var path: String {
+        return SERVERAPI
+    }
+    //MARK:=========配置不同接口参数
+    var task: Task {
+        switch self {
+        case let .gaintUserInfo(userId): // 带有参数,注意前面的let
+            let requestModel = LoginRequestModel()
+            requestModel.methodCode = "basics/USER1017"
+            requestModel.userId = userId
+            let requestParam = requestModel.toJSON()
+            print("===\(String(describing: requestParam))")
+            return .requestParameters(parameters: requestParam!,
+                                      encoding: URLEncoding.default)
+        case let .ModifyUserInfo(userId,nickName,weixin,email): // 带有参数,注意前面的let
+            let requestModel = UserInfoRequestModel()
+            requestModel.methodCode = "basics/USER1006"
+            if(nickName.count != 0){
+                requestModel.nickName = nickName
+            }else if(weixin.count != 0){
+                requestModel.weixin = weixin
+            }else if(email.count != 0){
+                requestModel.email = email
+            }
+            requestModel.userId = userId
+            let requestParam = requestModel.toJSON()
+            print("===\(String(describing: requestParam))")
+            return .requestParameters(parameters: requestParam!,
+                                      encoding: URLEncoding.default)
+        case let .uploadUserImage(imageData):
+            let requestModel = UserInfoRequestModel()
+            requestModel.methodCode = "basics/USER1006"
+            requestModel.userId = USERID()
+            let requestParam = requestModel.toJSON()
+            let headData = MultipartFormData(provider: .data(imageData), name: "headImgfile",
+                                             fileName: "headImg.png", mimeType: "image/png")
+            return .uploadCompositeMultipart([headData], urlParameters: requestParam!)
+        case let .setNewPassWord(userId,loginPwd): // 带有参数,注意前面的let
+            let requestModel = LoginRequestModel()
+            requestModel.methodCode = "basics/USER1003"
+            requestModel.userId = userId
+            requestModel.loginPwd = loginPwd
+            let requestParam = requestModel.toJSON()
+            print("===\(String(describing: requestParam))")
+            return .requestParameters(parameters: requestParam!,
+                                      encoding: URLEncoding.default)
+        case let .modifyPassWord(phone,loginPwd,vaCode): // 带有参数,注意前面的let
+            let requestModel = LoginRequestModel()
+            requestModel.methodCode = "basics/USER1008"
+            requestModel.phone = phone
+            requestModel.loginPwd = loginPwd
+            requestModel.vaCode = vaCode
+            let requestParam = requestModel.toJSON()
+            print("===\(String(describing: requestParam))")
+            return .requestParameters(parameters: requestParam!,
+                                      encoding: URLEncoding.default)
+        }
+    }
+    
+    var baseURL: URL {
+        return URL(string: YCBASEURL)!
+    }
+    //MARK:=========设置不同接口的请求方式，get或post
+    var method: Moya.Method {
+        return .post
+    }
+    var parameterEncoding: ParameterEncoding {
+        return URLEncoding.default
+    }
+    var sampleData: Data {
+        return "".data(using: String.Encoding.utf8)!
+    }
+    var validate: Bool {
+        return false
+    }
+    var headers: [String : String]? {
+        return nil
+    }
+}
+
+// 网络请求结构体
+struct YCUserCenterNetwork {
+    // 请求成功的回调
+    typealias successCallback = (_ result: JSON) -> Void
+    // 请求失败的回调
+    typealias failureCallback = (_ error: MoyaError) -> Void
+    // 单例
+    static let provider = MoyaProvider<userCenterApiManager>()
+    // 发送网络请求
+    static func request(
+        target: userCenterApiManager,
+        success: @escaping successCallback,
+        failure: @escaping failureCallback
+        ) {
+        YCLoadingView.show()
+        provider.request(target) { result in
+            switch result {
+            case let .success(moyaResponse):
+                do {
+                    
+                    try success(JSON(moyaResponse.mapJSON())) // JSON字符串
+                } catch {
+                    failure(MoyaError.jsonMapping(moyaResponse))
+                }
+                YCLoadingView.hide()
+            case let .failure(error):
+                YCLoadingView.hide()
+                failure(error)
+            }
+        }
+    }
+}
+

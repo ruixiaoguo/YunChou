@@ -1,0 +1,121 @@
+//
+//  AppMacro.h
+//  JionMe
+//
+//  Created by grx on 16/7/19.
+//  Copyright © 2016年 grx. All rights reserved.
+//
+
+#ifndef AppMacro_h
+#define AppMacro_h
+/*! app尺寸 */
+#define Main_Screen_Height [[UIScreen mainScreen] bounds].size.height
+#define Main_Screen_Width  [[UIScreen mainScreen] bounds].size.width
+/** 屏幕比 */
+#define ScreenRate Main_Screen_Width/320
+/*! 屏幕比适配宽高 */
+#define kWidth(R) (R)*(Main_Screen_Width)/375
+#define kHeight(R) kWidth(R)
+
+/*! 系统控件 */
+#define kStatusBarHeight        (24.f)
+#define NavStatusHeNavSight        (10.f)
+//判断iPhone X
+#define isIPhoneX     (Main_Screen_Width == 375.f && Main_Screen_Height == 812.f)
+#define TabbarSafeBottomMargin         (isIPhoneX ? 34.f : 0.f)
+#define NavigbarTopMargin              (isIPhoneX ? 24.f : 0.f)
+
+//判断iPhone5
+#define isIPhone5     (Main_Screen_Width == 320.f && Main_Screen_Height == 568.f)
+// 商城各模块视图高度
+#define ItemViewHeight              (isIPhone5 ? kWidth(485.f) : kWidth(470.f))
+#define ItemBottomViewHeight        (isIPhone5 ? kWidth(225.f) : kWidth(210.f))
+
+
+
+#define kNavigationBarHeight    (isIPhoneX ? 68.f : 44.f)
+#define kTabBarHeight           (49.f)
+#define navBarHeight           (isIPhoneX ? 88.f : 64.f)//状态栏高度
+#define VIEW_OFFSET             ([[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0f?20.0f:0.0f)
+#define NAV_OFFSET             ([[[UIDevice currentDevice]systemVersion] floatValue] >= 7.0f?20.0f:10.0f)
+#define VIEW_NAVBAR             ([[[UIDevice currentDevice]systemVersion] floatValue] >= 10.0f?0.0f:-64.0f)
+#define ios_OFFSET             ([[[UIDevice currentDevice]systemVersion] floatValue] >= 11.0f?20.0f:0.0f)
+
+
+/*! 颜色 */
+#define ColorWithRGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+#define ColorWithRGB(r,g,b) ColorWithRGBA(r,g,b,1)
+#define ColorWithHexRGBA(rgbValue, alphaValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:alphaValue]
+#define ColorWithHexRGB(rgbValue) ColorWithHexRGBA(rgbValue,1.0)
+#define UIColorWhite [UIColor whiteColor]
+#define UIColorClear [UIColor clearColor]
+#define UIColorBlueMain ColorWithRGBA(73,195,241,1)
+
+
+#define KBrandHeight  (isIPhoneX ? Main_Screen_Height/3.3 : Main_Screen_Height/2.7) //banber高度
+
+
+/*! ===========================================全局颜色============================================== */
+/*! 全局黑字体颜色 */
+#define UIColorBlackTheme ColorWithHexRGB(0x2d2d2d)
+/*! 全局灰字体颜色 */
+#define UIColorLightTheme ColorWithHexRGB(0x747474)
+
+/*! 全局背景灰颜色 */
+#define UIColorBgLightTheme ColorWithHexRGB(0xF4F5F6)
+/*! 全局背景白颜色 */
+#define UIColorBgWhiteTheme ColorWithHexRGB(0xffffff)
+/*! 全局分割线颜色 */
+#define UIColorLineTheme ColorWithHexRGB(0xe5e5e5)
+/*! 列表点击颜色 */
+#define UIColorCellSelectTheme ColorWithHexRGB(0xf2f2f2)
+/*! 灰色描述文字 */
+#define UIDisLightTheme ColorWithHexRGB(0x8c8c8c)
+
+/*! 高亮红色 */
+#define UIColorHigRedTheme ColorWithHexRGB(0xf14953)
+/*! 按钮文字蓝色 */
+#define UIBtnTextBlueTheme ColorWithHexRGB(0x309FFF)
+/*! 按钮文字灰色 */
+#define UIBtnTextGrayTheme ColorWithHexRGB(0x8C8C8C)
+/*! 按钮文字橙色 */
+#define UIBtnTextOrangeTheme ColorWithHexRGB(0xEA5414)
+
+
+/*! ===========================================全局字体============================================== */
+/*! 字体 */
+#define UIFontSystem(x)     [UIFont systemFontOfSize:x]
+#define UIFontBoldSystem(x) [UIFont boldSystemFontOfSize:x]
+
+#define UIFontSystem(x)     [UIFont systemFontOfSize:x]
+#define UIFontBoldSystem(x) [UIFont boldSystemFontOfSize:x]
+#define UIFontSystem9     [UIFont systemFontOfSize:9]
+#define UIFontSystem10     [UIFont systemFontOfSize:10]
+#define UIFontSystem11     [UIFont systemFontOfSize:11]
+#define UIFontSystem12     [UIFont systemFontOfSize:12]
+#define UIFontSystem13     [UIFont systemFontOfSize:13]
+#define UIFontSystem14     [UIFont systemFontOfSize:14]
+#define UIFontSystem15     [UIFont systemFontOfSize:15]
+#define UIFontSystem16     [UIFont systemFontOfSize:16]
+#define UIFontSystem17     [UIFont systemFontOfSize:17]
+#define UIFontSystem18     [UIFont systemFontOfSize:18]
+#define UIFontSystem19     [UIFont systemFontOfSize:19]
+#define UIFontSystem20     [UIFont systemFontOfSize:20]
+#define UIFontSystem22     [UIFont systemFontOfSize:22]
+#define UIFontSystem26     [UIFont systemFontOfSize:26]
+#define UIFontSystem28     [UIFont systemFontOfSize:28]
+#define Life_Font_PFSCBlod(v)     ([UIFont fontWithName:@"PingFangSC-Semibold" size:v]?[UIFont fontWithName:@"PingFangSC-Semibold" size:v]:[UIFont systemFontOfSize:v])
+#define Life_Font_PFMedium(v)     ([UIFont fontWithName:@"PingFangSC-Medium" size:v]?[UIFont fontWithName:@"PingFangSC-Medium" size:v]:[UIFont systemFontOfSize:v])
+
+
+/*! 其他 */
+#define StandardUserDefaults [NSUserDefaults standardUserDefaults]
+#define DDLog(xx, ...)  NSLog(@"%s(%d): " xx, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+
+#define WeakSelf(weakSelf) __weak typeof(self) weakSelf = self
+#define PhoneVersion  [[UIDevice currentDevice] systemVersion]
+/*UIWindow*/
+#define MainUIWindow [UIApplication sharedApplication].keyWindow
+
+
+#endif /* AppMacro_h */

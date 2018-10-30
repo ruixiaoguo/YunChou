@@ -1,0 +1,168 @@
+//
+//  YCNewsViewController.swift
+//  YunChou
+//
+//  Created by yy on 2018/10/10.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import UIKit
+
+class YCNewsViewController: BaseTableViewController {
+    private var newsCell : String = "newsCell"
+    var loadBanner : Bool = true
+    
+    
+    private lazy var headerVC : YCNewsHeaderView = {
+        let vc = YCNewsHeaderView(frame: CGRect(x: 0, y: 0, width: Main_Screen_Width, height: kWidth(R: 185)))
+        return vc
+    }()
+    
+    private lazy var ViewModel : YCNewsViewModel = {
+        let vm = YCNewsViewModel()
+        return vm
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.title = "新闻中心"
+        self.leftView.isHidden = true
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.top.equalTo(NaviBarHeight)
+            make.left.right.equalTo(0)
+            make.bottom.equalTo(-YC_TabbarHeight)
+        }
+        
+        tableView.tableHeaderView = headerVC
+        
+        tableView.register(YCNewsTableViewCell.self, forCellReuseIdentifier: newsCell)
+        tableView.ly_emptyView = self.emptyView
+        self.emptyView.contentView.backgroundColor = YCColorWhite
+        self.emptyView.contentViewOffset = kWidth(R: 105)
+        loadDatas()
+        //初始化下拉刷新/上拉加载
+        initRefresh()
+        
+    }
+    //初始化下拉刷新/上拉加载
+    func initRefresh(){
+        
+        tableView.YCHead = YCRefreshHeader{[weak self] in
+            self?.loadBanner = false
+            self?.pages = 1
+            self?.isLoad = false
+            self?.loadDatas()
+        }
+        
+        tableView.YCFoot = YCRefreshFooter{[weak self] in
+            self?.loadBanner = false
+            self?.pages = (self?.pages)!+1
+            self?.isLoad = true
+            self?.loadDatas()
+        }
+        
+    }
+    
+    func loadDatas(){
+        let queue = DispatchQueue.init(label: "getCount")
+        let group = DispatchGroup()
+        YCLoadingView.show()
+        tableView.ly_startLoading()
+        queue.async(group: group, execute: {
+            group.enter() //开始
+            
+            if !self.loadBanner{
+                group.leave()
+                return
+            }
+            
+            let model : YCNewsBannerParModel = YCNewsBannerParModel()
+            model.currentPageNum = "1"
+            self.ViewModel.requestNewsBannerList(parModel: model, success: {
+                self.headerVC.reloadBanner(arr: self.ViewModel.bannerList! as NSArray)
+                group.leave()
+            }, failure: {
+                group.leave()
+            }, error: {_ in
+                group.leave()
+            })
+        })
+        
+        
+        queue.async(group: group, execute: {
+            group.enter() //开始
+            let model : YCNewsListParModel = YCNewsListParModel()
+            model.currentPageNum = "\(self.pages)"
+            
+            self.ViewModel.requestNewsList(parModel: model, isLoad: self.isLoad, success: {
+                group.leave()
+
+            }, failure: {
+                group.leave()
+
+            }, error: {_ in
+                group.leave()
+
+            })
+            
+        })
+        
+        group.notify(queue: queue) {
+            DispatchQueue.main.async {
+
+                self.tableView.reloadData()
+                self.tableView.endRefresh()
+
+                self.tableView.ly_endLoading()
+
+                if self.ViewModel.bannerList?.count == 0 && self.ViewModel.newsList?.count == 0{
+                    self.emptyView.emptyViewIsCompleteCoverSuperView = true
+                    self.tableView.YCFoot.isHidden = true
+                    return
+                }else if self.ViewModel.newsList?.count == 0 || self.ViewModel.newsList == nil{
+                    self.emptyView.contentViewOffset = kWidth(R: 105)
+                    self.tableView.YCFoot.isHidden = true
+                    return
+                }
+                
+                if self.ViewModel.newsList?.count == Int(self.ViewModel.newsListAll!){
+                    //最大数据
+                    self.tableView.YCFoot.endRefreshingWithNoMoreData()
+                }
+                
+            }
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      return ViewModel.newsList?.count ?? 0
+
+    }
+    
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//
+//        return 0.01
+//    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return iPhone5 ? kWidth(R: 152) : 152
+    }
+    
+//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//
+//        return 0.01
+//    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:YCNewsTableViewCell = tableView.dequeueReusableCell(withIdentifier: newsCell, for: indexPath) as! YCNewsTableViewCell
+        cell.newsModel = ViewModel.newsList![indexPath.row]
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+
+
+}

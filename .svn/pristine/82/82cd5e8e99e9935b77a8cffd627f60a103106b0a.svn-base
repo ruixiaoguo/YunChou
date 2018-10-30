@@ -1,0 +1,20 @@
+//
+//  AppLoginKey.swift
+//  YunChou
+//
+//  Created by grx on 2018/10/17.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import Foundation
+
+#if DEBUG
+let YCBASEURL = "http://api.liwushuo.com/v2/channels/104/items?"
+#else
+let YCBASEURL = "http://api.liwushuo.com/v2/channels/104/items?"
+#endif
+
+func ISLOGIN() -> Bool {
+    return (MMKV.default()?.getBoolForKey("isLogin"))!
+}
+

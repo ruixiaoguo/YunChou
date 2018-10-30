@@ -1,0 +1,146 @@
+
+//
+//  OneTestViewController.swift
+//  swiftRNTest
+//
+//  Created by yy on 2018/9/26.
+//  Copyright © 2018年 yy. All rights reserved.
+//
+
+import UIKit
+
+class OneTestViewController: BaseController {
+
+    
+    var projectTypes : String?
+    
+    private let HomeCell = "HomeCell"
+
+    lazy var tableView : UITableView = {
+        let tableView = UITableView.init(frame: CGRect(x: 0, y: 0, width: Main_Screen_Width, height: Main_Screen_Height-YC_TabbarHeight), style: UITableView.Style.grouped)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = YCBackground_LightColor
+        tableView.register(YCHomeTableViewCell.self, forCellReuseIdentifier: HomeCell)
+        
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+            tableView.estimatedSectionFooterHeight = 0;
+            tableView.estimatedSectionHeaderHeight = 0;
+            
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
+        tableView.estimatedRowHeight = 44.0
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        return tableView
+    }()
+    
+    private lazy var viewModel : YCHomeViewModel = {
+        let vm = YCHomeViewModel()
+        return vm
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(tableView)
+        glt_scrollView = tableView
+
+        tableView.ly_emptyView = self.emptyView
+        self.emptyView.contentViewOffset = -130
+        //初始化下拉刷新/上拉加载
+        loadDatas()
+
+        initRefresh()
+        
+//        self.view.backgroundColor = UIColor.yellow
+//        tableView.backgroundColor = UIColor.red
+        
+    }
+    
+    //初始化下拉刷新/上拉加载
+    func initRefresh(){
+        
+        tableView.YCHead = YCRefreshHeader{[weak self] in
+            self?.pages = 1
+            self?.isLoad = false
+            self?.loadDatas()
+        }
+        tableView.mj_footer = MJRefreshAutoNormalFooter{[weak self] in
+            self?.pages = (self?.pages)!+1
+            self?.isLoad = true
+            self?.loadDatas()
+        }
+        
+//        tableView.YCFoot = YCRefreshFooter{[weak self] in
+//            self?.pages = (self?.pages)!+1
+//            self?.isLoad = true
+//            self?.loadDatas()
+//        }
+        
+    }
+    
+    func loadDatas(){
+        let parModel = YCHomeProjectParModel()
+        parModel.currentPageNum = "\(pages)"
+        parModel.projectTypes = projectTypes
+        viewModel.requestHomeProjectList(parModel: parModel, isLoad: isLoad, tableview: tableView, success: {
+             DispatchQueue.main.async {
+            self.tableView.reloadData()
+                
+            }
+        }, failure: {
+            
+        }, error: {_ in
+            
+        })
+    }
+}
+
+extension OneTestViewController:UITableViewDelegate,UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.projectList?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0{
+            return 0.01
+        }
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    
+        if section == (viewModel.projectList?.count)! - 1 {
+            return 10
+        }
+       
+        return 0.01
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:YCHomeTableViewCell = tableView.dequeueReusableCell(withIdentifier: HomeCell, for: indexPath) as! YCHomeTableViewCell
+        cell.projectData = viewModel.projectList![indexPath.section]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: false)
+        let model:YCHomeProjectListDataModel = viewModel.projectList![indexPath.section]
+        let vc = YCProjectDetailViewController()
+        vc.hidesBottomBarWhenPushed = true
+        vc.projectID = model.id!
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+}
+

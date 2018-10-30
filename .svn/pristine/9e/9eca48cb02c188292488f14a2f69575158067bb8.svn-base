@@ -1,0 +1,308 @@
+//
+//  UserCenterController.swift
+//  YunChou
+//
+//  Created by grx on 2018/9/26.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import UIKit
+import SwiftProgressHUD
+
+let centerCellHight = 55
+
+class UserCenterController: BaseController,UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+
+    var uploadAlertController:UIAlertController!
+    
+    lazy var userCenterTableView = UITableView(frame: self.view.frame, style: .grouped)
+    private lazy var titleSouce :[String] = [String]()
+    var sectionOneArray:Array = [PersionModel]()
+    var sectionSedArray:Array = [PersionModel]()
+    var sectionThirdArray:Array = [PersionModel]()
+    var sectionForArray:Array = [PersionModel]()
+    var allArray:Array = [[PersionModel]]()
+    let hearView = UserCenterHeadView()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.title = "个人设置"
+        self.view.backgroundColor = YCColorWhite
+        self.leftView.isHidden = false
+        //添加数据源
+        self.addDataSource()
+        
+        self.userCenterTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        self.userCenterTableView.delegate = self
+        self.userCenterTableView.dataSource = self
+        self.userCenterTableView.backgroundColor = YCColorLight
+        //注册cell重用
+        self.userCenterTableView .register(CenterTableCell.self, forCellReuseIdentifier: UserCenterCellIdentifier)
+        self.view.addSubview(userCenterTableView)
+        //获取用户信息
+        self.gaintUserInfoRequest()
+    }
+    
+    //MARK:========tableViewDelegate协议代理
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.allArray.count
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.allArray[section].count
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            return 80
+        default:
+            return 5
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if(section==self.allArray.count-1){
+            return 60
+        }else{
+            return 1
+        }
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if(section==self.allArray.count-1){
+            let footView = UIView()
+            //退出按钮
+            footView.addSubview(self.loginOutBtn)
+            self.loginOutBtn.snp.makeConstraints { (make) in
+                make.top.equalTo(8)
+                make.right.equalTo(0)
+                make.left.equalTo(0)
+                make.height.equalTo(52)
+            }
+            return footView
+        }else{
+            return nil
+        }
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            hearView.owner = self
+            hearView.selectHeadBlock = {[unowned self]()in
+                self.uploadAlertController = UIAlertController(title:nil,
+                                                               message: nil, preferredStyle:UIAlertController.Style.actionSheet)
+                self.uploadAlertController.view.tintColor = YCColorBlue
+                let takePhoto = UIAlertAction(title: "拍照", style: UIAlertAction.Style.default){ (action:UIAlertAction)in
+                       //填写需要的响应方法
+                       self.initCameraPicker()
+                    }
+                let photoLib = UIAlertAction(title: "从相册选择", style: UIAlertAction.Style.default){ (action:UIAlertAction)in
+                       //填写需要的响应方法
+                       self.initPhotoPicker()
+                    }
+                let cancel = UIAlertAction(title: "取消", style: UIAlertAction.Style.default){ (action:UIAlertAction)in
+                }
+                self.uploadAlertController?.addAction(takePhoto)
+                self.uploadAlertController?.addAction(photoLib)
+                self.uploadAlertController?.addAction(cancel)
+                self.present(self.uploadAlertController, animated: true, completion: nil)
+            }
+            return hearView
+        default:
+            return nil
+        }
+    }
+    
+    //MARK:===============从相册中选择
+    func initPhotoPicker(){
+        let photoPicker =  UIImagePickerController()
+        photoPicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        photoPicker.allowsEditing = true
+        photoPicker.sourceType = .photoLibrary
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+            self.present(photoPicker, animated: true, completion: {
+                () -> Void in
+            })
+        }else{
+            SwiftProgressHUD.showOnlyText("未授予防问相册权限!")
+        }
+    }
+    //MARK:===============拍照
+    func initCameraPicker(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            let  cameraPicker = UIImagePickerController()
+            cameraPicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+            cameraPicker.allowsEditing = true
+            cameraPicker.sourceType = .camera
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                self.present(cameraPicker, animated: true, completion: { () -> Void in
+                })
+            }else{
+                SwiftProgressHUD.showOnlyText("未授予防问相机权限!")
+            }
+        } else {
+            SwiftProgressHUD.showOnlyText("不支持拍照!")
+        }
+    }
+    // MARK: ImagePicker Delegate 选择图片成功后代理
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let choseImage = info["UIImagePickerControllerOriginalImage"] as! UIImage
+        let data = choseImage.jpegData(compressionQuality: 0.5)
+        hearView.headImage.image = choseImage
+        printLog(message: "\(String(describing: data))")
+        // 拍照
+        if picker.sourceType == .camera {
+        //保存相册
+        UIImageWriteToSavedPhotosAlbum(choseImage, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker:UIImagePickerController){
+        picker.dismiss(animated:true, completion:nil)
+    }
+    
+    //MARK:===============相机拍照自动保存到相册
+    @objc func image(image:UIImage,didFinishSavingWithError error:NSError?,contextInfo:AnyObject) {
+        if error != nil {
+            SwiftProgressHUD.showOnlyText("保存失败!")
+        } else {
+            SwiftProgressHUD.showOnlyText("保存成功!")
+        }
+    }
+ 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(centerCellHight)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:UserCenterCellIdentifier) as! CenterTableCell
+        cell.selectionStyle = .none
+        cell.gaintPersionModel(model: self.allArray[indexPath.section][indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // 修改昵称
+        let modifyNickVC = ModifyNickController()
+        // 绑定手机
+        let bindPhoneVC = BindPhoneController()
+        // 绑定微信
+        let bindWeixin = BindWeiXinController()
+        // 绑定邮箱
+        let bindEmailVC = BindEmailController()
+        // 实名认证
+        let realAuthenVC = RealAuthenController()
+        // 设置密码
+        let setPswVC = SettingPswController()
+        
+        // 关于我们
+        let aboutUsVC = AboutUsController()
+        if(indexPath.section==0&&indexPath.row==0){
+            modifyNickVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(modifyNickVC, animated: true)
+        }else if(indexPath.section==1&&indexPath.row==0){
+            bindPhoneVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(bindPhoneVC, animated: true)
+        }else if(indexPath.section==1&&indexPath.row==1){
+            bindWeixin.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(bindWeixin, animated: true)
+        }else if(indexPath.section==1&&indexPath.row==2){
+            bindEmailVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(bindEmailVC, animated: true)
+        }else if(indexPath.section==2&&indexPath.row==0){
+            realAuthenVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(realAuthenVC, animated: true)
+        }else if(indexPath.section==3&&indexPath.row==0){
+            setPswVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(setPswVC, animated: true)
+        }else if(indexPath.section==3&&indexPath.row==1){
+            //清除缓存
+            FileCacheManager.clearCache()
+            let model:PersionModel = self.allArray[indexPath.section][indexPath.row]
+            model.introduction = FileCacheManager.fileSizeOfCache()
+            self.userCenterTableView.reloadRows(at: [indexPath], with: .fade)
+        }else if(indexPath.section==3&&indexPath.row==2){
+            aboutUsVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(aboutUsVC, animated: true)
+        }
+    }
+    
+    func addDataSource(){
+        self.allArray.removeAll()
+        sectionOneArray.removeAll()
+        sectionSedArray.removeAll()
+        sectionThirdArray.removeAll()
+        sectionForArray.removeAll()
+        let titleSouce1 = ["昵称"]
+        let titleSouce2 = ["绑定手机","绑定微信","绑定邮箱"]
+        let titleSouce3 = ["实名认证"]
+        let titleSouce4 = ["密码管理","清除缓存","关于我们"]
+        for i in 0..<titleSouce1.count {
+            let model = PersionModel()
+            model.title = titleSouce1[i]
+            model.introduction = "晓时代1999"
+            sectionOneArray.append(model)
+        }
+        for i in 0..<titleSouce2.count {
+            let model = PersionModel()
+            model.title = titleSouce2[i]
+            model.introduction = "未绑定"
+            sectionSedArray.append(model)
+        }
+        for i in 0..<titleSouce3.count {
+            let model = PersionModel()
+            model.title = titleSouce3[i]
+            model.introduction = "未认证"
+            sectionThirdArray.append(model)
+        }
+        for i in 0..<titleSouce4.count {
+            let model = PersionModel()
+            model.title = titleSouce4[i]
+            if(i==0){
+                model.introduction = "设置密码"
+            }else if(i==1){
+                model.introduction = FileCacheManager.fileSizeOfCache()
+            }
+            sectionForArray.append(model)
+        }
+        self.allArray.append(sectionOneArray)
+        self.allArray.append(sectionSedArray)
+        self.allArray.append(sectionThirdArray)
+        self.allArray.append(sectionForArray)
+    }
+    
+    lazy var loginOutBtn:UIButton = {
+         let loginOutBtn = UIButton()
+        loginOutBtn.backgroundColor = YCColorWhite
+        loginOutBtn.setTitle("退出登录", for: .normal)
+        loginOutBtn.setTitleColor(YCColorBlack, for: .normal)
+        loginOutBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        loginOutBtn.addTarget(self, action: #selector(loginOutBtnClick), for: .touchUpInside)
+        return loginOutBtn
+    }()
+    
+    @objc func loginOutBtnClick(){
+        //退出登录
+        let alertView = YCAlterview(title: "", contentText: "确认退出登录?", rightButtonTitle: "确定", leftButtonTitle: "取消")
+        alertView?.leftBlock = {() in
+            
+        }
+        alertView?.rightBlock = {() in
+            
+        }
+        alertView?.show()
+    }
+    
+    //MARK:=============获取用户信息接口
+    func gaintUserInfoRequest() {
+        YCUserCenterNetwork.request(target: .gaintUserInfo(userId: USERID()), success: { (JSON) in
+            print("=========\(JSON)")
+        }) { (MoyaError) in
+            
+        }
+    }
+    
+    override func backToPrevious() {
+        self.navigationController!.popViewController(animated: true)
+    }
+
+}

@@ -1,0 +1,411 @@
+//
+//  YCCalendarView.m
+//  caltextsssss
+//
+//  Created by yy on 2018/10/12.
+//  Copyright © 2018年 yy. All rights reserved.
+//
+
+#import "YCCalendarView.h"
+
+
+@interface UIView (YCCalendar)
+
+@end
+
+@implementation UIView (YCCalendar)
+
+- (void)yc_safeAddSubView:(UIView *)subView
+{
+    if ([self.subviews containsObject:subView])return;
+    [self addSubview:subView];
+}
+
+@end
+
+
+@interface YCCalendarView () <UIGestureRecognizerDelegate>
+
+{
+    CGFloat topSpace;
+    CGFloat itemWH;
+}
+
+@property (nonatomic, strong) YCCalendarMonthView *preMonthView;
+@property (nonatomic, strong) YCCalendarMonthView *midMonthView;
+@property (nonatomic, strong) YCCalendarMonthView *nextMonthView;
+@property (nonatomic, strong) YCWeekendView *weekendView;
+
+@property (nonatomic, assign) CGPoint panBeaginPoint;
+
+@end
+
+
+@implementation YCCalendarView
+
+- (void)dealloc
+{
+    [YCCalendarManager releaseManage];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame])
+    {
+        topSpace = 10;
+        itemWH = (kDeviceWidth)/7;
+        [YCCalendarManager defaultManager].calendarView = self;
+        [self setDisplayType:YCCalendarDisplayMonthType];
+        [self updateMonthViewBegainDate];
+        
+        [self addSubview:self.contentView];
+        [self addSubview:self.weekendView];
+        
+        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
+        [self.contentView addGestureRecognizer:pan];
+    }
+    return self;
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+    [self.contentView yc_safeAddSubView:self.preMonthView];
+    [self.contentView yc_safeAddSubView:self.midMonthView];
+    [self.contentView yc_safeAddSubView:self.nextMonthView];
+    [super willMoveToSuperview:newSuperview];
+}
+
+#pragma mark - public
+- (void)changeDisplayType:(YCCalendarDisplayType)type animated:(BOOL)animated
+{
+    [self setDisplayType:type];
+    [self updateMonthViewBegainDate];
+    [self.midMonthView changeDisplayTypeWithAnimate:animated];
+    [self.preMonthView changeDisplayTypeWithAnimate:NO];
+    [self.nextMonthView changeDisplayTypeWithAnimate:NO];
+    [self scrollEnd];
+}
+
+//上个月或者下个月
+
+-(void)goToNext{
+    [self scrollToRight:NO];
+    
+}
+-(void)goTOLast{
+    [self scrollToRight:YES];
+    
+}
+
+- (void)goToToday
+{
+    if ([YCCalendarManager defaultManager].displayType == YCCalendarDisplayMonthType)
+    {
+        NSDate *begainDate = [[NSDate date] dateWithMonthBegainDate];
+        
+        self.midMonthView.beaginDate = begainDate;
+        self.preMonthView.beaginDate = [self.midMonthView.beaginDate YC_dateByMinusMonths:1];
+        self.nextMonthView.beaginDate = [self.midMonthView.beaginDate YC_dateByAddingMonths:1];
+    }
+    else
+    {
+        NSDate *begainDate = [[NSDate date] dateWithWeekBegainDate];
+        
+        self.midMonthView.beaginDate = begainDate;
+        self.preMonthView.beaginDate = [self.midMonthView.beaginDate YC_dateByMinusWeeks:1];
+        self.nextMonthView.beaginDate = [self.midMonthView.beaginDate YC_dateByAddingWeeks:1];
+    }
+    
+    [UIView animateWithDuration:.25
+                     animations:^{
+                         self.layer.opacity = 0;
+                     }
+                     completion:^(BOOL finished) {
+                         [self.midMonthView reload];
+                         [self.preMonthView reload];
+                         [self.nextMonthView reload];
+                         [UIView animateWithDuration:.25
+                                          animations:^{
+                                              self.layer.opacity = 1;
+                                          }];
+                     }];
+    [self scrollEnd];
+}
+
+- (void)reloadEvent
+{
+    if ([[YCCalendarManager defaultManager].dataSource respondsToSelector:@selector(calendarView:dayViewHaveEvent:)])
+    {
+        for (YCCalendarDayView *dayView in [self.midMonthView allDayView])
+        {
+            [[YCCalendarManager defaultManager].dataSource calendarView:self dayViewHaveEvent:dayView];
+        }
+    }
+}
+
+#pragma mark - GestureRecognizer
+- (void)panAction:(UIPanGestureRecognizer *)pan
+{
+    switch (pan.state)
+    {
+        case UIGestureRecognizerStateBegan:
+        {
+            self.panBeaginPoint = [pan locationInView:self.contentView];
+        }
+            break;
+        case UIGestureRecognizerStateChanged:
+        {
+            CGPoint currentPoint = [pan locationInView:self];
+            CGFloat move = currentPoint.x - self.panBeaginPoint.x;
+            if (move == 0) return;
+            CGRect preFrame = self.preMonthView.frame,midFrame = self.midMonthView.frame, nextFrame = self.nextMonthView.frame;
+            preFrame.origin.x = -self.bounds.size.width + move;
+            midFrame.origin.x = move;
+            nextFrame.origin.x = self.bounds.size.width + move;
+            self.preMonthView.frame = preFrame;
+            self.midMonthView.frame = midFrame;
+            self.nextMonthView.frame = nextFrame;
+        }
+            break;
+        case UIGestureRecognizerStateCancelled:
+        case UIGestureRecognizerStateFailed:
+        {
+            CGRect preFrame = self.preMonthView.frame,midFrame = self.midMonthView.frame, nextFrame = self.nextMonthView.frame;
+            preFrame.origin.x = -self.bounds.size.width;
+            midFrame.origin.x = 0;
+            nextFrame.origin.x = self.bounds.size.width;
+            [UIView animateWithDuration:CalendarScrollTime animations:^{
+                self.preMonthView.frame = preFrame;
+                self.midMonthView.frame = midFrame;
+                self.nextMonthView.frame = nextFrame;
+            }];
+        }
+            break;
+        case UIGestureRecognizerStateEnded:
+        {
+            CGPoint v = [pan velocityInView:self];
+            CGPoint c = [pan locationInView:self];
+            CGFloat move = c.x - self.panBeaginPoint.x;
+            if (move == 0) return;
+            
+            if (fabs(v.x) > 1000 || fabs(move) >= self.bounds.size.width / 2)
+            {
+                [self scrollToRight:v.x > 0];
+            }
+            else
+            {
+                CGRect preFrame = self.preMonthView.frame,midFrame = self.midMonthView.frame, nextFrame = self.nextMonthView.frame;
+                preFrame.origin.x = -self.bounds.size.width;
+                midFrame.origin.x = 0;
+                nextFrame.origin.x = self.bounds.size.width;
+                [UIView animateWithDuration:CalendarScrollTime animations:^{
+                    self.preMonthView.frame = preFrame;
+                    self.midMonthView.frame = midFrame;
+                    self.nextMonthView.frame = nextFrame;
+                }];
+            }
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
+
+#pragma mark - private
+- (void)exchangeMonthViewPointerWithScrollDirection:(BOOL)right
+{
+    if (right)
+    {
+        YCCalendarMonthView *tempPoint = self.nextMonthView;
+        self.nextMonthView = self.midMonthView;
+        self.midMonthView = self.preMonthView;
+        self.preMonthView = tempPoint;
+    }
+    else
+    {
+        YCCalendarMonthView *tempPoint = self.preMonthView;
+        self.preMonthView = self.midMonthView;
+        self.midMonthView = self.nextMonthView;
+        self.nextMonthView = tempPoint;
+    }
+}
+
+- (void)scrollEnd
+{
+    if ([[YCCalendarManager defaultManager].dataSource respondsToSelector:@selector(calendarView:willShowMonthView:)])
+    {
+        [[YCCalendarManager defaultManager].dataSource calendarView:self willShowMonthView:self.midMonthView];
+    }
+}
+
+- (void) updateMonthViewBegainDate
+{
+    if ([YCCalendarManager defaultManager].displayType == YCCalendarDisplayMonthType)
+    {
+        NSDate *begainDate = self.midMonthView.beaginDate;
+        if (begainDate)
+        {
+            begainDate = [begainDate dateWithMonthBegainDate];
+        }
+        else
+        {
+            begainDate = [[NSDate date] dateWithMonthBegainDate];
+        }
+        self.midMonthView.beaginDate = begainDate;
+        self.preMonthView.beaginDate = [self.midMonthView.beaginDate YC_dateByMinusMonths:1];
+        self.nextMonthView.beaginDate = [self.midMonthView.beaginDate YC_dateByAddingMonths:1];
+    }
+    else
+    {
+        YCCalendarDayView *dayView = [self.midMonthView dayViewWithIndexPath:[YCCalendarIndexPath indextPathWithLine:self.midMonthView.weekLine andRow:0]];
+        self.midMonthView.beaginDate = dayView.date;
+        self.preMonthView.beaginDate = [self.midMonthView.beaginDate YC_dateByMinusWeeks:1];
+        self.nextMonthView.beaginDate = [self.midMonthView.beaginDate YC_dateByAddingWeeks:1];
+    }
+}
+
+#pragma mark - scroll
+- (void)scrollToRight:(BOOL)right
+{
+    
+    NSLog(@"right -----  %@",right?@"YES":@"NO");
+    //    NSLog(@"right ----- %d", right);
+    
+    CGRect preFrame = self.preMonthView.frame,midFrame = self.midMonthView.frame, nextFrame = self.nextMonthView.frame;
+    if (right)
+    {
+        preFrame.origin.x = 0;
+        midFrame.origin.x = self.bounds.size.width;
+        nextFrame.origin.x = -self.bounds.size.width;
+        [UIView animateWithDuration:CalendarScrollTime animations:^{
+            self.midMonthView.frame = midFrame;
+            self.preMonthView.frame = preFrame;
+        } completion:^(BOOL finished) {
+            if(finished)
+            {
+                self.nextMonthView.frame = nextFrame;
+                [self.nextMonthView reloadWithBegainDate:self.displayType == YCCalendarDisplayMonthType ? [self.preMonthView.beaginDate YC_dateByMinusMonths:1] : [self.preMonthView.beaginDate YC_dateByMinusWeeks:1]];
+                [self exchangeMonthViewPointerWithScrollDirection:right];
+                [self scrollEnd];
+                
+            }
+        }];
+    }
+    else
+    {
+        //next
+        preFrame.origin.x = self.bounds.size.width;
+        midFrame.origin.x = -self.bounds.size.width;
+        nextFrame.origin.x = 0;
+        [UIView animateWithDuration:CalendarScrollTime animations:^{
+            self.midMonthView.frame = midFrame;
+            self.nextMonthView.frame = nextFrame;
+        } completion:^(BOOL finished) {
+            self.preMonthView.frame = preFrame;
+            [self.preMonthView reloadWithBegainDate:self.displayType == YCCalendarDisplayMonthType ?[self.nextMonthView.beaginDate YC_dateByAddingMonths:1] : [self.nextMonthView.beaginDate YC_dateByAddingWeeks:1]];
+            [self exchangeMonthViewPointerWithScrollDirection:right];
+            [self scrollEnd];
+        }];
+    }
+    
+}
+
+#pragma mark - lazyLoad
+- (void)setDisplayType:(YCCalendarDisplayType)displayType
+{
+    [YCCalendarManager defaultManager].displayType = displayType;
+}
+
+- (YCCalendarDisplayType)displayType
+{
+    return [YCCalendarManager defaultManager].displayType;
+}
+
+- (void)setDelegate:(id<YCCalendarViewDelegate>)delegate
+{
+    [YCCalendarManager defaultManager].delegate = delegate;
+}
+
+- (id <YCCalendarViewDelegate>)delegate
+{
+    return [YCCalendarManager defaultManager].delegate;
+}
+
+- (void)setDataSource:(id<YCCalendarViewDataSource>)dataSource
+{
+    [YCCalendarManager defaultManager].dataSource = dataSource;
+}
+
+- (id <YCCalendarViewDataSource>)dataSource
+{
+    return [YCCalendarManager defaultManager].dataSource;
+}
+
+- (NSDate *)calendarSelectDate
+{
+    return [YCCalendarManager defaultManager].selectDate;
+}
+
+- (UIView *)contentView
+{
+    if (!_contentView)
+    {
+        _contentView = [[UIView alloc] initWithFrame:self.bounds];
+    }
+    return _contentView;
+}
+
+- (YCCalendarMonthView *)preMonthView
+{
+    if (!_preMonthView)
+    {
+        _preMonthView = [[YCCalendarMonthView alloc] initWithCalendarLayout:[[YCCalendarLayout alloc] init]];
+        _preMonthView.layout.itemSize = CGSizeMake(itemWH, itemWH * CalendarDayView_HW_Ration);
+        _preMonthView.frame = CGRectMake(-self.bounds.size.width, CGRectGetMaxY(self.weekendView.frame) + topSpace, self.bounds.size.width, itemWH*6);
+    }
+    return _preMonthView;
+}
+
+- (YCCalendarMonthView *)midMonthView
+{
+    if (!_midMonthView)
+    {
+        _midMonthView = [[YCCalendarMonthView alloc] initWithCalendarLayout:[[YCCalendarLayout alloc] init]];
+        _midMonthView.layout.itemSize = CGSizeMake(itemWH, itemWH * CalendarDayView_HW_Ration);
+        _midMonthView.frame = CGRectMake(0, CGRectGetMaxY(self.weekendView.frame) + topSpace, self.bounds.size.width, itemWH*6);
+    }
+    return _midMonthView;
+}
+
+- (YCCalendarMonthView *)nextMonthView
+{
+    if (!_nextMonthView)
+    {
+        _nextMonthView = [[YCCalendarMonthView alloc] initWithCalendarLayout:[[YCCalendarLayout alloc] init]];
+        _nextMonthView.layout.itemSize = CGSizeMake(itemWH, itemWH * CalendarDayView_HW_Ration);
+        _nextMonthView.frame = CGRectMake(-self.bounds.size.width, CGRectGetMaxY(self.weekendView.frame) + topSpace, self.bounds.size.width, itemWH*6);
+    }
+    return _nextMonthView;
+}
+
+- (YCWeekendView *)weekendView
+{
+    if (!_weekendView)
+    {
+        _weekendView = [[YCWeekendView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 47)];
+    }
+    return _weekendView;
+}
+
+
+
+@end

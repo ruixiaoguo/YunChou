@@ -1,0 +1,18 @@
+//
+//  UserInfoRequestModel.swift
+//  YunChou
+//
+//  Created by grx on 2018/10/19.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import UIKit
+
+class UserInfoRequestModel: YCBaseRequestModel {
+//    var userId:String?;            //用户ID
+    var nickName:String?;          //昵称
+    var userImg:Data?;           //头像
+    var weixin:String?;            //微信
+    var email:String?;             //邮箱
+    required init(){}
+}

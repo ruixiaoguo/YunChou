@@ -1,0 +1,32 @@
+//
+//  AppLoginKey.swift
+//  YunChou
+//
+//  Created by grx on 2018/10/17.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import Foundation
+
+#if DEBUG
+let YCBASEURL = "http://192.168.75.7:8707/org/business/basics"
+#else
+let YCBASEURL = "http://192.168.75.7:8707/org/business/basics"
+#endif
+//是否登录
+func ISLOGIN() -> Bool {
+    return (MMKV.default()?.getBoolForKey("isLogin"))!
+}
+//用户ID
+func USERID() -> String {
+    return MMKV.default()?.getObjectOf((String.self as! AnyClass), forKey: "userId") as! String
+}
+//用户名
+func USERNAME() -> String {
+    return (MMKV.default()?.getObjectOf((String.self as! AnyClass), forKey: "loginName") as! String)
+}
+//手机号
+func PHONE() -> String {
+    return (MMKV.default()?.getObjectOf((String.self as! AnyClass), forKey: "phoneNum") as! String)
+}
+

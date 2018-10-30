@@ -1,0 +1,22 @@
+platform :ios, '10.0'
+target “YunChou” do
+
+pod 'SwiftyJSON'
+pod 'Kingfisher'
+pod 'SwiftyUserDefaults'
+pod 'NVActivityIndicatorView'
+pod 'SnapKit'
+pod 'SDAutoLayout'
+pod 'SwiftFCXRefresh'
+pod 'HandyJSON'
+pod 'SwiftProgressHUD'
+pod 'Moya'
+pod 'MMKV'
+pod 'IQKeyboardManagerSwift'
+pod 'FSPagerView', '~> 0.7.2'
+pod 'JWNetAutoCache'
+pod 'SDWebImage', '~> 5.0.0-beta3'
+pod 'MJRefresh', '~> 3.1.15.7'
+
+# use_framework !
+end

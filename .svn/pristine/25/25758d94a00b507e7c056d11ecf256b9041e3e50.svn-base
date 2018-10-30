@@ -1,0 +1,350 @@
+//
+//  WaitPayCell.swift
+//  YunChou
+//
+//  Created by grx on 2018/10/12.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import UIKit
+
+class WaitPayCell: UITableViewCell {
+    
+    //付款
+    var PayMoneyBlock:((_ realMoney:String)->Void)?
+    
+    
+    //背景图片
+    private lazy var bgView:UIView = UIView()
+    //订单号
+    private lazy var orderNumLabel:UILabel = UILabel()
+    //预约中
+    private lazy var subImage = UIImageView()
+    private lazy var subLable:UILabel = UILabel()
+    //订单图片
+    private lazy var orderImage:UIImageView = UIImageView()
+    //订单标题
+    private lazy var orderTitleLable:UILabel = UILabel()
+    //股权方案
+    private lazy var stockCaseLable:UILabel = UILabel()
+    //预约数量
+    private lazy var subNumLable:UILabel = UILabel()
+    //实付款
+    private lazy var payMoneyLable:UILabel = UILabel()
+    
+    private lazy var timeBgView = UIView()
+    //剩余时间
+    private lazy var timeImage = UIImageView()
+    private lazy var timeLable:UILabel = UILabel()
+    //取消
+    private lazy var cancleButton:UIButton = UIButton()
+    //付款
+    private lazy var payButton:UIButton = UIButton()
+    //倒计时
+    private lazy var countDownView:GGClockView = GGClockView()
+    
+    private lazy var timeSuccessBgView = UIView()
+    //再来一单
+    private lazy var buyAginButton:UIButton = UIButton()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = YCColorLight
+        self.selectionStyle = .none
+        /** 创建UI */
+        self.InitUI()
+    }
+    
+    fileprivate func InitUI(){
+        
+        contentView.addSubview(bgView)
+        bgView.backgroundColor = YCColorWhite
+        bgView.layer.cornerRadius = 5
+        bgView.snp.makeConstraints({ (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(12)
+            make.right.equalTo(-12)
+            make.height.equalTo(235)
+        })
+        //订单号
+        orderNumLabel.text = "订单：83745758488"
+        orderNumLabel.font = YC_FONT_PFSC_Medium(14)
+        orderNumLabel.textColor = YCColorGray
+        bgView.addSubview(orderNumLabel)
+        orderNumLabel.snp.makeConstraints({ (make) in
+            make.top.equalTo(15)
+            make.left.equalTo(15)
+            make.right.equalTo(-150)
+        })
+        //预约中
+        subImage.image = UIImage(named: "delete")
+        bgView.addSubview(subImage)
+        subImage.snp.makeConstraints({ (make) in
+            make.top.equalTo(14)
+            make.right.equalTo(-15)
+            make.width.equalTo(17)
+            make.height.equalTo(20)
+        })
+        subLable.text = "预约中"
+        subLable.font = YC_FONT_PFSC_Semibold(14)
+        subLable.textColor = YCColorStanBlue
+        subLable.textAlignment = NSTextAlignment.right
+        bgView.addSubview(subLable)
+        subLable.snp.makeConstraints({ (make) in
+            make.top.equalTo(15)
+            make.right.equalTo(subImage.snp.left).offset(-10)
+        })
+        //分割线
+        let lineView = UIView()
+        lineView.backgroundColor = YCColorLight
+        bgView.addSubview(lineView)
+        lineView.snp.makeConstraints({ (make) in
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.height.equalTo(1)
+            make.top.equalTo(subLable).offset(30)
+        })
+        //订单
+        orderImage.image = UIImage(named: "bgImage")
+        bgView.addSubview(orderImage)
+        orderImage.layer.cornerRadius = 5
+        orderImage.layer.masksToBounds = true
+        orderImage.snp.makeConstraints({ (make) in
+            make.top.equalTo(lineView.snp.bottom).offset(15)
+            make.left.equalTo(15)
+            make.width.equalTo(100)
+            make.height.equalTo(100)
+        })
+        //订单标题
+        orderTitleLable.text = "丽朗酒店-黄山丽朗度假村丽朗酒店-黄山丽"
+        orderTitleLable.font = YC_FONT_PFSC_Regular(14)
+        orderTitleLable.numberOfLines = 0
+        orderTitleLable.textColor = YCColorBlack
+        bgView.addSubview(orderTitleLable)
+        orderTitleLable.snp.makeConstraints({ (make) in
+            make.left.equalTo(orderImage.snp.right).offset(15)
+            make.top.equalTo(orderImage)
+            make.right.equalTo(-15)
+        })
+        //股权方案
+        stockCaseLable.text = "股权方案1"
+        stockCaseLable.font = YC_FONT_PFSC_Regular(14)
+        stockCaseLable.textColor = YCColorStanBlue
+        bgView.addSubview(stockCaseLable)
+        stockCaseLable.snp.makeConstraints({ (make) in
+            make.left.equalTo(orderImage.snp.right).offset(15)
+            make.top.equalTo(orderTitleLable.snp.bottom).offset(10)
+        })
+        //实付款
+        payMoneyLable.text = "￥600.98"
+        payMoneyLable.font = YC_FONT_PFSC_Medium(16)
+        payMoneyLable.textColor = YCColorRed
+        bgView.addSubview(payMoneyLable)
+        payMoneyLable.snp.makeConstraints({ (make) in
+            make.right.equalTo(-15)
+            make.top.equalTo(stockCaseLable.snp.bottom).offset(7)
+        })
+        let payLable = UILabel()
+        payLable.text = "实付款："
+        payLable.font = YC_FONT_PFSC_Regular(12)
+        payLable.textColor = YCColorBlack
+        bgView.addSubview(payLable)
+        payLable.snp.makeConstraints({ (make) in
+            make.right.equalTo(payMoneyLable.snp.left).offset(-2)
+            make.top.equalTo(stockCaseLable.snp.bottom).offset(10)
+        })
+        //预约数量
+        subNumLable.text = "预约：5份"
+        subNumLable.font = YC_FONT_PFSC_Regular(12)
+        subNumLable.textColor = YCColorBlack
+        bgView.addSubview(subNumLable)
+        subNumLable.snp.makeConstraints({ (make) in
+            make.right.equalTo(payLable.snp.left).offset(-10)
+            make.top.equalTo(stockCaseLable.snp.bottom).offset(10)
+        })
+        
+        
+        timeBgView.backgroundColor = YCColorWhite
+        bgView.addSubview(timeBgView)
+        timeBgView.snp.makeConstraints({ (make) in
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.top.equalTo(subNumLable.snp.bottom).offset(20)
+            make.height.equalTo(60)
+        })
+        
+        //分割线
+        let lineView_bot = UIView()
+        lineView_bot.backgroundColor = YCColorLight
+        timeBgView.addSubview(lineView_bot)
+        lineView_bot.snp.makeConstraints({ (make) in
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.height.equalTo(1)
+            make.top.equalTo(0)
+        })
+        //剩余时间
+        timeImage.image = UIImage(named: "tag")
+        timeBgView.addSubview(timeImage)
+        timeImage.snp.makeConstraints({ (make) in
+            make.top.equalTo(lineView_bot.snp.bottom).offset(20)
+            make.left.equalTo(15)
+            make.width.equalTo(17)
+            make.height.equalTo(17)
+        })
+        let timeTitleLable = UILabel()
+        timeTitleLable.text = "剩余时间："
+        timeTitleLable.font = YC_FONT_PFSC_Regular(12)
+        timeTitleLable.textColor = YCColorBlack
+        timeBgView.addSubview(timeTitleLable)
+        timeTitleLable.snp.makeConstraints({ (make) in
+            make.left.equalTo(timeImage.snp.right).offset(8)
+            make.top.equalTo(lineView_bot.snp.bottom).offset(20)
+        })
+        //倒计时
+        countDownView = GGClockView.init(timeBackgroundColor: YCColorWhite, timeTextColor: YC_Color_Red, colonColor: YC_Color_Red, font: YC_FONT_PFSC_Regular(13))
+        countDownView.contentMode = GGClockViewContentMode.left;
+        timeBgView.addSubview(countDownView)
+        countDownView.snp.makeConstraints({ (make) in
+            make.left.equalTo(timeTitleLable.snp.right).offset(-2)
+            make.top.equalTo(lineView_bot.snp.bottom).offset(15.5)
+            make.width.equalTo(60)
+            make.height.equalTo(25)
+        })
+        countDownView.time = 99999;
+        countDownView.start()
+        //付款
+        timeBgView.addSubview(payButton)
+        payButton .setTitle("付款", for: .normal)
+        payButton .setTitleColor(YCColorWhite, for: .normal)
+        payButton .backgroundColor = YCColorRed
+        payButton .titleLabel?.font = YC_FONT_PFSC_Medium(15)
+        payButton.layer.cornerRadius = 34/2
+        payButton.layer.borderWidth = 0.5
+        payButton.layer.borderColor = YCColorRed.cgColor
+        payButton.addTarget(self, action: #selector(payButtonClick(_:)), for: .touchUpInside)
+        payButton.snp.makeConstraints({ (make) in
+            make.top.equalTo(lineView_bot.snp.bottom).offset(10)
+            make.right.equalTo(-15)
+            make.width.equalTo(75)
+            make.height.equalTo(37)
+        })
+        //取消
+        timeBgView.addSubview(cancleButton)
+        cancleButton .setTitle("取消", for: .normal)
+        cancleButton .setTitleColor(YCColorTitleBlack, for: .normal)
+        cancleButton .backgroundColor = YCColorWhite
+        cancleButton .titleLabel?.font = YC_FONT_PFSC_Medium(15)
+        cancleButton.layer.cornerRadius = 34/2
+        cancleButton.layer.borderWidth = 0.5
+        cancleButton.layer.borderColor = gof_ColorWithHex(0xDFDFDF).cgColor
+        //        cancleButton.addTarget(self, action: #selector(deletClick(_:)), for: .touchUpInside)
+        cancleButton.snp.makeConstraints({ (make) in
+            make.top.equalTo(lineView_bot.snp.bottom).offset(10)
+            make.right.equalTo(payButton.snp.left).offset(-10)
+            make.width.equalTo(75)
+            make.height.equalTo(37)
+        })
+        
+        //支付成功
+        timeSuccessBgView.backgroundColor = YCColorWhite
+        bgView.addSubview(timeSuccessBgView)
+        timeSuccessBgView.isHidden = true
+        timeSuccessBgView.snp.makeConstraints({ (make) in
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.top.equalTo(subNumLable.snp.bottom).offset(20)
+            make.height.equalTo(60)
+        })
+        //分割线
+        let lineView_success = UIView()
+        lineView_success.backgroundColor = YCColorLight
+        timeSuccessBgView.addSubview(lineView_success)
+        lineView_success.snp.makeConstraints({ (make) in
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.height.equalTo(1)
+            make.top.equalTo(0)
+        })
+        //再来一单
+        timeSuccessBgView.addSubview(buyAginButton)
+        buyAginButton .setTitle("再来一单", for: .normal)
+        buyAginButton .setTitleColor(YCColorRed, for: .normal)
+        buyAginButton .backgroundColor = YCColorWhite
+        buyAginButton .titleLabel?.font = YC_FONT_PFSC_Medium(15)
+        buyAginButton.layer.cornerRadius = 34/2
+        buyAginButton.layer.borderWidth = 0.5
+        buyAginButton.layer.borderColor = YCColorRed.cgColor
+        //        deleteButton.addTarget(self, action: #selector(deletClick(_:)), for: .touchUpInside)
+        buyAginButton.snp.makeConstraints({ (make) in
+            make.top.equalTo(lineView_bot.snp.bottom).offset(10)
+            make.right.equalTo(-15)
+            make.width.equalTo(92)
+            make.height.equalTo(37)
+        })
+        
+    }
+    
+    internal func gaintPersionModel(model:MyAdressModel) {
+        
+    }
+    
+    //更新成功Cell样式
+    internal func ModifySuccessCellsStyle() {
+        timeBgView.isHidden = true
+        timeSuccessBgView.isHidden = false
+        subLable.snp.updateConstraints({ (make) in
+            make.right.equalTo(subImage.snp.left).offset(15)
+        })
+        subLable.text = "预约中"
+        subImage.isHidden = true
+        timeBgView.isHidden = true
+    }
+    
+    //更新退款Cell样式
+    internal func ModifyRefundCellsStyle() {
+        bgView.snp.updateConstraints({ (make) in
+            make.height.equalTo(180)
+        })
+        subLable.snp.updateConstraints({ (make) in
+            make.right.equalTo(subImage.snp.left).offset(15)
+        })
+        subLable.text = "预约未申购"
+        subLable.textColor = YCColorDarkLight
+        subImage.isHidden = true
+        timeBgView.isHidden = true
+    }
+    
+    //更新失效Cell样式
+    internal func ModifyInvalidCellsStyle() {
+        bgView.snp.updateConstraints({ (make) in
+            make.height.equalTo(180)
+        })
+        subLable.snp.updateConstraints({ (make) in
+            make.right.equalTo(subImage.snp.left).offset(15)
+        })
+        subLable.text = "已失效"
+        subLable.textColor = YCColorDarkLight
+        subImage.isHidden = true
+        timeBgView.isHidden = true
+    }
+    
+    //付款
+    @objc func payButtonClick(_ sender:UIButton){
+        let moneyStr = payMoneyLable.text!
+        let realMoney = moneyStr.substring(from: moneyStr.index(moneyStr.startIndex, offsetBy: 1))
+        PayMoneyBlock!(realMoney)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+}
+
+

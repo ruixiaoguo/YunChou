@@ -1,0 +1,146 @@
+
+//
+//  YCProjectBottomView.swift
+//  YunChou
+//
+//  Created by yy on 2018/9/30.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import UIKit
+
+class YCProjectBottomView: UIView {
+
+    private lazy var shareBtn : YCButton = {
+        let shareBtn = YCButton.init(type: UIButton.ButtonType.custom)
+        shareBtn.setTitleColor(YC_FontColor_LightGray, for: .normal)
+        shareBtn.titleLabel?.font = YC_FONT_PFSC_Medium(12)
+        shareBtn.isUserInteractionEnabled = false
+        shareBtn.titleLabel?.textAlignment = NSTextAlignment.center
+        shareBtn.setTitle("分享", for: .normal)
+        shareBtn.setImage(UIImage(named: "message"), for: .normal)
+        //        btnOnt.addTarget(self, action: #selector(progresBtnClickHandel), for: .touchUpInside)
+        shareBtn.layoutContent(style: YCButtonLayoutStyle.ImageTopContentCenter, imgSize: CGSize(width: 18, height: 18), space: 4)
+        return shareBtn
+    }()
+    
+    private lazy var groupBtn : YCButton = {
+        let groupBtn = YCButton.init(type: UIButton.ButtonType.custom)
+        groupBtn.setTitleColor(YC_FontColor_LightGray, for: .normal)
+        groupBtn.titleLabel?.font = YC_FONT_PFSC_Medium(12)
+        groupBtn.isUserInteractionEnabled = false
+        groupBtn.titleLabel?.textAlignment = NSTextAlignment.center
+
+        groupBtn.setTitle("进群", for: .normal)
+        groupBtn.setImage(UIImage(named: "message"), for: .normal)
+
+        //        btnOnt.addTarget(self, action: #selector(progresBtnClickHandel), for: .touchUpInside)
+        groupBtn.layoutContent(style: YCButtonLayoutStyle.ImageTopContentCenter, imgSize: CGSize(width: 18, height: 18), space: 4)
+       return groupBtn
+    }()
+    
+    private lazy var serviceBtn : YCButton = {
+        let serviceBtn = YCButton.init(type: UIButton.ButtonType.custom)
+        serviceBtn.setTitleColor(YC_FontColor_LightGray, for: .normal)
+        serviceBtn.titleLabel?.font = YC_FONT_PFSC_Medium(12)
+        serviceBtn.isUserInteractionEnabled = false
+        serviceBtn.setTitle("分享", for: .normal)
+        serviceBtn.setImage(UIImage(named: "message"), for: .normal)
+        serviceBtn.titleLabel?.textAlignment = NSTextAlignment.center
+
+        //        btnOnt.addTarget(self, action: #selector(progresBtnClickHandel), for: .touchUpInside)
+        serviceBtn.layoutContent(style: YCButtonLayoutStyle.ImageTopContentCenter, imgSize: CGSize(width: 18, height: 18), space: 4)
+        return serviceBtn
+    }()
+    
+    private lazy var orderBtn : UIButton = {
+        let orderBtn = UIButton.init(type: UIButton.ButtonType.custom)
+        orderBtn.setTitle("预约", for: .normal)
+        orderBtn.titleLabel?.textColor = UIColor.white
+        orderBtn.titleLabel?.font = YC_FONT_PFSC_Medium(16)
+        orderBtn.backgroundColor = YC_Color_DarkBlue
+        return orderBtn
+    }()
+    
+    
+    
+    
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = UIColor.white
+        createSubViews()
+        
+        self.layer.shadowColor = YC_FontColor_45Dark.cgColor
+        self.layer.shadowOpacity = 0.21
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        
+        
+        
+    }
+    
+   func createSubViews(){
+    
+    self.addSubview(self.shareBtn)
+    shareBtn.snp.makeConstraints { (make) in
+        make.top.left.equalTo(0)
+        make.height.equalTo(50)
+        make.width.equalTo(55)
+
+    }
+    
+    self.addSubview(self.groupBtn)
+    groupBtn.snp.makeConstraints { (make) in
+        make.top.equalTo(0)
+        make.left.equalTo(shareBtn.snp.right).offset(0)
+        make.height.equalTo(50)
+        make.width.equalTo(55)
+
+    }
+    
+    self.addSubview(self.serviceBtn)
+    serviceBtn.snp.makeConstraints { (make) in
+        make.top.equalTo(0)
+        make.left.equalTo(groupBtn.snp.right).offset(0)
+        make.height.equalTo(50)
+        make.width.equalTo(55)
+
+    }
+    
+    self.addSubview(self.orderBtn)
+    orderBtn.snp.makeConstraints { (make) in
+        make.top.equalTo(0)
+        make.right.equalTo(0)
+        make.height.equalTo(50)
+        make.width.equalTo(131)
+    }
+    
+    let lin1 : UILabel = UILabel()
+    lin1.backgroundColor = gof_RGBAColor(233,233,233,1)
+    self.addSubview(lin1)
+    lin1.snp.makeConstraints { (make) in
+        make.top.equalTo(0)
+        make.width.equalTo(0.8)
+        make.left.equalTo(shareBtn.snp.right).offset(0)
+        make.height.equalTo(50)
+    }
+    
+    let lin2 : UILabel = UILabel()
+    lin2.backgroundColor = gof_RGBAColor(233,233,233,1)
+    self.addSubview(lin2)
+    lin2.snp.makeConstraints { (make) in
+        make.top.equalTo(0)
+        make.width.equalTo(0.8)
+        make.left.equalTo(groupBtn.snp.right).offset(0)
+        make.height.equalTo(50)
+    }
+    
+    
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+
+}

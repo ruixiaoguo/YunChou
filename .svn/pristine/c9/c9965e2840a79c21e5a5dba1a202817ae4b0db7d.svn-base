@@ -1,0 +1,130 @@
+//
+//  BindingEmailController.swift
+//  YunChou
+//
+//  Created by grx on 2018/9/26.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import UIKit
+import SwiftProgressHUD
+
+class BindEmailController: BaseController {
+    //输入框
+    private lazy var emailTextFild : UITextField = UITextField()
+    //完成按钮
+    private lazy var overButton : UIButton = UIButton()
+    private lazy var tagImage : UIImageView = UIImageView()
+    private lazy var tagLable : UILabel = UILabel()
+    var saveSuccessBlock:(()->Void)?
+    var emailStr = ""
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.title = "绑定邮箱"
+        self.view.backgroundColor = YCColorLight
+        self.leftView.isHidden = false
+        self.creatUI()
+    }
+    
+    func creatUI() {
+        self.view.addSubview(self.bgView)
+        self.bgView.snp.makeConstraints({ (make) in
+            make.top.equalTo(NaviBarHeight+15)
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.height.equalTo(55)
+        })
+        //绑定邮箱
+        emailTextFild.placeholder = "请输入有效的邮箱地址"
+        emailTextFild.font = UIFont.systemFont(ofSize: 16)
+        emailTextFild.text = emailStr
+        emailTextFild.textColor = YCColorBlack
+        emailTextFild.clearButtonMode = .never
+        emailTextFild.setModifyClearButton()// 添加自定义清除按钮
+        emailTextFild.backgroundColor = YCColorWhite
+        self.bgView.addSubview(emailTextFild)
+        emailTextFild.snp.makeConstraints({ (make) in
+            make.top.equalTo(0)
+            make.left.equalTo(18)
+            make.right.equalTo(-15)
+            make.height.equalTo(55)
+        })
+        //完成按钮
+        overButton.setTitle("完成", for: .normal)
+        overButton.setTitleColor(YCColorWhite, for: .normal)
+        overButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        self.view.addSubview(overButton)
+        overButton.snp.makeConstraints({ (make) in
+            make.top.equalTo(self.bgView.snp.bottom).offset(30)
+            make.left.equalTo(25)
+            make.right.equalTo(-25)
+            make.height.equalTo(45)
+        })
+        overButton.addTarget(self, action:#selector(overClick(_:)), for:.touchUpInside)
+        overButton.setColors(superView: overButton)
+        overButton.layer.cornerRadius = 45/2
+        //标签
+        tagImage.contentMode = .scaleAspectFill
+        tagImage.clipsToBounds = true
+        tagImage.image = UIImage(named: "tag")
+        self.view.addSubview(tagImage)
+        tagImage.snp.makeConstraints { (make) in
+            make.top.equalTo(overButton.snp.bottom).offset(25)
+            make.left.equalTo(30)
+            make.width.equalTo(20)
+            make.height.equalTo(20)
+        }
+        //名称
+        tagLable.text = "请正确填写收件人信息，以便给您发送投资协议等文件."
+        tagLable.font = UIFont.systemFont(ofSize: 14)
+        tagLable.numberOfLines = 0
+        tagLable.textColor = YCColorBlue
+        self.view.addSubview(tagLable)
+        tagLable.snp.makeConstraints({ (make) in
+            make.top.equalTo(overButton.snp.bottom).offset(25)
+            make.left.equalTo(tagImage.snp.right).offset(10)
+            make.right.equalTo(-30)
+        })
+    }
+    
+    //MARK:========完成
+    @objc func overClick(_ button:UIButton){
+        //验证邮箱格式
+        if(UtilityFunction.validateEmail(email: emailTextFild.text!)==false){
+            SwiftProgressHUD.showOnlyText("邮箱格式错误，请重新输入!")
+            return
+        }
+        //MARK:===================绑定邮箱
+        YCUserCenterNetwork.request(target: .ModifyUserInfo(userId: USERID(), nickName: "", userImg: "", weixin: "", email: emailTextFild.text!), success: { (JSON) in
+            print("=========\(JSON)")
+            if(JSON["msg"]["code"].rawString()=="000000"){
+                //更新本地存储
+                UserInfoManager.shared.infoModel.email = self.emailTextFild.text!
+                SwiftProgressHUD.showOnlyText("设置成功")
+                self.saveSuccessBlock!()
+                self.navigationController!.popViewController(animated: true)
+            }else{
+                let message = JSON["msg"]["msg"].rawString()
+                SwiftProgressHUD.showOnlyText(message!)
+            }
+        }, failure: { (MoyaError) in
+            
+        })
+    }
+    
+    //点击其他地方收回键盘
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        emailTextFild.resignFirstResponder()
+    }
+    
+    lazy var bgView:UIView = {
+        let bgView = UIView()
+        bgView.backgroundColor = YCColorWhite
+        return bgView
+    }()
+    
+    override func backToPrevious() {
+        self.navigationController!.popViewController(animated: true)
+    }
+}

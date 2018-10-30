@@ -1,0 +1,30 @@
+
+//
+//  YCHandelConfing.swift
+//  YunChou
+//
+//  Created by yy on 2018/10/23.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import UIKit
+import Foundation
+
+class YCHandelConfing: NSObject {
+
+}
+//获取当前时间
+func NOWDATE(formatStr : String) -> String {
+    let date = Date()
+    let formatter = DateFormatter()
+    formatter.dateFormat = formatStr
+    formatter.locale = Locale.current
+    let strNowTime = formatter.string(from: date)
+    return strNowTime
+}
+
+//获取展位图图片名
+func placeholderImg() -> UIImage{
+    let image : UIImage = UIImage(named: "yc_emptyView")!
+    return image
+}

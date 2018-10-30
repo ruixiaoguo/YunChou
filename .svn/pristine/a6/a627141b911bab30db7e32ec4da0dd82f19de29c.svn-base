@@ -1,0 +1,59 @@
+//
+//  LoginViewModel.swift
+//  YunChou
+//
+//  Created by grx on 2018/10/18.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import UIKit
+import HandyJSON
+import Moya
+import SwiftProgressHUD
+
+class LoginViewModel: NSObject {
+    // 请求成功的回调
+    typealias successCallback = () -> Void
+    // 请求失败的回调
+    typealias failureCallback = (_ error: MoyaError) -> Void
+}
+
+// Mark:-请求数据
+extension LoginViewModel {
+    //账号密码登录
+    func requestAccountLogin(loginName: String, loginPwd: String, success:@escaping successCallback) {
+        if loginName.count==0 || loginPwd.count==0 {
+            SwiftProgressHUD.showOnlyText("账号或密码不能为空!")
+            return
+        }
+        YCLoginNetwork.request(target: .accountLogin(loginName: loginName, loginPwd: loginPwd), success: { (JSON) in
+            if(JSON["msg"]["code"].rawString()=="200"){
+                MMKV.default()?.setBool(true, forKey: "isLogin")
+                success()
+            }else{
+                let message = JSON["msg"]["msg"].rawString()
+                SwiftProgressHUD.showOnlyText(message!)
+            }
+        }) { (MoyaError) in
+            SwiftProgressHUD.showOnlyText("服务器异常！")
+        }
+    }
+    //短信验证码登录
+    func requestSmsLogin(phone: String, vcode: String, success:@escaping successCallback) {
+        if phone.count==0 || vcode.count==0 {
+            SwiftProgressHUD.showOnlyText("电话或验证码不能为空!")
+            return
+        }
+        YCLoginNetwork.request(target: .smsLogin(phone: phone, vaCode: vcode), success: { (JSON) in
+            if(JSON["msg"]["code"].rawString()=="200"){
+                MMKV.default()?.setBool(true, forKey: "isLogin")
+                success()
+            }else{
+                let message = JSON["msg"]["msg"].rawString()
+                SwiftProgressHUD.showOnlyText(message!)
+            }
+        }) { (MoyaError) in
+            SwiftProgressHUD.showOnlyText("服务器异常！")
+        }
+    }
+}

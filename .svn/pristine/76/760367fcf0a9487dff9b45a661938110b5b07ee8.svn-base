@@ -1,0 +1,57 @@
+//
+//  MyOrderController.swift
+//  YunChou
+//
+//  Created by grx on 2018/10/11.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import UIKit
+
+class MyOrderController: BaseController,LTPageViewDelegate {
+
+    let titleArray:Array = ["待支付订单","成功订单","退款","失效"]
+    let controllerArray:Array = [WaitPayViewController(),SuccessOrderController(),RefundMoneyController(),InvalidOrderController()] as [Any]
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.title = "我的订单"
+        self.view.backgroundColor = YCColorLight
+        self.leftView.isHidden = false
+        let rect:CGRect = CGRect(x: 0, y: NaviBarHeight, width: Main_Screen_Width, height: Main_Screen_Height-NaviBarHeight-SafeBottomMargin)
+//        let myOrderManager = LTPageView(frame: rect, viewControllers: controllerArray as! [UIViewController], titles: titleArray, currentViewController: self, layout: self.layout)
+        let myOrderManager = LTPageView(frame: rect, currentViewController: self, viewControllers: controllerArray as! [UIViewController], titles: titleArray, layout: self.layout)
+        /* 设置代理 监听滚动 */
+        myOrderManager.delegate = self
+//        myOrderManager.hoverY = StatusBarHeight
+        self.view.addSubview(myOrderManager)
+    }
+    
+    //MARK:==============自定义选择条样式=============
+    private lazy var layout: LTLayout = {
+        let layout = LTLayout()
+        layout.bottomLineHeight = 4.0
+        layout.bottomLineCornerRadius = 2.0
+        layout.isShowBackImage = false
+        layout.isShowBounces = false
+        layout.pageBottomLineHeight = -8
+        layout.titleViewBgColor = UIColor.white
+        layout.scale = 1.1
+        layout.titleColor = YC_FontColor_LightGray
+        layout.titleSelectColor = YC_Color_DarkBlue
+        layout.titleFont = YC_FONT_PFSC_Medium(kWidth(R: 15))
+        layout.bottomLineColor = YC_Color_DarkBlue
+        layout.isAverage = false
+        layout.lrMargin = 30
+        layout.titleMargin = kWidth(R: 40)
+        layout.sliderWidth = 18
+        layout.sliderHeight = 60
+        /* 更多属性设置请参考 LTLayout 中 public 属性说明 */
+        return layout
+    }()
+    
+    override func backToPrevious() {
+        self.navigationController!.popViewController(animated: true)
+    }
+    
+}

@@ -1,0 +1,376 @@
+//
+//  YCCalendarMonthView.m
+//  caltextsssss
+//
+//  Created by yy on 2018/10/12.
+//  Copyright © 2018年 yy. All rights reserved.
+//
+
+#import "YCCalendarMonthView.h"
+#import "NSDate+YCCategory.h"
+#import "YCCalendarManager.h"
+#import <objc/runtime.h>
+
+static int DayViewIndexPath;
+
+@interface YCCalendarDayView (YCCalendarIndexPath)
+
+@property (nonatomic, strong) YCCalendarIndexPath *indexPath;
+
+@end
+
+@implementation YCCalendarDayView (YCCalendarIndexPath)
+
+- (void)setIndexPath:(YCCalendarIndexPath *)indexPath
+{
+    objc_setAssociatedObject(self, &DayViewIndexPath, indexPath, OBJC_ASSOCIATION_RETAIN);
+}
+
+- (YCCalendarIndexPath *)indexPath
+{
+    return objc_getAssociatedObject(self, &DayViewIndexPath);
+}
+
+@end
+
+@interface YCCalendarMonthView ()<UIGestureRecognizerDelegate>
+{
+    NSMutableArray *_showDaysAry;
+}
+@property (nonatomic, strong) NSMutableDictionary <NSString *, YCCalendarDayView *>*dayViewMap;
+
+@property (strong, nonatomic) YCCalendarDayView *tempDayView;
+@property (strong, nonatomic) YCCalendarDayView *intemp;
+
+@end
+
+@implementation YCCalendarMonthView
+
+@synthesize  swipeToChooseGesture = _swipeToChooseGesture;
+
+
+- (void)dealloc
+{
+    _showDaysAry = nil;
+    self.dayViewMap = nil;
+}
+
+- (instancetype)initWithCalendarLayout:(YCCalendarLayout *)layout
+{
+    if (self = [super init])
+    {
+        _layout = layout;
+        _layout.monthView = self;
+        _showDaysAry = [NSMutableArray arrayWithCapacity:42];
+        self.swipeToChooseGesture.enabled = YES;
+        self.clipsToBounds = YES;
+        self.backgroundColor = Calendar_MonthView_BackgroundColor;
+        self.weekLine = 0;
+        self.dayViewMap = [NSMutableDictionary dictionaryWithCapacity:42];
+        [self creatDayView];
+        [self fetchShowDayView];
+    }
+    return self;
+}
+//滑动选择
+- (UILongPressGestureRecognizer *)swipeToChooseGesture
+{
+    if (!_swipeToChooseGesture) {
+        UILongPressGestureRecognizer *pressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeToChoose:)];
+        pressGesture.enabled = NO;
+        pressGesture.numberOfTapsRequired = 0;
+        pressGesture.numberOfTouchesRequired = 1;
+        pressGesture.minimumPressDuration = 0.7;
+        [self addGestureRecognizer:pressGesture];
+        _swipeToChooseGesture = pressGesture;
+    }
+    return _swipeToChooseGesture;
+}
+//方法
+- (void)handleSwipeToChoose:(UILongPressGestureRecognizer *)pressGesture
+{
+    switch (pressGesture.state) {
+        case UIGestureRecognizerStateBegan:{
+            
+        }
+        case UIGestureRecognizerStateChanged: {
+            
+            CGPoint currentPoint = [pressGesture locationInView:self];
+            
+            for (YCCalendarDayView *dayView in _showDaysAry) {
+                //避免滑动位置太灵活
+                CGRect tempFrame = CGRectMake(dayView.frame.origin.x + 5, dayView.frame.origin.y + 5, dayView.frame.size.width - 10, dayView.frame.size.height - 10);
+                
+                if (CGRectContainsPoint(tempFrame, currentPoint) && dayView != _tempDayView) {
+                    self.intemp = dayView;
+                    if(([YCCalendarManager defaultManager].displayType == YCCalendarDisplayMonthType && dayView.date.month != self.beaginDate.month)) return;
+                    dayView.selected = !dayView.selected;
+                    
+                    if (dayView.selected) {
+                        //选中
+                        if (![[YCCalendarManager defaultManager].selectDateArr containsObject:dayView.date]) {
+                            //选中添加数据
+                            [[YCCalendarManager defaultManager].selectDateArr addObject:dayView.date];
+                        }
+                        
+                        self.weekLine = dayView.indexPath.line;
+                        if ([[YCCalendarManager defaultManager].delegate respondsToSelector:@selector(calendarView:didSelectDayView:)])
+                        {
+                            [[YCCalendarManager defaultManager].delegate calendarView:[YCCalendarManager defaultManager].calendarView didSelectDayView:dayView];
+                        }
+                    }else{
+                        //取消选中
+                        NSMutableArray *arr = [NSMutableArray arrayWithArray:[YCCalendarManager defaultManager].selectDateArr];
+                        for (int i = 0; i < arr.count; i++) {
+                            NSDate *date = arr[i];
+                            if ([dayView.date isSameDayToDate:date]) {
+                                [[YCCalendarManager defaultManager].selectDateArr removeObjectAtIndex:i];
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                }
+            }
+            self.tempDayView = self.intemp;
+            break;
+        }
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled: {
+//            self.lastPressedPoint = ;
+            self.tempDayView = nil;
+            break;
+        }
+        default:
+            break;
+    }
+    
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+    [super willMoveToSuperview:newSuperview];
+    [self reload];
+}
+
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+    if (event.type == UIEventTypeTouches)
+    {
+        BOOL inside = [super pointInside:point withEvent:event];
+        if (!inside) return nil;
+        for (YCCalendarDayView *dayView in _showDaysAry)
+        {
+            CGPoint dayPoint = [self convertPoint:point toView:dayView];
+            if ([dayView pointInside:dayPoint withEvent:event])
+            {
+                return dayView;
+            }
+        }
+        return [super hitTest:point withEvent:event];
+    }
+    else
+    {
+        return [super hitTest:point withEvent:event];
+    }
+}
+
+#pragma mark - public
+- (void)reload
+{
+    [self prepareLayout];
+}
+
+- (void)reloadWithBegainDate:(NSDate *)date
+{
+    //    NSLog(@"9090909090 ====  %@",date);
+    _beaginDate = date;
+    [self prepareLayout];
+}
+
+- (YCCalendarDayView *)dayViewWithIndexPath:(YCCalendarIndexPath *)indexPath
+{
+    return [self.dayViewMap objectForKey:[self mapKeyWithIndexPath:indexPath]];
+}
+
+- (void)changeDisplayTypeWithAnimate:(BOOL)animate
+{
+    CGRect frame = self.frame;
+    if ([YCCalendarManager defaultManager].displayType == YCCalendarDisplayMonthType)
+    {
+        frame.size.height = _layout.itemSize.height * 6;
+    }
+    else
+    {
+        frame.size.height = _layout.itemSize.height;
+    }
+    if (animate)
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            [self fetchShowDayView];
+            self.frame = frame;
+            [self prepareLayout];
+        }];
+    }
+    else
+    {
+        [self fetchShowDayView];
+        self.frame = frame;
+        [self prepareLayout];
+    }
+}
+
+#pragma mark - private
+- (void)fetchShowDayView
+{
+    [_showDaysAry removeAllObjects];
+    if ([YCCalendarManager defaultManager].displayType == YCCalendarDisplayMonthType)
+    {
+        
+        [self.dayViewMap enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, YCCalendarDayView * _Nonnull obj, BOOL * _Nonnull stop) {
+            [_showDaysAry addObject:obj];
+        }];
+    }
+    else
+    {
+        [self.dayViewMap enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, YCCalendarDayView * _Nonnull obj, BOOL * _Nonnull stop) {
+            BOOL show = obj.indexPath.line == self.weekLine;
+            if (show)
+            {
+                [_showDaysAry addObject:obj];
+            }
+            else
+            {
+                CGRect frame = obj.frame;
+                frame.origin = CGPointMake(self.center.x - frame.size.width / 2, self.center.y - frame.size.height / 2);
+                obj.frame = frame;
+            }
+        }];
+    }
+}
+
+- (void)prepareLayout
+{
+    self.weekLine = 0;
+    NSInteger weekDay = _beaginDate.weekday;
+    NSLog(@".....%lu",
+          (unsigned long)_showDaysAry.count);
+    for (YCCalendarDayView *dayView in _showDaysAry)
+    {
+        dayView.month = _beaginDate.month;
+        
+        if ([YCCalendarManager defaultManager].displayType == YCCalendarDisplayMonthType)
+        {
+            dayView.date = [_beaginDate YC_dateByAddingDays:dayView.indexPath.line * 7 + dayView.indexPath.row - weekDay + 1];
+            //            NSLog(@"/////// %@",dayView.date);
+            
+            NSArray *dateArrsds = [NSArray arrayWithArray:[YCCalendarManager defaultManager].selectDateArr];
+            
+            for (NSDate *dates in dateArrsds) {
+                if ([dayView.date isSameDayToDate:dates] && dayView.date.month == _beaginDate.month) {
+                    dayView.selected = YES;
+                    break;
+                }else{
+                    dayView.selected = NO;
+                }
+            }
+            
+        }
+        else
+        {
+            dayView.date = [_beaginDate YC_dateByAddingDays:dayView.indexPath.row];
+            
+            NSArray *dateArrsd = [NSArray arrayWithArray:[YCCalendarManager defaultManager].selectDateArr];
+            for (NSDate *dates in dateArrsd) {
+                
+                dayView.selected = [dayView.date isSameDayToDate:dates];
+                
+                if ([dayView.date isSameDayToDate:dates]) {
+                    dayView.selected = YES;
+                    break;
+                }else{
+                    dayView.selected = NO;
+                }
+                
+            }
+            
+        }
+        
+        if ([[YCCalendarManager defaultManager].dataSource respondsToSelector:@selector(calendarView:dayViewHaveEvent:)])
+        {
+            [[YCCalendarManager defaultManager].dataSource calendarView:[YCCalendarManager defaultManager].calendarView dayViewHaveEvent:dayView];
+        }
+        if (dayView.selected)
+        {
+            self.weekLine = dayView.indexPath.line;
+        }
+        dayView.frame = [self.layout dayViewFrameAtIndexPath:dayView.indexPath];
+    }
+}
+
+- (void)creatDayView
+{
+    for (int i = 0; i < 6; i++)
+    {
+        for (int j = 0; j < 7; j++)
+        {
+            YCCalendarIndexPath *indexPath = [YCCalendarIndexPath indextPathWithLine:i andRow:j];
+            YCCalendarDayView *dayView = [[YCCalendarDayView alloc] init];
+            [dayView addTarget:self action:@selector(dayViewAction:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:dayView];
+            [dayView setIndexPath:indexPath];
+            [self.dayViewMap setObject:dayView forKey:[self mapKeyWithIndexPath:indexPath]];
+        }
+    }
+}
+
+- (NSString *)mapKeyWithIndexPath:(YCCalendarIndexPath *)indexPath
+{
+    return [NSString stringWithFormat:@"line = %ld row = %ld",indexPath.line,indexPath.row];
+}
+
+#pragma mark - action
+- (void)dayViewAction:(YCCalendarDayView *)dayView
+{
+    if(([YCCalendarManager defaultManager].displayType == YCCalendarDisplayMonthType && dayView.date.month != self.beaginDate.month)) return;
+    dayView.selected = !dayView.selected;
+    if (dayView.selected) {
+        //选中
+        [[YCCalendarManager defaultManager].selectDateArr addObject:dayView.date];
+
+        self.weekLine = dayView.indexPath.line;
+        if ([[YCCalendarManager defaultManager].delegate respondsToSelector:@selector(calendarView:didSelectDayView:)])
+        {
+            [[YCCalendarManager defaultManager].delegate calendarView:[YCCalendarManager defaultManager].calendarView didSelectDayView:dayView];
+        }
+    }else{
+        //取消选中
+        NSMutableArray *arr = [NSMutableArray arrayWithArray:[YCCalendarManager defaultManager].selectDateArr];
+        for (int i = 0; i < arr.count; i++) {
+            NSDate *date = arr[i];
+            if ([dayView.date isSameDayToDate:date]) {
+                [[YCCalendarManager defaultManager].selectDateArr removeObjectAtIndex:i];
+                break;
+            }
+        }
+    }
+   
+    
+    
+    //    if(dayView.selected || ([YCCalendarManager defaultManager].displayType == YCCalendarDisplayMonthType && dayView.date.month != self.beaginDate.month)) return;
+    //    dayView.selected = YES;
+    //    self.weekLine = dayView.indexPath.line;
+    //    if ([[YCCalendarManager defaultManager].delegate respondsToSelector:@selector(calendarView:didSelectDayView:)])
+    //    {
+    //        [[YCCalendarManager defaultManager].delegate calendarView:[YCCalendarManager defaultManager].calendarView didSelectDayView:dayView];
+    //    }
+}
+
+#pragma mark - get
+- (NSArray<YCCalendarDayView *> *)allDayView
+{
+    return _showDaysAry.copy;
+}
+
+
+@end

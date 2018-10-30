@@ -1,0 +1,94 @@
+
+//
+//  YCNewsViewModel.swift
+//  YunChou
+//
+//  Created by yy on 2018/10/24.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import UIKit
+import HandyJSON
+import Moya
+import SwiftProgressHUD
+
+class YCNewsViewModel: NSObject {
+    //MARK  -  数据模型
+    var bannerList : [YCNewsBannerDataModel]?   //轮播图数据
+    var newsList :[YCNewsDataModel]?   //新闻列表数据
+    var newsListAll : String?   //新闻列表总数据
+    
+    // 请求成功的回调
+    typealias successCallback = () -> Void
+    // 请求失败的回调
+    typealias failureCallback = () -> Void
+    // 请求错误的回调
+    typealias errorCallback = (_ error: MoyaError) -> Void
+    
+}
+// Mark:-请求数据
+extension YCNewsViewModel {
+    //获取新闻轮播图
+    func requestNewsBannerList(parModel:YCNewsBannerParModel,
+                               success:@escaping successCallback,
+                               failure:@escaping failureCallback,
+                               error:@escaping errorCallback){
+        YCNewsNetWork.request(target: .getNewsBanner(parModel: parModel), success: {(JSON) in
+            print("\(JSON)")
+            if(JSON["msg"]["code"].rawString()=="000000"){
+                
+                if let recommendList = JSONDeserializer<YCNewsBannerDataModel>.deserializeModelArrayFrom(json: JSON["data"]["info"].description) {
+                        self.bannerList = recommendList as? [YCNewsBannerDataModel]
+                    }
+                success()
+            }else{
+                let message = JSON["msg"]["msg"].rawString()
+                SwiftProgressHUD.showOnlyText(message!)
+                failure()
+            }
+            
+        }, failure: {(MoyaError) in
+            SwiftProgressHUD.showOnlyText("服务器异常！")
+            error(MoyaError)
+        })
+        
+    }
+    
+    
+    //获取新闻列表
+    func requestNewsList(parModel:YCNewsListParModel,
+                         isLoad:Bool,
+                         success:@escaping successCallback,
+                         failure:@escaping failureCallback,
+                         error:@escaping errorCallback){
+        YCNewsNetWork.request(target: .getNewsList(parModel: parModel), success: {(JSON) in
+            print("\(JSON)")
+            if(JSON["msg"]["code"].rawString()=="000000"){
+                
+                self.newsListAll = JSON["data"]["page"]["total"].rawString()
+                
+                if let recommendList = JSONDeserializer<YCNewsDataModel>.deserializeModelArrayFrom(json: JSON["data"]["info"].description) {
+                    
+                    
+                    //上拉加载
+                    if isLoad{
+                        self.newsList = self.newsList! + (recommendList as? [YCNewsDataModel])!
+                    }else{
+                        self.newsList = recommendList as? [YCNewsDataModel]
+                    }
+                }
+                success()
+            }else{
+                let message = JSON["msg"]["msg"].rawString()
+                SwiftProgressHUD.showOnlyText(message!)
+                failure()
+            }
+            
+        }, failure: {(MoyaError) in
+            SwiftProgressHUD.showOnlyText("服务器异常！")
+            error(MoyaError)
+        })
+        
+    }
+    
+}

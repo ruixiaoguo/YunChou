@@ -1,0 +1,19 @@
+//
+//  YCParameManeger.swift
+//  YunChou
+//
+//  Created by grx on 2018/10/23.
+//  Copyright © 2018年 grx. All rights reserved.
+//
+
+import UIKit
+
+class YCParameManeger: NSObject {
+    static let shared = YCParameManeger()
+    //web端请求后台
+    func transCode(code:String, dic:Dictionary<String, Any>) ->(Dictionary<String, Any>) {
+        var parameDic = dic
+        parameDic["methodCode"] = "basics/\(code)"
+        return parameDic
+    }
+}

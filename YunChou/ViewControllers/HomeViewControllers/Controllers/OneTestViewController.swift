@@ -12,10 +12,12 @@ import UIKit
 class OneTestViewController: BaseController {
 
     
+    var projectTypes : String?
+    
     private let HomeCell = "HomeCell"
 
     lazy var tableView : UITableView = {
-        let tableView = UITableView.init(frame: CGRect(x: 0, y: 0, width: Main_Screen_Width, height: view.bounds.height-YC_TabbarHeight), style: UITableView.Style.grouped)
+        let tableView = UITableView.init(frame: CGRect(x: 0, y: 0, width: Main_Screen_Width, height: Main_Screen_Height-YC_TabbarHeight), style: UITableView.Style.grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = YCBackground_LightColor
@@ -27,7 +29,7 @@ class OneTestViewController: BaseController {
             tableView.estimatedSectionHeaderHeight = 0;
             
         } else {
-            self.automaticallyAdjustsScrollViewInsets = false
+            automaticallyAdjustsScrollViewInsets = false
         }
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
@@ -37,33 +39,72 @@ class OneTestViewController: BaseController {
         return tableView
     }()
     
+    private lazy var viewModel : YCHomeViewModel = {
+        let vm = YCHomeViewModel()
+        return vm
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//view.backgroundColor = UIColor.yellow
         view.addSubview(tableView)
-        
-//        tableView.snp.makeConstraints { (make) in
-//            make.top.equalTo(view).offset(0)
-//            make.left.right.equalTo(view).offset(0)
-//            make.bottom.equalTo(view).offset(0)
-//        }
         glt_scrollView = tableView
 
-        if #available(iOS 11.0, *) {
-            tableView.contentInsetAdjustmentBehavior = .never
-        } else {
-            automaticallyAdjustsScrollViewInsets = false
-        }
+        tableView.ly_emptyView = self.emptyView
+        self.emptyView.contentViewOffset = -130
+        //初始化下拉刷新/上拉加载
+        loadDatas()
 
-        // Do any additional setup after loading the view.
+        initRefresh()
+        
+//        self.view.backgroundColor = UIColor.yellow
+//        tableView.backgroundColor = UIColor.red
+        
+    }
+    
+    //初始化下拉刷新/上拉加载
+    func initRefresh(){
+        
+        tableView.YCHead = YCRefreshHeader{[weak self] in
+            self?.pages = 1
+            self?.isLoad = false
+            self?.loadDatas()
+        }
+        tableView.mj_footer = MJRefreshAutoNormalFooter{[weak self] in
+            self?.pages = (self?.pages)!+1
+            self?.isLoad = true
+            self?.loadDatas()
+        }
+        
+//        tableView.YCFoot = YCRefreshFooter{[weak self] in
+//            self?.pages = (self?.pages)!+1
+//            self?.isLoad = true
+//            self?.loadDatas()
+//        }
+        
+    }
+    
+    func loadDatas(){
+        let parModel = YCHomeProjectParModel()
+        parModel.currentPageNum = "\(pages)"
+        parModel.projectTypes = projectTypes
+        print("======网络请求====\(String(describing: projectTypes))")
+        viewModel.requestHomeProjectList(parModel: parModel, isLoad: isLoad, tableview: tableView, success: {
+             DispatchQueue.main.async {
+            self.tableView.reloadData()
+                
+            }
+        }, failure: {
+            
+        }, error: {_ in
+            
+        })
     }
 }
 
 extension OneTestViewController:UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return viewModel.projectList?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,23 +120,26 @@ extension OneTestViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
     
-        if section == 4 {
+        if section == (viewModel.projectList?.count)! - 1 {
             return 10
         }
+       
         return 0.01
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:YCHomeTableViewCell = tableView.dequeueReusableCell(withIdentifier: HomeCell, for: indexPath) as! YCHomeTableViewCell
+        cell.projectData = viewModel.projectList![indexPath.section]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: false)
-        
+        let model:YCHomeProjectListDataModel = viewModel.projectList![indexPath.section]
         let vc = YCProjectDetailViewController()
         vc.hidesBottomBarWhenPushed = true
+        vc.projectID = model.id!
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
